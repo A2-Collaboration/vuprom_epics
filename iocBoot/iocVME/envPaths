@@ -1,0 +1,4 @@
+epicsEnvSet("ARCH","linux-x86")
+epicsEnvSet("IOC","iocVME")
+epicsEnvSet("TOP","/home/a2cb/a2epics/vme/vme")
+epicsEnvSet("EPICS_BASE","/opt/epics/base")

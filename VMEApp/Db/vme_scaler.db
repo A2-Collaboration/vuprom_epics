@@ -1,0 +1,38 @@
+record(ai, "TAPSVME:V0")
+{
+    field(DTYP, "Second")
+    field(INP, "Value: 0")
+    field(SCAN, "1 second")
+}
+
+record(ai, "TAPSVME:V1")
+{
+    field(DTYP, "Second")
+    field(INP, "Value: 1")
+    field(SCAN, "1 second")
+}
+
+record(ai, "CLOCK:SEC1")
+{
+	field(DESC, "Second devided by 10")
+	field(DTYP, "Second")
+	field(INP, "Value: 2")
+	field(SCAN, "1 second")
+	field(EGUF, "1")
+	field(EGUL, "0")
+	field(EGU, "Second")
+	field(LINR, "LINEAR")
+	field(ASLO, "1")
+	field(AOFF, "0")
+	#field(MDEL, "0.01")
+	field(HOPR, "6")
+	field(LOPR, "0")
+	field(HIHI, "5.5")
+	field(HIGH, "4.5")
+	field(LOW, "1.5")
+	field(LOLO, ".5")
+	field(HHSV, "MAJOR")
+	field(HSV, "MINOR")
+	field(LSV, "MINOR")
+	field(LLSV, "MAJOR")
+}

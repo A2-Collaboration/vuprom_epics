@@ -1,0 +1,11 @@
+*.d
+*.a
+*.o
+*.swp
+*.so
+*.so.
+lib/*
+bin/*
+
+configure/O.linux-x86/
+configure/O.linux-x86_64/
