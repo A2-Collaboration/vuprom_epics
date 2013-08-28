@@ -7,5 +7,5 @@
 lib/*
 bin/*
 
-configure/O.linux-x86/
-configure/O.linux-x86_64/
+*/O.*/
+*/*/O.*/
