@@ -37,10 +37,220 @@ record(ai, "DAQ:LED2_TAPSOR")
         field(SCAN, "1 second")
         field(DESC, "LED2_TAPSOR")
 }
+
 record(ai, "DAQ:CFD_TAPSM2Plus")
 {
     field(DTYP, "Second")
         field(INP, "Value: 5")
         field(SCAN, "1 second")
         field(DESC, "CFD_TAPSM2Plus")
+}
+
+record(ai, "DAQ:LED1_TAPSM2Plus")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 6")
+        field(SCAN, "1 second")
+        field(DESC, "LED1_TAPSM2Plus")
+}
+
+record(ai, "DAQ:LED2_TAPSM2Plus")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 7")
+        field(SCAN, "1 second")
+        field(DESC, "LED2_TAPSM2Plus")
+}
+
+record(ai, "DAQ:PulserOutput")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 8")
+        field(SCAN, "1 second")
+        field(DESC, "PulserOutput")
+}
+
+record(ai, "DAQ:CFD_TAPSOR_Prescaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 9")
+        field(SCAN, "1 second")
+        field(DESC, "CFD_TAPSOR_Prescaled")
+}
+
+record(ai, "DAQ:LED1_TAPSOR_Prescaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 10")
+        field(SCAN, "1 second")
+        field(DESC, "LED1_TAPSOR_Prescaled")
+}
+
+record(ai, "DAQ:LED2_TAPSOR_Prescaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 11")
+        field(SCAN, "1 second")
+        field(DESC, "LED2_TAPSOR_Prescaled")
+}
+
+
+record(ai, "DAQ:CFD_TAPSM2Plus_Prescaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 12")
+        field(SCAN, "1 second")
+        field(DESC, "CFD_TAPSM2Plus_Prescaled")
+}
+
+record(ai, "DAQ:LED1_TAPSM2Plus_Prescaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 13")
+        field(SCAN, "1 second")
+        field(DESC, "LED1_TAPSM2Plus_Prescaled")
+}
+
+record(ai, "DAQ:LED2_TAPSM2Plus_Prescaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 14")
+        field(SCAN, "1 second")
+        field(DESC, "LED2_TAPSM2Plus_Prescaled")
+}
+
+record(ai, "DAQ:PulserOutput_Prescaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 15")
+        field(SCAN, "1 second")
+        field(DESC, "PulserOutput_Prescaled")
+}
+
+record(ai, "DAQ:TAPS_L1_Trigger")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 16")
+        field(SCAN, "1 second")
+        field(DESC, "TAPS_L1_Trigger")
+}
+
+record(ai, "DAQ:TAPS_L1_Interrupt")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 17")
+        field(SCAN, "1 second")
+        field(DESC, "TAPS_L1_Interrupt")
+}
+
+record(ai, "DAQ:TAPSInterrupt")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 18")
+        field(SCAN, "1 second")
+        field(DESC, "TAPSInterrupt")
+}
+
+record(ai, "DAQ:TAPSActualMode")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 19")
+        field(SCAN, "1 second")
+        field(DESC, "TAPSActualMode")
+}
+
+record(ai, "DAQ:PWO_Veto_TAPSM2Plus_PreScaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 20")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_Veto_TAPSM2Plus_PreScaled")
+}
+
+record(ai, "DAQ:Veto_TAPSOR")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 21")
+        field(SCAN, "1 second")
+        field(DESC, "Veto_TAPSOR")
+}
+
+record(ai, "DAQ:Veto_TAPSM2Plus")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 22")
+        field(SCAN, "1 second")
+        field(DESC, "Veto_TAPSM2Plus")
+}
+
+record(ai, "DAQ:Veto_TAPSOR_PreScaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 23")
+        field(SCAN, "1 second")
+        field(DESC, "Veto_TAPSOR_PreScaled")
+}
+
+record(ai, "DAQ:Veto_TAPSM2Plus_PreScaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 24")
+        field(SCAN, "1 second")
+        field(DESC, "Veto_TAPSM2Plus_PreScaled")
+}
+
+record(ai, "DAQ:PWO_TAPSOR")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 25")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_TAPSOR")
+}
+
+record(ai, "DAQ:PWO_Veto_TAPSOR")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 26")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_Veto_TAPSOR")
+}
+
+record(ai, "DAQ:PWO_TAPSM2Plus")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 27")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_TAPSM2Plus")
+}
+
+record(ai, "DAQ:PWO_Veto_TAMPSM2Plus")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 28")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_Veto_TAMPSM2Plus")
+}
+
+record(ai, "DAQ:PWO_TAPSOR_PreScaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 29")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_TAPSOR_PreScaled")
+}
+
+record(ai, "DAQ:PWO_Veto_TAPSOR_PreScaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 30")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_Veto_TAPSOR_PreScaled")
+}
+
+record(ai, "DAQ:PWO_TAPSM2Plus_PreScaled")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 31")
+        field(SCAN, "1 second")
+        field(DESC, "PWO_TAPSM2Plus_PreScaled")
 }
