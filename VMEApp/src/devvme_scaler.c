@@ -1,8 +1,8 @@
 /**
-   devvme_scaler.c
-   kazuro furukawa, dec.14.2006.
+  devvme_scaler.c
+  kazuro furukawa, dec.14.2006.
 
-**/
+ **/
 /*NOTUSED*/
 static char what[] =
 "@(#)devvme_scaler v0.1 support for Second, k.furukawa, dec.2006";
@@ -35,21 +35,21 @@ static long init_record();
 static long init_ai();
 static long read_ai();
 struct {
-	long		number;
-	DEVSUPFUN	report;
-	DEVSUPFUN	init;
-	DEVSUPFUN	init_record;
-	DEVSUPFUN	get_ioint_info;
-	DEVSUPFUN	read_ai;
-	DEVSUPFUN	special_linconv;
+    long		number;
+    DEVSUPFUN	report;
+    DEVSUPFUN	init;
+    DEVSUPFUN	init_record;
+    DEVSUPFUN	get_ioint_info;
+    DEVSUPFUN	read_ai;
+    DEVSUPFUN	special_linconv;
 } devvme_scaler = {
-	6,
-	NULL,
-	init_ai,
-	init_record,
-	NULL,
-	read_ai,
-	NULL
+    6,
+    NULL,
+    init_ai,
+    init_record,
+    NULL,
+    read_ai,
+    NULL
 };
 epicsExportAddress(dset,devvme_scaler);
 
@@ -67,12 +67,12 @@ epicsExportAddress(dset,devvme_scaler);
 
 static long init_ai(int after)
 {
-  printf("%s: devvme_scaler (init) called, pass=%d\n", what, after);
-//memset(values, 0, N*sizeof(long));
+    printf("%s: devvme_scaler (init) called, pass=%d\n", what, after);
+    //memset(values, 0, N*sizeof(long));
 
-  drv_init();
+    drv_init();
 
-  return(0);
+    return(0);
 }
 
 static int parseRecNumber( char* str ) {
@@ -88,38 +88,38 @@ static int parseRecNumber( char* str ) {
 static long init_record(struct aiRecord *pai)
 {
 
-  printf("devvme_scaler (init_record) called:%s\n", pai->inp.text);
+    printf("devvme_scaler (init_record) called:%s\n", pai->inp.text);
 
 
-  int record = parseRecNumber( pai->inp.text );
+    int record = parseRecNumber( pai->inp.text );
 
-  if( record < 0 ) {
-      printf("Error initializing Record: Unknown: %s\n", pai->inp.text);
-      return 1;
-  } else {
-      if( record < N ) {
-          pai->udf = FALSE;
-          printf("Record %d init OK\n", record);
-      } else {
-          printf("Error: invalid record number %d\n", record);
-          return 1;
-      }
-  }
+    if( record < 0 ) {
+        printf("Error initializing Record: Unknown: %s\n", pai->inp.text);
+        return 1;
+    } else {
+        if( record < N ) {
+            pai->udf = FALSE;
+            printf("Record %d init OK\n", record);
+        } else {
+            printf("Error: invalid record number %d\n", record);
+            return 1;
+        }
+    }
 
-  return(0);
+    return(0);
 }
 
-
+
 static long read_ai(struct aiRecord *pai)
 {
     int record = parseRecNumber(pai->inp.text);
 
     long val = drv_Get(record);
 
-   printf("access: %d = %ld\n", record, val);
+    //printf("access: %d = %ld\n", record, val);
 
     pai->udf = FALSE;
-   pai->rval = val;
+    pai->rval = val;
 
     return 0;
 }
