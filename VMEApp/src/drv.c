@@ -165,7 +165,7 @@ int drv_init () {
         }
 
         pthread_create(&pth, NULL, threadFunc, NULL);
-        puts("I\n");
+        printf("Initialized VME Memory range %x..%x\n",VME_ADDR_DATA,VME_ADDR_DATA+RANGE);
 
         _init=1;
     }
