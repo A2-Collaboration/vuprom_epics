@@ -3,18 +3,28 @@
 #include <unistd.h>
 #include "drv.h"
 #include <time.h>
+#include <sys/mman.h>
+#include <string.h>  // for memcpy()
 
 #include "vmebus.h"
 
-#define N 64
+// size of memory range to map
+#define RANGE 0x1000
 
-#define VME_ADDR  0x1000000 * 10
-#define VME_ADDR2 0x1000000
+// number of 32 bit values in memory range
+#define N     (RANGE / sizeof(u_int32_t))
+
+#define VME_ADDR       0x1000000
+#define VME_ADDR_DATA  0x1000000 * 10 + 0x3000
 
 #define NumberOfLeftChannels 10
 #define NumberOfPairsPerLeftCh 5
 
-static volatile long values[N];
+// local storage for values
+static volatile u_int32_t values[N];
+
+static volatile u_int32_t* vmemem = NULL;
+
 static pthread_t pth;
 
 // is the driver initialized?
@@ -41,11 +51,14 @@ unsigned long SetTopBits(unsigned long Myaddr) {
     *Mypoi = Myaddr & 0xe0000000;
     // obere 3 Bits setzen: fertig
 
+    // free the memory again
+    munmap( (void*) Mypoi, 0x1000 );
+
     return 0;
 }
 
 
-
+/*
 
 unsigned long VMERead(unsigned long Myaddr) {
     unsigned long Myrest, MyOrigAddr, Mypattern;
@@ -86,9 +99,7 @@ unsigned long VMEWrite(unsigned long Myaddr, unsigned long Mypattern) {
 
     return 0;
 }
-
-
-
+*/
 
 /**
  * @brief Calculate the differnce in seconds of two timespec values
@@ -109,18 +120,22 @@ void *threadFunc(void * arg)
         clock_gettime(CLOCK_MONOTONIC, &start_measure);
 
         // Clear Counters
-        VMEWrite(VME_ADDR+0x3800,1);
+        //VMEWrite(VME_ADDR_DATA+0x3800,1);
+        vmemem[512] = 1;
 
         usleep( sleep_time );
 
         // Save Counters
-        VMEWrite(VME_ADDR+0x3804,1);
+        //VMEWrite(VME_ADDR+0x3804,1);
+        vmemem[513] = 1;
 
         clock_gettime(CLOCK_MONOTONIC, &stop_measure);
 
-        int k;
-        for (k = 0; k<N; k++)
-               values[k] = VMERead(VME_ADDR+0x3000+k*4);
+        //int k;
+        //for (k = 0; k<N; k++)
+         //      values[k] = VMERead(VME_ADDR+0x3000+k*4);
+        // vmemem starts as VME_ADDR_DATA+0x3000
+        memcpy( &values, (void*)vmemem, RANGE );
 
         last_sleep = time_difference( &start_measure, &stop_measure );
 
@@ -142,11 +157,12 @@ int drv_init () {
 
         OpenVMEbus();
 
-        SetTopBits(VME_ADDR2);
+        SetTopBits(VME_ADDR);
 
-        int i;
-        for(  i=0; i < N; ++i )
-            values[i] = i;
+        if ((vmemem = (u_int32_t*) vmeext( VME_ADDR_DATA, RANGE )) == NULL) {
+            perror("Error opening device.\n");
+            return 0;
+        }
 
         pthread_create(&pth, NULL, threadFunc, NULL);
         puts("I\n");
@@ -170,6 +186,11 @@ int drv_deinit() {
     }
 
     //... reset VME registers
+
+    if( vmemem ) {
+        munmap( (void*)vmemem, RANGE );
+        vmemem = NULL;
+    }
 
     _init = 0;
 
