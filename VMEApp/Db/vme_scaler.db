@@ -1,39 +1,46 @@
 record(ai, "DAQ:TAPSBusy")
 {
     field(DTYP, "Second")
-    field(INP, "Value: 0")
-    field(SCAN, "1 second")
-	field(DESC, "TAPSBusy")
+        field(INP, "Value: 0")
+        field(SCAN, "1 second")
+        field(DESC, "TAPSBusy")
 }
 
 record(ai, "DAQ:CBInterrupt")
 {
     field(DTYP, "Second")
-    field(INP, "Value: 1")
-    field(SCAN, "1 second")
-	field(DESC, "CBInterrupt")
+        field(INP, "Value: 1")
+        field(SCAN, "1 second")
+        field(DESC, "CBInterrupt")
 }
 
 record(ai, "DAQ:CFD_TAPSOR")
 {
     field(DTYP, "Second")
-    field(INP, "Value: 2")
-    field(SCAN, "1 second")
-	field(DESC, "CFD_TAPSOR")
+        field(INP, "Value: 2")
+        field(SCAN, "1 second")
+        field(DESC, "CFD_TAPSOR")
+}
+
+record(ai, "DAQ:LED1_TAPSOR")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 3")
+        field(SCAN, "1 second")
+        field(DESC, "LED2_TAPSOR")
 }
 
 record(ai, "DAQ:LED2_TAPSOR")
 {
     field(DTYP, "Second")
-    field(INP, "Value: 3")
-    field(SCAN, "1 second")
-	field(DESC, "LED2_TAPSOR")
+        field(INP, "Value: 4")
+        field(SCAN, "1 second")
+        field(DESC, "LED2_TAPSOR")
 }
-
 record(ai, "DAQ:CFD_TAPSM2Plus")
 {
     field(DTYP, "Second")
-    field(INP, "Value: 4")
-    field(SCAN, "1 second")
-	field(DESC, "CFD_TAPSM2Plus")
+        field(INP, "Value: 5")
+        field(SCAN, "1 second")
+        field(DESC, "CFD_TAPSM2Plus")
 }
