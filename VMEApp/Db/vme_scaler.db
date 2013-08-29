@@ -254,3 +254,255 @@ record(ai, "DAQ:PWO_TAPSM2Plus_PreScaled")
         field(SCAN, "1 second")
         field(DESC, "PWO_TAPSM2Plus_PreScaled")
 }
+
+#########################################################################
+
+record(ai, "DAQ:Rate_L2_Input_0")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 32")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_0")
+}
+
+record(ai, "DAQ:Rate_L2_Input_1")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 33")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_1")
+}
+
+record(ai, "DAQ:Rate_L2_Input_2")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 34")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_2")
+}
+
+record(ai, "DAQ:Rate_L2_Input_3")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 34")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_3")
+}
+
+record(ai, "DAQ:Rate_L2_Input_4")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 35")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_4")
+}
+
+record(ai, "DAQ:Rate_L2_Input_5")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 36")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_5")
+}
+
+record(ai, "DAQ:Rate_L2_Input_6")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 37")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_6")
+}
+
+record(ai, "DAQ:Rate_L2_Input_7")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 38")
+        field(SCAN, "1 second")
+        field(DESC, "Rate_L2_Input_7")
+}
+
+record(ai, "DAQ:RawL1Triggers0")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 39")
+        field(SCAN, "1 second")
+        field(DESC, "RawL1Triggers0")
+}
+
+record(ai, "DAQ:RawL1Triggers0b")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 40")
+        field(SCAN, "1 second")
+        field(DESC, "RawL1Triggers0b")
+}
+
+record(ai, "DAQ:L1_Trigger")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 41")
+        field(SCAN, "1 second")
+        field(DESC, "L1_Trigger")
+}
+
+record(ai, "DAQ:Experiment_Trigger")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 42")
+        field(SCAN, "1 second")
+        field(DESC, "Experiment_Trigger")
+}
+
+record(ai, "DAQ:MasterReset")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 43")
+        field(SCAN, "1 second")
+        field(DESC, "MasterReset")
+}
+#free 44
+#free 45
+
+record(ai, "DAQ:ImmediateReset")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 46")
+        field(SCAN, "1 second")
+        field(DESC, "ImmediateReset")
+}
+
+record(ai, "DAQ:FastClear")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 47")
+        field(SCAN, "1 second")
+        field(DESC, "FastClear")
+}
+
+record(ai, "DAQ:Livetime_L1")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 48")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_L1")
+}
+
+record(ai, "DAQ:Livetime_L2")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 49")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_L2")
+}
+
+record(ai, "DAQ:Livetime_a2wcdaq1(CPU0)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 50")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_a2wcdaq1(CPU0)")
+}
+
+record(ai, "DAQ:Livetime_a2SADCdaq1(CPU1)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 51")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_a2SADCdaq1(CPU1)")
+}
+
+record(ai, "DAQ:Livetime_a2SADCdaq2(CPU2)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 52")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_a2SADCdaq2(CPU2)")
+}
+
+record(ai, "DAQ:Livetime_a2tdcdaq1(CPU3)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 53")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_a2tdcdaq1(CPU3)")
+}
+
+record(ai, "DAQ:Livetime_a2taggerdaq1(CPU4)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 54")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_a2taggerdaq1(CPU4)")
+}
+
+record(ai, "DAQ:Livetime_UNUSED(CPU5)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 55")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_UNUSED(CPU5)")
+}
+
+record(ai, "DAQ:Livetime_TAPS(CPU6)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 56")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_TAPS(CPU6)")
+}
+
+record(ai, "DAQ:Livetime_a2cbtrigger(CPU6)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 57")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_TAPS(CPU6)")
+}
+
+record(ai, "DAQ:Livetime_a2cbtrigger(CPU7)")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 58")
+        field(SCAN, "1 second")
+        field(DESC, "Livetime_a2cbtrigger(CPU7)")
+}
+
+record(ai, "DAQ:Total_Livetime")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 59")
+        field(SCAN, "1 second")
+        field(DESC, "Total_Livetime")
+}
+
+record(ai, "DAQ:Debug0")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 60")
+        field(SCAN, "1 second")
+        field(DESC, "Debug0")
+}
+
+record(ai, "DAQ:Debug1")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 61")
+        field(SCAN, "1 second")
+        field(DESC, "Debug1")
+}
+
+record(ai, "DAQ:Debug2")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 62")
+        field(SCAN, "1 second")
+        field(DESC, "Debug2")
+}
+
+record(ai, "DAQ:Debug3")
+{
+    field(DTYP, "Second")
+        field(INP, "Value: 63")
+        field(SCAN, "1 second")
+        field(DESC, "Debug3")
+}
