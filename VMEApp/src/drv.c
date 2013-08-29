@@ -139,7 +139,7 @@ void *threadFunc(void * arg)
 
         last_sleep = time_difference( &start_measure, &stop_measure );
 
-        printf("threadFunc: sleep was: %f s\n", last_sleep );
+ //       printf("threadFunc: sleep was: %f s\n", last_sleep );
 
     }
 
