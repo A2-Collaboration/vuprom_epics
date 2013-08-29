@@ -24,6 +24,7 @@ static char what[] =
 #include "aiRecord.h"
 #include "link.h"
 #include "epicsExport.h"
+#include "dbScan.h"
 #include "devvme_scaler.h"
 
 #include "drv.h"
@@ -34,6 +35,8 @@ static char what[] =
 static long init_record();
 static long init_ai();
 static long read_ai();
+static long get_ioint_info();
+
 struct {
     long		number;
     DEVSUPFUN	report;
@@ -43,13 +46,13 @@ struct {
     DEVSUPFUN	read_ai;
     DEVSUPFUN	special_linconv;
 } devvme_scaler = {
-    6,
-    NULL,
-    init_ai,
-    init_record,
-    NULL,
-    read_ai,
-    NULL
+	6,
+	NULL,
+	init_ai,
+	init_record,
+    get_ioint_info,
+	read_ai,
+	NULL
 };
 epicsExportAddress(dset,devvme_scaler);
 
@@ -120,6 +123,22 @@ static long read_ai(struct aiRecord *pai)
 
     pai->udf = FALSE;
     pai->rval = val;
+
+    return 0;
+}
+
+static long get_ioint_info(int cmd,struct dbCommon *precord,IOSCANPVT *ppvt) {
+
+    printf("get_ioint_info: cmd=%d\n", cmd);
+
+    IOSCANPVT* ioinfo = NULL;
+
+    ioinfo = drv_getioinfo();
+
+    if( ioinfo )
+        scanIoInit(ioinfo);
+    else
+        puts("Error settinf I/O Intr\n");
 
     return 0;
 }

@@ -6,6 +6,8 @@
 #include <sys/mman.h>
 #include <string.h>  // for memcpy()
 
+
+
 #include "vmebus.h"
 
 // size of memory range to map
@@ -28,7 +30,9 @@ static volatile u_int32_t* vmemem = NULL;
 static pthread_t pth;
 
 // is the driver initialized?
-static int _init=0;
+static int _init = 0;
+
+static IOSCANPVT* ioinfo = NULL;
 
 // sleep time [us]
 static unsigned int sleep_time = 1000000;
@@ -141,6 +145,10 @@ void *threadFunc(void * arg)
 
  //       printf("threadFunc: sleep was: %f s\n", last_sleep );
 
+        if( ioinfo ) {
+            scanIoRequest( *ioinfo );
+        }
+
     }
 
     return NULL;
@@ -223,3 +231,9 @@ float drv_GetLastInterval() {
     return last_sleep;
 }
 
+IOSCANPVT* drv_getioinfo() {
+
+    ioinfo =NULL; // create it here!
+
+    return ioinfo;
+}
