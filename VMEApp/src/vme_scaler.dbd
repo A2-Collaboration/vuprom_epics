@@ -1,3 +1,3 @@
 # include "base.dbd"
 # local menu, record, device, driver, breakpoint definitions
-device(ai,CONSTANT,devvme_scaler,"Second")
+device(ai,CONSTANT,devvme_scaler,"VMEScaler")

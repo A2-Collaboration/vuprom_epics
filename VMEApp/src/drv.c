@@ -25,8 +25,10 @@
 // local storage for values
 static volatile u_int32_t values[N];
 
+// memory to map VME to
 static volatile u_int32_t* vmemem = NULL;
 
+// our measurement thread
 static pthread_t pth;
 
 // is the driver initialized?
@@ -40,8 +42,7 @@ static unsigned int sleep_time = 1000000;
 
 typedef struct timespec timespec;
 
-timespec start_measure;
-timespec stop_measure;
+
 float last_sleep = 0.0f;
 
 
@@ -63,49 +64,6 @@ unsigned long SetTopBits(unsigned long Myaddr) {
 }
 
 
-/*
-
-unsigned long VMERead(unsigned long Myaddr) {
-    unsigned long Myrest, MyOrigAddr, Mypattern;
-    volatile unsigned long *Mypoi;
-    MyOrigAddr = Myaddr;
-    Myaddr &= 0x1fffffff;	// obere Bits ausmaskieren
-    Myrest = Myaddr % 0x1000;
-    Myaddr = (Myaddr / 0x1000) * 0x1000;
-
-    if ((Mypoi = vmeext(Myaddr, 0x1000)) == NULL) {
-        perror("Error opening device.\n");
-        return 0;
-    }
-    Mypoi += (Myrest / 4);  //da 32Bit-Zugriff
-
-    //Lesen
-    Mypattern = *Mypoi;
-
-    return Mypattern;
-}
-
-unsigned long VMEWrite(unsigned long Myaddr, unsigned long Mypattern) {
-    unsigned long MyOrigAddr, Myrest;
-    volatile unsigned long *Mypoi;
-    MyOrigAddr = Myaddr;
-    Myaddr &= 0x1fffffff;	// obere Bits ausmaskieren
-    Myrest = Myaddr % 0x1000;
-    Myaddr = (Myaddr / 0x1000) * 0x1000;
-
-    if ((Mypoi = vmeext(Myaddr, 0x1000)) == NULL) {
-        perror("Error opening device.\n");
-        return 0;
-    }
-    Mypoi += (Myrest / 4);  //da 32Bit-Zugriff
-
-    *Mypoi = Mypattern;  //Doppelter Zugriff beim Schreiben
-
-
-    return 0;
-}
-*/
-
 /**
  * @brief Calculate the differnce in seconds of two timespec values
  * @param start The first (earlier) time point
@@ -117,8 +75,17 @@ float time_difference( const timespec* start, const timespec* stop ) {
     return time;
 }
 
-void *threadFunc(void * arg)
+
+/**
+ * @brief Thread function that periodically reads the scaler values
+ * @param arg ignore. does not take arguments
+ * @return nothing.
+ */
+void *thread_measure(void * arg)
 {
+
+    timespec start_measure;
+    timespec stop_measure;
 
     while( 1 )
     {
@@ -144,12 +111,13 @@ void *threadFunc(void * arg)
 
         last_sleep = time_difference( &start_measure, &stop_measure );
 
-        printf("threadFunc: sleep was: %f s\n", last_sleep );
-
+        //printf("threadFunc: sleep was: %f s\n", last_sleep );
+        //
+        // since we measured the elapsed time we could scale all values to be "per second"...
+        // or export the time via epics and d othe calc there?
 
         if( _iointr )
             scanIoRequest( ioinfo );
-
 
     }
 
@@ -174,7 +142,8 @@ int drv_init () {
             return 0;
         }
 
-        pthread_create(&pth, NULL, threadFunc, NULL);
+        // start measuring thread
+        pthread_create(&pth, NULL, thread_measure, NULL);
         printf("Initialized VME Memory range %x..%x\n",VME_ADDR_DATA,VME_ADDR_DATA+RANGE);
 
         _init=1;
@@ -195,7 +164,7 @@ int drv_deinit() {
         puts("Error shutting down thread\n");
     }
 
-    //... reset VME registers
+    //... reset VME registers?
 
     if( vmemem ) {
         munmap( (void*)vmemem, RANGE );
@@ -234,6 +203,13 @@ float drv_GetLastInterval() {
 }
 
 IOSCANPVT* drv_getioinfo() {
-    _iointr = 1;
     return &ioinfo;
+}
+
+void drv_disable_iointr() {
+    _iointr = 0;
+}
+
+void drv_enable_iointr() {
+    _iointr = 1;
 }

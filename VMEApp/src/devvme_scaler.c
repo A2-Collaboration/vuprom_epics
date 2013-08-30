@@ -1,11 +1,11 @@
 /**
-  devvme_scaler.c
-  kazuro furukawa, dec.14.2006.
+ * @brief A2 VME scaler read out for EPICS
+ * @author Oliver Steffen <steffen@kph.uni-mainz.de>
+ * @date Aug 30, 2013
+ */
 
- **/
-/*NOTUSED*/
 static char what[] =
-"@(#)devvme_scaler v0.1 support for Second, k.furukawa, dec.2006";
+"devvme_scaler v0.1 - A2 VME Access by o.Steffen <steffen@kph.uni-mainz,de>, Aug 30, 2013";
 
 #define DEBUG_ON
 
@@ -66,21 +66,19 @@ epicsExportAddress(dset,devvme_scaler);
 
 #define N 64
 
-//volatile static long values[N];
-
 static long init_ai(int after)
 {
-    printf("%s: devvme_scaler (init) called, pass=%d\n", what, after);
-    //memset(values, 0, N*sizeof(long));
-
-    drv_init();
+    if( after == 0 ) {
+        printf("%s: devvme_scaler (init) called, pass=%d\n", what, after);
+        drv_init();
+    }
 
     return(0);
 }
 
 static int parseRecNumber( char* str ) {
     int addr;
-    int ret = sscanf( str,"Value:%d", &addr);
+    int ret = sscanf( str,"Addr:%d", &addr);
 
     if( ret == 1 )
         return addr;
@@ -91,20 +89,20 @@ static int parseRecNumber( char* str ) {
 static long init_record(struct aiRecord *pai)
 {
 
-    printf("devvme_scaler (init_record) called:%s\n", pai->inp.text);
+    printf("Initializing %s...", pai->name);
 
 
     int record = parseRecNumber( pai->inp.text );
 
     if( record < 0 ) {
-        printf("Error initializing Record: Unknown: %s\n", pai->inp.text);
+        printf("Error in INP: \"%s\"\n", pai->inp.text);
         return 1;
     } else {
         if( record < N ) {
             pai->udf = FALSE;
-            printf("Record %d init OK\n", record);
+            printf("OK, Addr=%d\n", record);
         } else {
-            printf("Error: invalid record number %d\n", record);
+            printf("Error: Addr out of range: %d\n", record);
             return 1;
         }
     }
@@ -119,28 +117,38 @@ static long read_ai(struct aiRecord *pai)
 
     long val = drv_Get(record);
 
-    //printf("access: %d = %ld\n", record, val);
-
     pai->udf = FALSE;
     pai->rval = val;
 
     return 0;
 }
+static int n=0;
 
 static long get_ioint_info(int cmd,struct dbCommon *precord, IOSCANPVT *ppvt) {
 
-    printf("get_ioint_info: cmd=%d, pvvt=%x\n", cmd, (int)ppvt);
-
     IOSCANPVT* ioinfo = NULL;
 
-    ioinfo = drv_getioinfo();
+    switch (cmd) {
+    case 0:
 
-    if( ioinfo ) {
-        scanIoInit(ioinfo);
-        *ppvt = *ioinfo;
-        printf("2 pvvt=%x\n", (int)ppvt);
-    } else
-        puts("Error settinf I/O Intr\n");
+        ioinfo = drv_getioinfo();
+
+        if( ioinfo ) {
+            if (n==0 ) scanIoInit(ioinfo);  //only once! not for every record!
+            ++n;
+            *ppvt = *ioinfo;
+            drv_enable_iointr();
+            printf("I/O Intr enabled for %s\n", precord->name);
+        } else
+            puts("Error settinf I/O Intr\n");
+        break;
+    case 1:
+        drv_disable_iointr();
+        printf("I/O Intr disabled\n");
+        break;
+    default:
+        printf("Error: unknown command %d\n", cmd);
+    }
 
     return 0;
 }
