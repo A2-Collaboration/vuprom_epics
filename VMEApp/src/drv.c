@@ -32,7 +32,8 @@ static pthread_t pth;
 // is the driver initialized?
 static int _init = 0;
 
-static IOSCANPVT* ioinfo = NULL;
+static IOSCANPVT ioinfo;
+static int _iointr = 0;
 
 // sleep time [us]
 static unsigned int sleep_time = 1000000;
@@ -143,11 +144,12 @@ void *threadFunc(void * arg)
 
         last_sleep = time_difference( &start_measure, &stop_measure );
 
- //       printf("threadFunc: sleep was: %f s\n", last_sleep );
+        printf("threadFunc: sleep was: %f s\n", last_sleep );
 
-        if( ioinfo ) {
-            scanIoRequest( *ioinfo );
-        }
+
+        if( _iointr )
+            scanIoRequest( ioinfo );
+
 
     }
 
@@ -232,8 +234,6 @@ float drv_GetLastInterval() {
 }
 
 IOSCANPVT* drv_getioinfo() {
-
-    ioinfo =NULL; // create it here!
-
-    return ioinfo;
+    _iointr = 1;
+    return &ioinfo;
 }

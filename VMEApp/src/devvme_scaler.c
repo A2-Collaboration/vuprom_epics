@@ -127,17 +127,19 @@ static long read_ai(struct aiRecord *pai)
     return 0;
 }
 
-static long get_ioint_info(int cmd,struct dbCommon *precord,IOSCANPVT *ppvt) {
+static long get_ioint_info(int cmd,struct dbCommon *precord, IOSCANPVT *ppvt) {
 
-    printf("get_ioint_info: cmd=%d\n", cmd);
+    printf("get_ioint_info: cmd=%d, pvvt=%x\n", cmd, (int)ppvt);
 
     IOSCANPVT* ioinfo = NULL;
 
     ioinfo = drv_getioinfo();
 
-    if( ioinfo )
+    if( ioinfo ) {
         scanIoInit(ioinfo);
-    else
+        *ppvt = *ioinfo;
+        printf("2 pvvt=%x\n", (int)ppvt);
+    } else
         puts("Error settinf I/O Intr\n");
 
     return 0;

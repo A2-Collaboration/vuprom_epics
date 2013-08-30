@@ -18,7 +18,7 @@ record(ai, "DAQ:CFD_TAPSOR")
 {
     field(DTYP, "Second")
         field(INP, "Value: 2")
-        field(SCAN, "1 second")
+        field(SCAN, "I/O Intr")
         field(DESC, "CFD_TAPSOR")
 }
 
@@ -26,7 +26,7 @@ record(ai, "DAQ:LED1_TAPSOR")
 {
     field(DTYP, "Second")
         field(INP, "Value: 3")
-        field(SCAN, "1 second")
+        field(SCAN, "2 second")
         field(DESC, "LED2_TAPSOR")
 }
 
