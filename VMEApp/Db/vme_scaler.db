@@ -6,13 +6,13 @@
 #        field(DESC, "TAPSBusy")
 #}
 #
-#record(ai, "DAQ:CBInterrupt")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 1")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CBInterrupt")
-#}
+record(ai, "DAQ:CBInterrupt")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003001")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CBInterrupt")
+}
 #
 #record(ai, "DAQ:CFD_TAPSOR")
 #{
