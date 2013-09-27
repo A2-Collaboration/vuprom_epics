@@ -26,7 +26,7 @@
 static volatile u_int32_t values[N];
 
 // memory to map VME to
-static volatile u_int32_t* vmemem = NULL;
+//static volatile u_int32_t* vmemem = NULL;
 
 // our measurement thread
 static pthread_t pth;
@@ -44,6 +44,45 @@ typedef struct timespec timespec;
 
 
 float last_sleep = 0.0f;
+
+
+typedef struct {
+    u_int32_t  base_addr;   // Address of vuprom to mmap
+    volatile u_int32_t* vme_mem;     // mmaped memory ptr
+    u_int32_t  values[N];   // copied values
+} vuprom;
+
+int init_vuprom( vuprom* v ) {
+
+    if ((v->vme_mem = (u_int32_t*) vmeext( v->base_addr, RANGE )) == NULL) {
+        perror("Error opening device.\n");
+        return 0;
+    }
+    printf("Init vuprom @ %x\n", v->base_addr);
+    return 1;
+}
+
+void deinit_vuprom( vuprom* v ) {
+    if( v->vme_mem ) {
+        munmap( (void*)(v->vme_mem), RANGE );
+        v->vme_mem = NULL;
+    }
+}
+
+void start_measurement( vuprom* v ) {
+    v->vme_mem[512] = 1;
+}
+
+void stop_measurement( vuprom* v ) {
+    v->vme_mem[513] = 1;
+}
+
+void save_values( vuprom* v ) {
+    memcpy( &(v->values), (void*)(v->vme_mem), RANGE );
+}
+
+
+static vuprom vu;
 
 
 unsigned long SetTopBits(unsigned long Myaddr) {
@@ -81,7 +120,7 @@ float time_difference( const timespec* start, const timespec* stop ) {
  * @param arg ignore. does not take arguments
  * @return nothing.
  */
-void *thread_measure(void * arg)
+void *thread_measure( void* arg)
 {
 
     timespec start_measure;
@@ -93,13 +132,15 @@ void *thread_measure(void * arg)
 
         // Clear Counters
         //VMEWrite(VME_ADDR_DATA+0x3800,1);
-        vmemem[512] = 1;
+        //vmemem[512] = 1;
+        start_measurement( &vu );
 
         usleep( sleep_time );
 
         // Save Counters
         //VMEWrite(VME_ADDR+0x3804,1);
-        vmemem[513] = 1;
+        //vmemem[513] = 1;
+        stop_measurement( &vu );
 
         clock_gettime(CLOCK_MONOTONIC, &stop_measure);
 
@@ -107,7 +148,8 @@ void *thread_measure(void * arg)
         //for (k = 0; k<N; k++)
          //      values[k] = VMERead(VME_ADDR+0x3000+k*4);
         // vmemem starts as VME_ADDR_DATA+0x3000
-        memcpy( &values, (void*)vmemem, RANGE );
+        //memcpy( &values, (void*)vmemem, RANGE );
+        save_values( &vu );
 
         last_sleep = time_difference( &start_measure, &stop_measure );
 
@@ -136,11 +178,14 @@ int drv_init () {
         OpenVMEbus();
 
         SetTopBits(VME_ADDR);
-
+/*
         if ((vmemem = (u_int32_t*) vmeext( VME_ADDR_DATA, RANGE )) == NULL) {
             perror("Error opening device.\n");
             return 0;
         }
+*/
+        vu.base_addr = VME_ADDR_DATA;
+        init_vuprom( &vu );
 
         // start measuring thread
         pthread_create(&pth, NULL, thread_measure, NULL);
@@ -165,12 +210,13 @@ int drv_deinit() {
     }
 
     //... reset VME registers?
-
+/*
     if( vmemem ) {
         munmap( (void*)vmemem, RANGE );
         vmemem = NULL;
     }
-
+*/
+    deinit_vuprom( &vu );
     _init = 0;
 
     return 0;
@@ -191,7 +237,7 @@ int drv_isInit() {
  */
 long drv_Get( const unsigned int n ) {
     if( n < N ) {
-        return values[n];
+        return vu.values[n];
     } else {
         puts("ERROR! Index out of range!\n");
     }
