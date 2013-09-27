@@ -102,7 +102,7 @@ static long init_record(struct aiRecord *pai)
     if( ptr ) {
         pai->dpvt = (void*) ptr;
         pai->udf = FALSE;
-        printf("%s: Addr= %#010x\n", pai->name, addr);
+        printf("Setting %#010x as %s\n", addr, pai->name);
         return 0;
     } else
         return 1;
