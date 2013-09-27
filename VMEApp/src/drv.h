@@ -1,10 +1,14 @@
+#include <sys/types.h>
 #include "dbScan.h"
 
 int drv_init();
 int drv_deinit();
 int drv_isInit();
+int drv_start();
 
-long drv_Get( const unsigned int n );
+int drv_AddRecord( const u_int32_t addr );
+
+long drv_Get(const u_int32_t addr );
 
 float drv_GetLastInterval();
 

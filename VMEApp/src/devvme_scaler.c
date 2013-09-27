@@ -26,6 +26,7 @@ static char what[] =
 #include "epicsExport.h"
 #include "dbScan.h"
 #include "devvme_scaler.h"
+#include <sys/types.h>
 
 #include "drv.h"
 
@@ -71,19 +72,21 @@ static long init_ai(int after)
     if( after == 0 ) {
         printf("%s: devvme_scaler (init) called, pass=%d\n", what, after);
         drv_init();
+    } else if ( after == 1 ) {
+        drv_start();
     }
 
     return(0);
 }
 
-static int parseRecNumber( char* str ) {
-    int addr;
-    int ret = sscanf( str,"Addr:%d", &addr);
+static u_int32_t parseRecNumber( char* str ) {
+    u_int32_t addr;
+    int ret = sscanf( str,"Addr:%x", &addr);
 
     if( ret == 1 )
         return addr;
     else
-        return -1;
+        return 0;
 }
 
 static long init_record(struct aiRecord *pai)
@@ -92,36 +95,36 @@ static long init_record(struct aiRecord *pai)
     printf("Initializing %s...", pai->name);
 
 
-    int record = parseRecNumber( pai->inp.text );
+    const u_int32_t addr = parseRecNumber( pai->inp.text );
 
-    if( record < 0 ) {
-        printf("Error in INP: \"%s\"\n", pai->inp.text);
+    if( addr == 0 ) {
+        printf("Invalud address: %x\n", addr);
         return 1;
-    } else {
-        if( record < N ) {
-            pai->udf = FALSE;
-            printf("OK, Addr=%d\n", record);
-        } else {
-            printf("Error: Addr out of range: %d\n", record);
-            return 1;
-        }
     }
 
-    return(0);
+    const int r = drv_AddRecord(addr);
+
+    if( r ) {
+        pai->udf = FALSE;
+        printf("OK, Addr=%x\n", addr);
+        return 0;
+    } else
+        return 1;
 }
 
 
 static long read_ai(struct aiRecord *pai)
 {
-    int record = parseRecNumber(pai->inp.text);
+    const u_int32_t addr = parseRecNumber(pai->inp.text);
 
-    long val = drv_Get(record);
+    long val = drv_Get(addr);
 
     pai->udf = FALSE;
     pai->rval = val;
 
     return 0;
 }
+
 static int n=0;
 
 static long get_ioint_info(int cmd,struct dbCommon *precord, IOSCANPVT *ppvt) {

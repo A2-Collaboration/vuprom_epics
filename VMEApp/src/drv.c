@@ -19,14 +19,8 @@
 #define VME_ADDR       0x1000000
 #define VME_ADDR_DATA  0x1000000 * 10 + 0x3000
 
-#define NumberOfLeftChannels 10
-#define NumberOfPairsPerLeftCh 5
-
-// local storage for values
-static volatile u_int32_t values[N];
-
-// memory to map VME to
-//static volatile u_int32_t* vmemem = NULL;
+#define MAX_VUPROMS 8
+static int n_vuproms =0;
 
 // our measurement thread
 static pthread_t pth;
@@ -82,8 +76,7 @@ void save_values( vuprom* v ) {
 }
 
 
-static vuprom vu;
-
+static vuprom vu[MAX_VUPROMS];
 
 unsigned long SetTopBits(unsigned long Myaddr) {
     volatile unsigned long *Mypoi;
@@ -125,6 +118,7 @@ void *thread_measure( void* arg)
 
     timespec start_measure;
     timespec stop_measure;
+    int i;
 
     while( 1 )
     {
@@ -133,14 +127,19 @@ void *thread_measure( void* arg)
         // Clear Counters
         //VMEWrite(VME_ADDR_DATA+0x3800,1);
         //vmemem[512] = 1;
-        start_measurement( &vu );
+
+        for( i=0; i<n_vuproms; ++i) {
+            start_measurement( &(vu[i]));
+        }
 
         usleep( sleep_time );
 
         // Save Counters
         //VMEWrite(VME_ADDR+0x3804,1);
         //vmemem[513] = 1;
-        stop_measurement( &vu );
+        for( i=0; i<n_vuproms; ++i) {
+            stop_measurement( &(vu[i]));
+        }
 
         clock_gettime(CLOCK_MONOTONIC, &stop_measure);
 
@@ -149,7 +148,9 @@ void *thread_measure( void* arg)
          //      values[k] = VMERead(VME_ADDR+0x3000+k*4);
         // vmemem starts as VME_ADDR_DATA+0x3000
         //memcpy( &values, (void*)vmemem, RANGE );
-        save_values( &vu );
+        for( i=0; i<n_vuproms; ++i) {
+            save_values( &(vu[i]));
+        }
 
         last_sleep = time_difference( &start_measure, &stop_measure );
 
@@ -175,27 +176,85 @@ int drv_init () {
 
     if( !_init ) {
 
+        bzero( (void*)vu, sizeof(vu) );
+
         OpenVMEbus();
 
         SetTopBits(VME_ADDR);
-/*
-        if ((vmemem = (u_int32_t*) vmeext( VME_ADDR_DATA, RANGE )) == NULL) {
-            perror("Error opening device.\n");
-            return 0;
-        }
-*/
-        vu.base_addr = VME_ADDR_DATA;
-        init_vuprom( &vu );
-
-        // start measuring thread
-        pthread_create(&pth, NULL, thread_measure, NULL);
-        printf("Initialized VME Memory range %x..%x\n",VME_ADDR_DATA,VME_ADDR_DATA+RANGE);
 
         _init=1;
     }
 
     return 0;
 }
+
+int drv_start() {
+    int i;
+
+    if( _init == 0 ) {
+        perror("Driver not initialized!\n");
+        return 1;
+    }
+
+    for( i=0; i<n_vuproms; ++i) {
+        init_vuprom( &(vu[i]));
+    }
+
+    // start measuring thread
+    pthread_create(&pth, NULL, thread_measure, NULL);
+
+    return 0;
+}
+
+int AddVuprom( const u_int32_t base_addr ) {
+
+    if( n_vuproms < MAX_VUPROMS ) {
+
+        vu[n_vuproms].base_addr = base_addr;
+        printf("New vuprom (%d) added @ %x\n", n_vuproms, base_addr );
+        n_vuproms++;
+        return 1;
+
+    } else {
+
+        printf("FAILED to add vuprom @ %x: Max number reached (%d)!\n", base_addr, MAX_VUPROMS);
+        return 0;
+
+    }
+}
+/**
+ * @brief Linear search for active vuprom module with base address
+ * @param base_addr the base addess of the module
+ * @return ptr to the vuprom struct, or NULL if does not exist
+ */
+vuprom* findVuprom( const u_int32_t base_addr ) {
+
+    int i;
+
+    for( i=0; i<MAX_VUPROMS; ++i ) {
+        if( vu[i].base_addr == base_addr )
+            return &vu[i];
+    }
+    return NULL;
+}
+
+int drv_AddRecord( const u_int32_t addr ) {
+    const u_int32_t base_addr = 0xFFFFF000 & addr;
+    //const u_int32_t scaler = 0xFFF & addr;
+
+    vuprom* v = findVuprom( base_addr );
+    if( v )
+        return 1;
+    else {
+        int r = AddVuprom( base_addr );
+        return r;
+    }
+}
+
+/*
+vu.base_addr = VME_ADDR_DATA;
+init_vuprom( &vu );
+*/
 
 /**
  * @brief Shut down driver
@@ -216,7 +275,7 @@ int drv_deinit() {
         vmemem = NULL;
     }
 */
-    deinit_vuprom( &vu );
+    //deinit_vuprom( &vu );
     _init = 0;
 
     return 0;
@@ -235,13 +294,20 @@ int drv_isInit() {
  * @param n Index of the value to get
  * @return the value.
  */
-long drv_Get( const unsigned int n ) {
-    if( n < N ) {
-        return vu.values[n];
+long drv_Get( const u_int32_t addr ) {
+
+    const u_int32_t base_addr = 0xFFFFF000 & addr;
+    const u_int32_t scaler = 0xFFF & addr;
+
+    vuprom* v = findVuprom( base_addr );
+
+    if( v ) {
+        return v->values[scaler];
     } else {
-        puts("ERROR! Index out of range!\n");
+        printf("ERROR reading scaler @ %x: no vuprom module initialized @ %x!\n", addr, base_addr );
+        return 0;
     }
-    return 0;
+
 }
 
 float drv_GetLastInterval() {
