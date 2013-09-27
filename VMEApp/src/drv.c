@@ -54,7 +54,7 @@ int init_vuprom( vuprom* v ) {
         perror("Error opening device.\n");
         return 0;
     }
-    printf("Init vuprom @ %x\n", v->base_addr);
+    printf("Init vuprom @ %#010x\n", v->base_addr);
     return 1;
 }
 
@@ -191,35 +191,42 @@ int drv_init () {
 }
 
 int drv_start() {
+
     int i;
 
     if( _init == 0 ) {
         perror("Driver not initialized!\n");
-        return 1;
+        return FALSE;
     }
 
+    // initialize all vuprom structs
     for( i=0; i<n_vuproms; ++i) {
-        init_vuprom( &(vu[i]));
+        init_vuprom( &(vu[i]) );
     }
 
     // start measuring thread
     pthread_create(&pth, NULL, thread_measure, NULL);
 
-    return 0;
+    return TRUE;
 }
 
+/**
+ * @brief Add a Vuprom struct to the list.
+ * @param base_addr The base address where the module sits (base addess of the mmap)
+ * @return pointer to the new vuprom struct. =NULL if failed
+ */
 vuprom* AddVuprom( const u_int32_t base_addr ) {
 
     if( n_vuproms < MAX_VUPROMS ) {
 
         vu[n_vuproms].base_addr = base_addr;
-        printf("New vuprom (%d) added @ %x\n", n_vuproms, base_addr );
+        printf("New vuprom (%d) added @ %#010x\n", n_vuproms, base_addr );
         n_vuproms++;
         return &(vu[n_vuproms-1]);
 
     } else {
 
-        printf("FAILED to add vuprom @ %x: Max number reached (%d)!\n", base_addr, MAX_VUPROMS);
+        printf("FAILED to add vuprom @ %#010x: Max number reached (%d)!\n", base_addr, MAX_VUPROMS);
         return NULL;
 
     }
@@ -302,7 +309,7 @@ long drv_Get( const u_int32_t addr ) {
     if( v ) {
         return v->values[scaler];
     } else {
-        printf("ERROR reading scaler @ %x: no vuprom module initialized @ %x!\n", addr, base_addr );
+        printf("ERROR reading scaler @ %x: no vuprom module initialized @ %#010x!\n", addr, base_addr );
         return 0;
     }
 

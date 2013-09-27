@@ -5,7 +5,7 @@
  */
 
 static char what[] =
-"devvme_scaler v0.1 - A2 VME Access by o.Steffen <steffen@kph.uni-mainz,de>, Aug 30, 2013";
+"A2 VUPROM VME Scalers - O.Steffen <steffen@kph.uni-mainz.de>, 27. Sep 2013";
 
 #define DEBUG_ON
 
@@ -65,12 +65,10 @@ epicsExportAddress(dset,devvme_scaler);
 
 /* init_ai for debug */
 
-#define N 64
-
 static long init_ai(int after)
 {
     if( after == 0 ) {
-        printf("%s: devvme_scaler (init) called, pass=%d\n", what, after);
+        printf("%s\n", what);
         drv_init();
     } else if ( after == 1 ) {
         drv_start();
@@ -92,13 +90,10 @@ static u_int32_t parseRecNumber( char* str ) {
 static long init_record(struct aiRecord *pai)
 {
 
-    printf("Initializing %s...", pai->name);
-
-
     const u_int32_t addr = parseRecNumber( pai->inp.text );
 
     if( addr == 0 ) {
-        printf("Invalud address: %x\n", addr);
+        printf("Invalud address: %#010x for %s\n", addr, pai->name);
         return 1;
     }
 
@@ -107,7 +102,7 @@ static long init_record(struct aiRecord *pai)
     if( ptr ) {
         pai->dpvt = (void*) ptr;
         pai->udf = FALSE;
-        printf("OK, Addr=%x\n", addr);
+        printf("%s: Addr= %#010x\n", pai->name, addr);
         return 0;
     } else
         return 1;
