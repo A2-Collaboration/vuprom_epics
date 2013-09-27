@@ -102,9 +102,10 @@ static long init_record(struct aiRecord *pai)
         return 1;
     }
 
-    const int r = drv_AddRecord(addr);
+    u_int32_t* ptr = drv_AddRecord(addr);
 
-    if( r ) {
+    if( ptr ) {
+        pai->dpvt = (void*) ptr;
         pai->udf = FALSE;
         printf("OK, Addr=%x\n", addr);
         return 0;
@@ -115,14 +116,12 @@ static long init_record(struct aiRecord *pai)
 
 static long read_ai(struct aiRecord *pai)
 {
-    const u_int32_t addr = parseRecNumber(pai->inp.text);
-
-    long val = drv_Get(addr);
-
-    pai->udf = FALSE;
-    pai->rval = val;
-
-    return 0;
+    if( pai->dpvt ) {
+        pai->val = *((u_int32_t*) pai->dpvt);
+        pai->udf = FALSE;
+        return TRUE;
+    } else
+        return FALSE;
 }
 
 static int n=0;

@@ -6,6 +6,8 @@
 #include <sys/mman.h>
 #include <string.h>  // for memcpy()
 
+#define TRUE 1
+#define FALSE 0
 
 
 #include "vmebus.h"
@@ -206,19 +208,19 @@ int drv_start() {
     return 0;
 }
 
-int AddVuprom( const u_int32_t base_addr ) {
+vuprom* AddVuprom( const u_int32_t base_addr ) {
 
     if( n_vuproms < MAX_VUPROMS ) {
 
         vu[n_vuproms].base_addr = base_addr;
         printf("New vuprom (%d) added @ %x\n", n_vuproms, base_addr );
         n_vuproms++;
-        return 1;
+        return &(vu[n_vuproms-1]);
 
     } else {
 
         printf("FAILED to add vuprom @ %x: Max number reached (%d)!\n", base_addr, MAX_VUPROMS);
-        return 0;
+        return NULL;
 
     }
 }
@@ -238,23 +240,27 @@ vuprom* findVuprom( const u_int32_t base_addr ) {
     return NULL;
 }
 
-int drv_AddRecord( const u_int32_t addr ) {
+u_int32_t* drv_AddRecord( const u_int32_t addr ) {
+
     const u_int32_t base_addr = 0xFFFFF000 & addr;
-    //const u_int32_t scaler = 0xFFF & addr;
+    const u_int32_t scaler = 0xFFF & addr;
 
     vuprom* v = findVuprom( base_addr );
-    if( v )
-        return 1;
-    else {
-        int r = AddVuprom( base_addr );
-        return r;
+
+    if( !v ) {
+
+        v = AddVuprom( base_addr );
+
+        if( !v ) {
+            return FALSE;
+        }
     }
+
+    u_int32_t* val_ptr = &(v->values[scaler]);
+
+    return val_ptr;
 }
 
-/*
-vu.base_addr = VME_ADDR_DATA;
-init_vuprom( &vu );
-*/
 
 /**
  * @brief Shut down driver
@@ -268,14 +274,6 @@ int drv_deinit() {
         puts("Error shutting down thread\n");
     }
 
-    //... reset VME registers?
-/*
-    if( vmemem ) {
-        munmap( (void*)vmemem, RANGE );
-        vmemem = NULL;
-    }
-*/
-    //deinit_vuprom( &vu );
     _init = 0;
 
     return 0;
