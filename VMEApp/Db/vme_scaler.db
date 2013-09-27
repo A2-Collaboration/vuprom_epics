@@ -1,615 +1,615 @@
-record(ai, "DAQ:TAPSBusy")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 0")
-        field(SCAN, "I/O Intr")
-        field(DESC, "TAPSBusy")
-}
-
-record(ai, "DAQ:CBInterrupt")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 1")
-        field(SCAN, "I/O Intr")
-        field(DESC, "CBInterrupt")
-}
-
-record(ai, "DAQ:CFD_TAPSOR")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 2")
-        field(SCAN, "I/O Intr")
-        field(DESC, "CFD_TAPSOR")
-}
-
-record(ai, "DAQ:LED1_TAPSOR")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 3")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED2_TAPSOR")
-}
-
-record(ai, "DAQ:LED2_TAPSOR")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 4")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED2_TAPSOR")
-}
-
-record(ai, "DAQ:CFD_TAPSM2Plus")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 5")
-        field(SCAN, "I/O Intr")
-        field(DESC, "CFD_TAPSM2Plus")
-}
-
-record(ai, "DAQ:LED1_TAPSM2Plus")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 6")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED1_TAPSM2Plus")
-}
-
-record(ai, "DAQ:LED2_TAPSM2Plus")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 7")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED2_TAPSM2Plus")
-}
-
+#record(ai, "DAQ:TAPSBusy")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "TAPSBusy")
+#}
+#
+#record(ai, "DAQ:CBInterrupt")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 1")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "CBInterrupt")
+#}
+#
+#record(ai, "DAQ:CFD_TAPSOR")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 2")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "CFD_TAPSOR")
+#}
+#
+#record(ai, "DAQ:LED1_TAPSOR")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 3")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED2_TAPSOR")
+#}
+#
+#record(ai, "DAQ:LED2_TAPSOR")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 4")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED2_TAPSOR")
+#}
+#
+#record(ai, "DAQ:CFD_TAPSM2Plus")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 5")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "CFD_TAPSM2Plus")
+#}
+#
+#record(ai, "DAQ:LED1_TAPSM2Plus")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 6")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED1_TAPSM2Plus")
+#}
+#
+#record(ai, "DAQ:LED2_TAPSM2Plus")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 7")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED2_TAPSM2Plus")
+#}
+#
 record(ai, "DAQ:PulserOutput")
 {
     field(DTYP, "VMEScaler")
-        field(INP, "Addr: 8")
+        field(INP, "Addr: 0x0A003008")
         field(SCAN, "I/O Intr")
         field(DESC, "PulserOutput")
 }
-
-record(ai, "DAQ:CFD_TAPSOR_Prescaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 9")
-        field(SCAN, "I/O Intr")
-        field(DESC, "CFD_TAPSOR_Prescaled")
-}
-
-record(ai, "DAQ:LED1_TAPSOR_Prescaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 10")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED1_TAPSOR_Prescaled")
-}
-
-record(ai, "DAQ:LED2_TAPSOR_Prescaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 11")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED2_TAPSOR_Prescaled")
-}
-
-record(ai, "DAQ:CFD_TAPSM2Plus_Prescaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 12")
-        field(SCAN, "I/O Intr")
-        field(DESC, "CFD_TAPSM2Plus_Prescaled")
-}
-
-record(ai, "DAQ:LED1_TAPSM2Plus_Prescaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 13")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED1_TAPSM2Plus_Prescaled")
-}
-
-record(ai, "DAQ:LED2_TAPSM2Plus_Prescaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 14")
-        field(SCAN, "I/O Intr")
-        field(DESC, "LED2_TAPSM2Plus_Prescaled")
-}
-
-record(ai, "DAQ:PulserOutput_Prescaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 15")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PulserOutput_Prescaled")
-}
-
-record(ai, "DAQ:TAPS_L1_Trigger")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 16")
-        field(SCAN, "I/O Intr")
-        field(DESC, "TAPS_L1_Trigger")
-}
-
-record(ai, "DAQ:TAPS_L1_Interrupt")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 17")
-        field(SCAN, "I/O Intr")
-        field(DESC, "TAPS_L1_Interrupt")
-}
-
-record(ai, "DAQ:TAPSInterrupt")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 18")
-        field(SCAN, "I/O Intr")
-        field(DESC, "TAPSInterrupt")
-}
-
-record(ai, "DAQ:TAPSActualMode")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 19")
-        field(SCAN, "I/O Intr")
-        field(DESC, "TAPSActualMode")
-}
-
-record(ai, "DAQ:PWO_Veto_TAPSM2Plus_PreScaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 20")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_Veto_TAPSM2Plus_PreScaled")
-}
-
-record(ai, "DAQ:Veto_TAPSOR")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 21")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Veto_TAPSOR")
-}
-
-record(ai, "DAQ:Veto_TAPSM2Plus")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 22")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Veto_TAPSM2Plus")
-}
-
-record(ai, "DAQ:Veto_TAPSOR_PreScaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 23")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Veto_TAPSOR_PreScaled")
-}
-
-record(ai, "DAQ:Veto_TAPSM2Plus_PreScaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 24")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Veto_TAPSM2Plus_PreScaled")
-}
-
-record(ai, "DAQ:PWO_TAPSOR")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 25")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_TAPSOR")
-}
-
-record(ai, "DAQ:PWO_Veto_TAPSOR")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 26")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_Veto_TAPSOR")
-}
-
-record(ai, "DAQ:PWO_TAPSM2Plus")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 27")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_TAPSM2Plus")
-}
-
-record(ai, "DAQ:PWO_Veto_TAMPSM2Plus")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 28")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_Veto_TAMPSM2Plus")
-}
-
-record(ai, "DAQ:PWO_TAPSOR_PreScaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 29")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_TAPSOR_PreScaled")
-}
-
-record(ai, "DAQ:PWO_Veto_TAPSOR_PreScaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 30")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_Veto_TAPSOR_PreScaled")
-}
-
-record(ai, "DAQ:PWO_TAPSM2Plus_PreScaled")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 31")
-        field(SCAN, "I/O Intr")
-        field(DESC, "PWO_TAPSM2Plus_PreScaled")
-}
-
-#########################################################################
-
-record(ai, "DAQ:Rate_L2_Input_0")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 32")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_0")
-}
-
-record(ai, "DAQ:Rate_L2_Input_1")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 33")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_1")
-}
-
-record(ai, "DAQ:Rate_L2_Input_2")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 34")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_2")
-}
-
-record(ai, "DAQ:Rate_L2_Input_3")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 34")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_3")
-}
-
-record(ai, "DAQ:Rate_L2_Input_4")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 35")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_4")
-}
-
-record(ai, "DAQ:Rate_L2_Input_5")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 36")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_5")
-}
-
-record(ai, "DAQ:Rate_L2_Input_6")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 37")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_6")
-}
-
-record(ai, "DAQ:Rate_L2_Input_7")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 38")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Rate_L2_Input_7")
-}
-
-record(ai, "DAQ:RawL1Triggers0")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 39")
-        field(SCAN, "I/O Intr")
-        field(DESC, "RawL1Triggers0")
-}
-
-record(ai, "DAQ:RawL1Triggers0b")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 40")
-        field(SCAN, "I/O Intr")
-        field(DESC, "RawL1Triggers0b")
-}
-
-record(ai, "DAQ:L1_Trigger")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 41")
-        field(SCAN, "I/O Intr")
-        field(DESC, "L1_Trigger")
-}
-
-record(ai, "DAQ:Experiment_Trigger")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 42")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Experiment_Trigger")
-}
-
-record(ai, "DAQ:MasterReset")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 43")
-        field(SCAN, "I/O Intr")
-        field(DESC, "MasterReset")
-}
-#free 44
-#free 45
-
-record(ai, "DAQ:ImmediateReset")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 46")
-        field(SCAN, "I/O Intr")
-        field(DESC, "ImmediateReset")
-}
-
-record(ai, "DAQ:FastClear")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 47")
-        field(SCAN, "I/O Intr")
-        field(DESC, "FastClear")
-}
-
-record(ai, "DAQ:Livetime_L1")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 48")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_L1")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_L2")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 49")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_L2")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_a2wcdaq1(CPU0)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 50")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_a2wcdaq1(CPU0)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_a2SADCdaq1(CPU1)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 51")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_a2SADCdaq1(CPU1)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_a2SADCdaq2(CPU2)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 52")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_a2SADCdaq2(CPU2)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_a2tdcdaq1(CPU3)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 53")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_a2tdcdaq1(CPU3)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_a2taggerdaq1(CPU4)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 54")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_a2taggerdaq1(CPU4)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_UNUSED(CPU5)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 55")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_UNUSED(CPU5)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_TAPS(CPU6)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 56")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_TAPS(CPU6)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_a2cbtrigger(CPU6)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 57")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_TAPS(CPU6)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Livetime_a2cbtrigger(CPU7)")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 58")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Livetime_a2cbtrigger(CPU7)")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Total_Livetime")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 59")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Total_Livetime")
-		field(EGU, "%")
-		field(HOPR, 100)
-		field(LOPR, 0)
-		field(PREC, 2)
-		field(LINR, "SLOPE")
-		field(ESLO, 0.0001)
-		field(HIGH, 101)
-		field(LOW, 70)
-		field(LSV, "MINOR")
-}
-
-record(ai, "DAQ:Debug0")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 60")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Debug0")
-}
-
-record(ai, "DAQ:Debug1")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 61")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Debug1")
-}
-
-record(ai, "DAQ:Debug2")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 62")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Debug2")
-}
-
-record(ai, "DAQ:Debug3")
-{
-    field(DTYP, "VMEScaler")
-        field(INP, "Addr: 63")
-        field(SCAN, "I/O Intr")
-        field(DESC, "Debug3")
-}
+#
+#record(ai, "DAQ:CFD_TAPSOR_Prescaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 9")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "CFD_TAPSOR_Prescaled")
+#}
+#
+#record(ai, "DAQ:LED1_TAPSOR_Prescaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 10")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED1_TAPSOR_Prescaled")
+#}
+#
+#record(ai, "DAQ:LED2_TAPSOR_Prescaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 11")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED2_TAPSOR_Prescaled")
+#}
+#
+#record(ai, "DAQ:CFD_TAPSM2Plus_Prescaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 12")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "CFD_TAPSM2Plus_Prescaled")
+#}
+#
+#record(ai, "DAQ:LED1_TAPSM2Plus_Prescaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 13")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED1_TAPSM2Plus_Prescaled")
+#}
+#
+#record(ai, "DAQ:LED2_TAPSM2Plus_Prescaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 14")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "LED2_TAPSM2Plus_Prescaled")
+#}
+#
+#record(ai, "DAQ:PulserOutput_Prescaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 15")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PulserOutput_Prescaled")
+#}
+#
+#record(ai, "DAQ:TAPS_L1_Trigger")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 16")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "TAPS_L1_Trigger")
+#}
+#
+#record(ai, "DAQ:TAPS_L1_Interrupt")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 17")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "TAPS_L1_Interrupt")
+#}
+#
+#record(ai, "DAQ:TAPSInterrupt")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 18")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "TAPSInterrupt")
+#}
+#
+#record(ai, "DAQ:TAPSActualMode")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 19")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "TAPSActualMode")
+#}
+#
+#record(ai, "DAQ:PWO_Veto_TAPSM2Plus_PreScaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 20")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_Veto_TAPSM2Plus_PreScaled")
+#}
+#
+#record(ai, "DAQ:Veto_TAPSOR")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 21")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Veto_TAPSOR")
+#}
+#
+#record(ai, "DAQ:Veto_TAPSM2Plus")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 22")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Veto_TAPSM2Plus")
+#}
+#
+#record(ai, "DAQ:Veto_TAPSOR_PreScaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 23")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Veto_TAPSOR_PreScaled")
+#}
+#
+#record(ai, "DAQ:Veto_TAPSM2Plus_PreScaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 24")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Veto_TAPSM2Plus_PreScaled")
+#}
+#
+#record(ai, "DAQ:PWO_TAPSOR")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 25")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_TAPSOR")
+#}
+#
+#record(ai, "DAQ:PWO_Veto_TAPSOR")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 26")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_Veto_TAPSOR")
+#}
+#
+#record(ai, "DAQ:PWO_TAPSM2Plus")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 27")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_TAPSM2Plus")
+#}
+#
+#record(ai, "DAQ:PWO_Veto_TAMPSM2Plus")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 28")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_Veto_TAMPSM2Plus")
+#}
+#
+#record(ai, "DAQ:PWO_TAPSOR_PreScaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 29")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_TAPSOR_PreScaled")
+#}
+#
+#record(ai, "DAQ:PWO_Veto_TAPSOR_PreScaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 30")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_Veto_TAPSOR_PreScaled")
+#}
+#
+#record(ai, "DAQ:PWO_TAPSM2Plus_PreScaled")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 31")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "PWO_TAPSM2Plus_PreScaled")
+#}
+#
+##########################################################################
+#
+#record(ai, "DAQ:Rate_L2_Input_0")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 32")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_0")
+#}
+#
+#record(ai, "DAQ:Rate_L2_Input_1")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 33")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_1")
+#}
+#
+#record(ai, "DAQ:Rate_L2_Input_2")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 34")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_2")
+#}
+#
+#record(ai, "DAQ:Rate_L2_Input_3")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 34")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_3")
+#}
+#
+#record(ai, "DAQ:Rate_L2_Input_4")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 35")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_4")
+#}
+#
+#record(ai, "DAQ:Rate_L2_Input_5")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 36")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_5")
+#}
+#
+#record(ai, "DAQ:Rate_L2_Input_6")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 37")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_6")
+#}
+#
+#record(ai, "DAQ:Rate_L2_Input_7")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 38")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Rate_L2_Input_7")
+#}
+#
+#record(ai, "DAQ:RawL1Triggers0")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 39")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "RawL1Triggers0")
+#}
+#
+#record(ai, "DAQ:RawL1Triggers0b")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 40")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "RawL1Triggers0b")
+#}
+#
+#record(ai, "DAQ:L1_Trigger")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 41")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "L1_Trigger")
+#}
+#
+#record(ai, "DAQ:Experiment_Trigger")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 42")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Experiment_Trigger")
+#}
+#
+#record(ai, "DAQ:MasterReset")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 43")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "MasterReset")
+#}
+##free 44
+##free 45
+#
+#record(ai, "DAQ:ImmediateReset")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 46")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "ImmediateReset")
+#}
+#
+#record(ai, "DAQ:FastClear")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 47")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "FastClear")
+#}
+#
+#record(ai, "DAQ:Livetime_L1")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 48")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_L1")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_L2")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 49")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_L2")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_a2wcdaq1(CPU0)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 50")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_a2wcdaq1(CPU0)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_a2SADCdaq1(CPU1)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 51")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_a2SADCdaq1(CPU1)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_a2SADCdaq2(CPU2)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 52")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_a2SADCdaq2(CPU2)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_a2tdcdaq1(CPU3)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 53")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_a2tdcdaq1(CPU3)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_a2taggerdaq1(CPU4)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 54")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_a2taggerdaq1(CPU4)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_UNUSED(CPU5)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 55")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_UNUSED(CPU5)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_TAPS(CPU6)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 56")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_TAPS(CPU6)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_a2cbtrigger(CPU6)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 57")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_TAPS(CPU6)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Livetime_a2cbtrigger(CPU7)")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 58")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime_a2cbtrigger(CPU7)")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Total_Livetime")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 59")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Total_Livetime")
+#		field(EGU, "%")
+#		field(HOPR, 100)
+#		field(LOPR, 0)
+#		field(PREC, 2)
+#		field(LINR, "SLOPE")
+#		field(ESLO, 0.0001)
+#		field(HIGH, 101)
+#		field(LOW, 70)
+#		field(LSV, "MINOR")
+#}
+#
+#record(ai, "DAQ:Debug0")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 60")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Debug0")
+#}
+#
+#record(ai, "DAQ:Debug1")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 61")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Debug1")
+#}
+#
+#record(ai, "DAQ:Debug2")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 62")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Debug2")
+#}
+#
+#record(ai, "DAQ:Debug3")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 63")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Debug3")
+#}
