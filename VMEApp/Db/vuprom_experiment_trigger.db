@@ -1,0 +1,8 @@
+record(ai, "DAQ:MHZ")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA00306D")
+        field(SCAN, "I/O Intr")
+        field(DESC, "1 MHz clock")
+}
+
