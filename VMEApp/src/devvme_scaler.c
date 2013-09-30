@@ -112,7 +112,7 @@ static long init_record(struct aiRecord *pai)
 static long read_ai(struct aiRecord *pai)
 {
     if( pai->dpvt ) {
-        pai->val = *((u_int32_t*) pai->dpvt);
+        pai->rval = *((u_int32_t*) pai->dpvt);
         pai->udf = FALSE;
         return 0;
     } else
