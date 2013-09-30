@@ -1,8 +1,49 @@
-record(ai, "DAQ:MHZ")
+record(ai, "DAQ:CBESum_Low")
 {
     field(DTYP, "VMEScaler")
-        field(INP, "Addr: 0xEA00306D")
+        field(INP, "Addr: 0xEA003000")
         field(SCAN, "I/O Intr")
-        field(DESC, "1 MHz clock")
+        field(DESC, "CB Energy Sum Low")
 }
 
+record(ai, "DAQ:CBESum_High")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003001")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CB Energy Sum High")
+}
+
+record(ai, "DAQ:CBESum")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003002")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CB Energy Sum (Integrated)")
+}
+
+
+record(ai, "DAQ:Paddle")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003003")
+        field(SCAN, "I/O Intr")
+        field(DESC, "50cm Paddle")
+}
+
+record(ai, "DAQ:PbGlass")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003004")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PB Glass Rate")
+}
+
+
+record(ai, "DAQ:EXPDebug")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003f00")
+        field(SCAN, "I/O Intr")
+        field(DESC, "87654321")
+}
