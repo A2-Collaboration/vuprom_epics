@@ -39,11 +39,124 @@ record(ai, "DAQ:PbGlass")
         field(DESC, "PB Glass Rate")
 }
 
-
-record(ai, "DAQ:EXPDebug")
+record(ai, "DAQ:CBESum_High")
 {
     field(DTYP, "VMEScaler")
-        field(INP, "Addr: 0xEA003f00")
+        field(INP, "Addr: 0xEA003001")
         field(SCAN, "I/O Intr")
-        field(DESC, "87654321")
+        field(DESC, "CB Energy Sum High")
 }
+###### CPU Livetimes ########
+
+record(ai, "DAQ:Livetime_vme-tagg-tdc-a")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A00305E")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-tagg-tdc-a ")
+}
+
+record(ai, "DAQ:Livetime_vme-tagg-tdc-b")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A00305F")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of vme-tagg-tdc-b")
+}
+
+record(ai, "DAQ:Livetime_vme-beampolmon")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003060")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-beampolmon")
+}
+
+record(ai, "DAQ:Livetime_vme-cb-adc-1a")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003061")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of vme-cb-adc-1a")
+}
+
+record(ai, "DAQ:Livetime_vme-cb-adc-1b")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003062")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of vme-cb-adc-a1b")
+}
+
+record(ai, "DAQ:Livetime_vme-cb-adc-2a")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003063")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-cb-adc-2a")
+}
+
+record(ai, "DAQ:Livetime_vme-cb-adc-2b")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003064")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-cb-adc-2b")
+}
+
+record(ai, "DAQ:Livetime_vme-cb-tdc-a")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003065")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-cb-tdc-a")
+}
+
+record(ai, "DAQ:Livetime_vme-cb-tdc-b")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003066")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-cb-tdc-b")
+}
+
+record(ai, "DAQ:Livetime_vme-mwpc-adc-a")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003067")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-mwpc-adc-a")
+}
+
+record(ai, "DAQ:Livetime_vme-mwpc-adc-b")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A003068")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-mwpc-adc-b")
+}
+
+#record(ai, "DAQ:Livetime_free")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0x0A003069")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "Livetime of CPU ??")
+#}
+
+record(ai, "DAQ:Livetime_TAPSDetector")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A00306A")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU ??")
+}
+
+record(ai, "DAQ:Livetime_vme_exptrigger")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A00306B")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU vme-exptrigger")
+}
+
