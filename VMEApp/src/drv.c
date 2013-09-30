@@ -182,8 +182,6 @@ int drv_init () {
 
         OpenVMEbus();
 
-        SetTopBits(VME_ADDR);
-
         _init=1;
     }
 
@@ -199,8 +197,16 @@ int drv_start() {
         return FALSE;
     }
 
+    if( n_vuproms == 0 ) {
+        perror("No vuproms added!\n");
+        return FALSE;
+    }
+
+    SetTopBits( vu[0].base_addr );
+
     // initialize all vuprom structs
     for( i=0; i<n_vuproms; ++i) {
+        vu[i].base_addr &= 0x1fffffff;      //mask out top bits
         init_vuprom( &(vu[i]) );
     }
 
