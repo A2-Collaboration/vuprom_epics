@@ -114,9 +114,9 @@ static long read_ai(struct aiRecord *pai)
     if( pai->dpvt ) {
         pai->val = *((u_int32_t*) pai->dpvt);
         pai->udf = FALSE;
-        return TRUE;
+        return 0;
     } else
-        return FALSE;
+        return 1;
 }
 
 static int n=0;
