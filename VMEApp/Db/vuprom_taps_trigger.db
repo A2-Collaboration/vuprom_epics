@@ -649,7 +649,7 @@ record(ai, "DAQ:Livetime_CPU_09")
 record(ai, "DAQ:Livetime_CPU_10")
 {
     field(DTYP, "VMEScaler")
-        field(INP, "0x0A003000"78")
+        field(INP, "0x0A003000:78")
         field(SCAN, "I/O Intr")
         field(DESC, "Livetime of CPU 10")
 }
