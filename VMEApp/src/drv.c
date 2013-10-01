@@ -271,7 +271,7 @@ vuprom* findVuprom( const u_int32_t base_addr ) {
  */
 int checkAddrValid( const vu_scaler_addr* addr ) {
 
-    if( addr->base_addr & 0xfffff000 ) {
+    if( addr->base_addr & 0x00000fff ) {
         printf("Error: vuprom base address must be 4k aligned (%#010x)\n", addr->base_addr);
         return FALSE;
     }
