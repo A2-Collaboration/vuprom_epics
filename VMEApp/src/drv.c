@@ -228,7 +228,7 @@ vuprom* AddVuprom( const u_int32_t base_addr ) {
     if( n_vuproms < MAX_VUPROMS ) {
 
         if( n_vuproms == 0 ) {
-            global_top_bits = base_addr & & 0xe0000000;
+            global_top_bits = base_addr & 0xe0000000;
         } else {
             if ((base_addr & 0xe0000000) != global_top_bits )
                 printf("WARNING: Top Bits mismatch between previously added vuprom and this one!\n");
@@ -262,23 +262,20 @@ vuprom* findVuprom( const u_int32_t base_addr ) {
     return NULL;
 }
 
-u_int32_t* drv_AddRecord( const u_int32_t addr ) {
+u_int32_t* drv_AddRecord( const vu_scaler_addr addr ) {
 
-    const u_int32_t base_addr = 0xFFFFF000 & addr;
-    const u_int32_t scaler = 0xFFF & addr;
-
-    vuprom* v = findVuprom( base_addr );
+    vuprom* v = findVuprom( addr.base_addr );
 
     if( !v ) {
 
-        v = AddVuprom( base_addr );
+        v = AddVuprom( addr.base_addr );
 
         if( !v ) {
             return FALSE;
         }
     }
 
-    u_int32_t* val_ptr = &(v->values[scaler]);
+    u_int32_t* val_ptr = &(v->values[addr.scaler]);
 
     return val_ptr;
 }
