@@ -1,3 +1,7 @@
+
+###### IN1 ######
+
+# IN1 0
 record(ai, "DAQ:CBESum_Low")
 {
     field(DTYP, "VMEScaler")
@@ -6,6 +10,7 @@ record(ai, "DAQ:CBESum_Low")
         field(DESC, "CB Energy Sum Low")
 }
 
+# IN1 1
 record(ai, "DAQ:CBESum_High")
 {
     field(DTYP, "VMEScaler")
@@ -14,6 +19,7 @@ record(ai, "DAQ:CBESum_High")
         field(DESC, "CB Energy Sum High")
 }
 
+# IN1 2
 record(ai, "DAQ:CBESum")
 {
     field(DTYP, "VMEScaler")
@@ -23,6 +29,7 @@ record(ai, "DAQ:CBESum")
 }
 
 
+# IN1 3
 record(ai, "DAQ:Paddle")
 {
     field(DTYP, "VMEScaler")
@@ -31,6 +38,7 @@ record(ai, "DAQ:Paddle")
         field(DESC, "50cm Paddle")
 }
 
+# IN1 4
 record(ai, "DAQ:PbGlass")
 {
     field(DTYP, "VMEScaler")
@@ -39,13 +47,244 @@ record(ai, "DAQ:PbGlass")
         field(DESC, "PB Glass Rate")
 }
 
-record(ai, "DAQ:CBESum_High")
+# IN1 5
+record(ai, "DAQ:ChangeHel")
 {
     field(DTYP, "VMEScaler")
-        field(INP, "Addr: 0xEA003001")
+        field(INP, "Addr: 0xEA003005")
         field(SCAN, "I/O Intr")
-        field(DESC, "CB Energy Sum High")
+        field(DESC, "Change Hel ??")
 }
+
+# IN1 6
+record(ai, "DAQ:GenPos")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003006")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Generated Pos. ??")
+}
+
+# IN1 7
+record(ai, "DAQ:MAMIReturn")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003007")
+        field(SCAN, "I/O Intr")
+        field(DESC, "MAMI Return")
+}
+
+## IN1 8
+#record(ai, "DAQ:free_")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003008")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+## IN1 9
+#record(ai, "DAQ:free_")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003009")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+## IN1 10
+#record(ai, "DAQ:free_")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00300A")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+## IN1 11
+#record(ai, "DAQ:free_")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00300B")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+# IN1 12
+record(ai, "DAQ:CBHighESum")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA00300C")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CB high E Sum")
+}
+
+## IN1 13
+#record(ai, "DAQ:free_")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00300D")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+## IN1 14
+#record(ai, "DAQ:free_")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00300E")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+## IN1 15
+#record(ai, "DAQ:free_")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00300F")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+## IN1 16
+#record(ai, "DAQ:vme-tagg-tdc-a_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003010")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-tagg-tdc-a ACK Signal")
+#}
+#
+## IN1 17
+#record(ai, "DAQ:vme-tagg-tdc-b_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003011")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-tagg-tdc-b ACK Signal")
+#}
+#
+## IN1 18
+#record(ai, "DAQ:vme-beampolmon_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003012")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-beampolmon ACK Signal")
+#}
+#
+## IN1 19
+#record(ai, "DAQ:vme-cb-adc-1a_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003013")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-cb-adc-1a ACK Signal")
+#}
+#
+## IN1 20 
+#record(ai, "DAQ:vme-cb-adc-1b_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003014")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-cb-adc-1b ACK Signal")
+#}
+#
+## IN1 21 
+#record(ai, "DAQ:vme-cb-adc-2a_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003015")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-cb-adc-2a ACK Signal")
+#}
+#
+## IN1 22 
+#record(ai, "DAQ:vme-cb-adc-2b_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003016")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-cb-adc-2b ACK Signal")
+#}
+#
+## IN1 23 
+#record(ai, "DAQ:vme-cb-tdc-a_ACK")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA003017")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "vme-cb-tdc-a ACK Signal")
+#}
+
+
+
+##### IN2 #####
+
+# IN2 0 
+record(ai, "DAQ:PhiAngleTriggerOutput")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003018")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PhiAngleTriggerOutput")
+}
+
+# IN2 1 
+record(ai, "DAQ:PhiAngleChargeRequiredTriggerOutput")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0xEA003019")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PhiAngleChargeRequiredTriggerOutput")
+}
+
+## IN2 2 
+#record(ai, "DAQ:free")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00301A")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+#
+## IN2 3 
+#record(ai, "DAQ:free")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00301B")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+#
+## IN2 4 
+#record(ai, "DAQ:free")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00301C")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+#
+## IN2 5 
+#record(ai, "DAQ:free")
+#{
+#    field(DTYP, "VMEScaler")
+#        field(INP, "Addr: 0xEA00301D")
+#        field(SCAN, "I/O Intr")
+#        field(DESC, "free")
+#}
+
+
+
+##### PGIO1 #####
+
+
+
+##### PGIO2 #####
+
+
 
 ###### CPU Livetimes ########
 
@@ -310,3 +549,21 @@ record(ai, "DAQ:Livetime_vme_exptrigger")
 		field(HIHI,100)
 }
 
+
+##### Clocks #####
+
+record(ai, "DAQ:ExpTriggerDIC")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A00306C")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Dead Time Inhibited 1MHz Clock = Livetime (exp Treigger)")
+}
+
+record(ai, "DAQ:ExpTriggerClock")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "Addr: 0x0A00306D")
+        field(SCAN, "I/O Intr")
+        field(DESC, "1MHz Clock = Time Reference (exp Treigger)")
+}
