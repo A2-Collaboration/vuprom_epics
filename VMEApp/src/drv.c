@@ -78,7 +78,7 @@ void stop_measurement( vuprom* v ) {
 
 void save_values( vuprom* v ) {
     //memcpy( &(v->values), (void*)(v->vme_mem), RANGE );
-    memcpy( &(v->values), (void*)(v->vme_mem), v->max_sclaer_index * sizeof(u_int32_t) );
+    memcpy( &(v->values), (void*)(v->vme_mem), (v->max_sclaer_index+1) * sizeof(u_int32_t) );
 }
 
 
