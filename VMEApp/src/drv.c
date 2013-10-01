@@ -6,24 +6,31 @@
 #include <sys/mman.h>
 #include <string.h>  // for memcpy()
 
+#include "vmebus.h"
+
 #define TRUE 1
 #define FALSE 0
 
 
-#include "vmebus.h"
-
-// size of memory range to map
+// size of memory range to map for each vuprom
 #define RANGE 0x1000
 
 // number of 32 bit values in memory range
 #define N     (RANGE / sizeof(u_int32_t))
 
 #define MAX_VUPROMS 8
+
+// Maximum scaler number to allow.
+#define MAX_SCALER_INDEX    256
+
+// At vuprom address 0xf00 (= scaler 960) is a magic number. This is always equal to 0x87654321.
+// This way we can check if vme access works and it there is a vuprom at this base address.
+#define MAGIC_SCALER 960
+#define MAGIC_NUMBER 0x87654321
+
 static int n_vuproms =0;
 
 static u_int32_t global_top_bits =0;
-
-#define MAX_SCALER_INDEX    256
 
 // our measurement thread
 static pthread_t pth;
@@ -43,6 +50,7 @@ typedef struct timespec timespec;
 float last_sleep = 0.0f;
 
 
+
 typedef struct {
     u_int32_t  base_addr;   // Address of vuprom
     u_int32_t  map_addr;    // mmap address (without top bits)
@@ -57,6 +65,14 @@ int init_vuprom( vuprom* v ) {
         perror("Error opening device.\n");
         return 0;
     }
+
+    const u_int32_t magic_number = v->vme_mem[MAGIC_SCALER];
+
+    if( magic_number != MAGIC_NUMBER ) {
+        printf("Error: vuprom magic number not found. (base_addr: %#010x, scaler %d, value %x, expected %x)\n", v->base_addr, MAGIC_SCALER, magic_number, MAGIC_NUMBER );
+        return 0;
+    }
+
     printf("Init vuprom @ effective address %#010x, max scaler index: %d\n", v->base_addr, v->max_sclaer_index);
     return 1;
 }
@@ -77,7 +93,6 @@ void stop_measurement( vuprom* v ) {
 }
 
 void save_values( vuprom* v ) {
-    //memcpy( &(v->values), (void*)(v->vme_mem), RANGE );
     memcpy( &(v->values), (void*)(v->vme_mem), (v->max_sclaer_index+1) * sizeof(u_int32_t) );
 }
 
