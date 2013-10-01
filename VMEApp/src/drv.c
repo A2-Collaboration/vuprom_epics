@@ -56,7 +56,8 @@ typedef struct {
     u_int32_t  map_addr;    // mmap address (without top bits)
     volatile u_int32_t* vme_mem;     // mmaped memory ptr
     u_int32_t  values[N];   // copied values
-    u_int32_t  max_sclaer_index;
+    int  max_sclaer_index;
+    int  refernece_scaler;
 } vuprom;
 
 int init_vuprom( vuprom* v ) {
@@ -94,6 +95,14 @@ void stop_measurement( vuprom* v ) {
 
 void save_values( vuprom* v ) {
     memcpy( &(v->values), (void*)(v->vme_mem), (v->max_sclaer_index+1) * sizeof(u_int32_t) );
+
+    if( v->refernece_scaler != -1 ) {
+        const double factor = 1E+6 / v->values[v->refernece_scaler];
+        printf("Rescaling vuprom @ %#010x with factor %lf\n", v->base_addr, factor);
+        int i;
+        for( i=0; i<v->max_sclaer_index; ++i)
+            v->values[i] = (u_int32_t) (v->values[i] * factor);
+    }
 }
 
 
@@ -249,6 +258,7 @@ vuprom* AddVuprom( const u_int32_t base_addr ) {
 
         vu[n_vuproms].base_addr = base_addr;
         vu[n_vuproms].map_addr  = base_addr & 0x1fffffff;      //mask out top bits
+        vu[n_vuproms].refernece_scaler = -1;
 
         printf("New vuprom (%d) added @ %#010x, map addess %#010x\n", n_vuproms, vu[n_vuproms].base_addr, vu[n_vuproms].map_addr );
 
@@ -327,6 +337,15 @@ u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
 
     if( addr->scaler > v->max_sclaer_index )
         v->max_sclaer_index = addr->scaler;
+
+    if( addr->flag == 1 ) {
+        if( v->refernece_scaler == -1 ) {
+            v->refernece_scaler = addr->scaler;
+            printf("Setting scaler %d as reference for vuprom @ %#010x\n", addr->scaler, v->base_addr);
+        } else {
+            printf("WARNING: Not setting scaler %d as reference for vuprom @ %#010x. Reference is already scaler %d!\n",addr->scaler,v->base_addr,v->refernece_scaler);
+        }
+    }
 
     return val_ptr;
 }

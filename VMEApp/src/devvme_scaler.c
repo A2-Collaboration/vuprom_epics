@@ -79,12 +79,18 @@ static long init_ai(int after)
 
 static int parseAddress( char* str, vu_scaler_addr* addr) {
 
-    int ret = sscanf( str,"%x:%d", &(addr->base_addr), &(addr->scaler));
+    char c;
 
-    if( ret == 2 )
+    int ret = sscanf( str,"%x:%d %c", &(addr->base_addr), &(addr->scaler), &c);
+
+    if( ret == 2 ) {
+        addr->flag = 0;
         return TRUE;
-    else
-        return FALSE;
+    } else if( (ret ==3) && (c == 'R') ) {
+        addr->flag = 1;
+        return TRUE;
+    }
+    return FALSE;
 }
 
 static long init_record(struct aiRecord *pai)
