@@ -7,7 +7,7 @@
 static char what[] =
 "A2 VUPROM VME Scalers - O.Steffen <steffen@kph.uni-mainz.de>, 27. Sep 2013";
 
-#define DEBUG_ON
+#define DEBUG_OFF
 
 #include <stddef.h>
 #include <stdlib.h>

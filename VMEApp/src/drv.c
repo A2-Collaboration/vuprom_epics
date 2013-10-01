@@ -74,7 +74,7 @@ int init_vuprom( vuprom* v ) {
         return 0;
     }
 
-    printf("Init vuprom @ effective address %#010x, max scaler index: %d\n", v->base_addr, v->max_sclaer_index);
+    printf("Init vuprom @ %#010x, map addess: %#010x, max scaler index: %d\n", v->base_addr, v->map_addr, v->max_sclaer_index);
     return 1;
 }
 
