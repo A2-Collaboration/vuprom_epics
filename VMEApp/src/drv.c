@@ -18,13 +18,12 @@
 // number of 32 bit values in memory range
 #define N     (RANGE / sizeof(u_int32_t))
 
-#define VME_ADDR       0x1000000
-#define VME_ADDR_DATA  0x1000000 * 10 + 0x3000
-
 #define MAX_VUPROMS 8
 static int n_vuproms =0;
 
 static u_int32_t global_top_bits =0;
+
+#define MAX_SCALER_INDEX    256
 
 // our measurement thread
 static pthread_t pth;
@@ -45,18 +44,20 @@ float last_sleep = 0.0f;
 
 
 typedef struct {
-    u_int32_t  base_addr;   // Address of vuprom to mmap
+    u_int32_t  base_addr;   // Address of vuprom
+    u_int32_t  map_addr;    // mmap address (without top bits)
     volatile u_int32_t* vme_mem;     // mmaped memory ptr
     u_int32_t  values[N];   // copied values
+    u_int32_t  max_sclaer_index;
 } vuprom;
 
 int init_vuprom( vuprom* v ) {
 
-    if ((v->vme_mem = (u_int32_t*) vmeext( v->base_addr, RANGE )) == NULL) {
+    if ((v->vme_mem = (u_int32_t*) vmeext( v->map_addr, RANGE )) == NULL) {
         perror("Error opening device.\n");
         return 0;
     }
-    printf("Init vuprom @ effective address %#010x\n", v->base_addr);
+    printf("Init vuprom @ effective address %#010x, max scaler index: %d\n", v->base_addr, v->max_sclaer_index);
     return 1;
 }
 
@@ -76,7 +77,8 @@ void stop_measurement( vuprom* v ) {
 }
 
 void save_values( vuprom* v ) {
-    memcpy( &(v->values), (void*)(v->vme_mem), RANGE );
+    //memcpy( &(v->values), (void*)(v->vme_mem), RANGE );
+    memcpy( &(v->values), (void*)(v->vme_mem), v->max_sclaer_index * sizeof(u_int32_t) );
 }
 
 
@@ -129,9 +131,6 @@ void *thread_measure( void* arg)
         clock_gettime(CLOCK_MONOTONIC, &start_measure);
 
         // Clear Counters
-        //VMEWrite(VME_ADDR_DATA+0x3800,1);
-        //vmemem[512] = 1;
-
         for( i=0; i<n_vuproms; ++i) {
             start_measurement( &(vu[i]));
         }
@@ -139,19 +138,13 @@ void *thread_measure( void* arg)
         usleep( sleep_time );
 
         // Save Counters
-        //VMEWrite(VME_ADDR+0x3804,1);
-        //vmemem[513] = 1;
         for( i=0; i<n_vuproms; ++i) {
             stop_measurement( &(vu[i]));
         }
 
         clock_gettime(CLOCK_MONOTONIC, &stop_measure);
 
-        //int k;
-        //for (k = 0; k<N; k++)
-         //      values[k] = VMERead(VME_ADDR+0x3000+k*4);
-        // vmemem starts as VME_ADDR_DATA+0x3000
-        //memcpy( &values, (void*)vmemem, RANGE );
+        // copy values
         for( i=0; i<n_vuproms; ++i) {
             save_values( &(vu[i]));
         }
@@ -204,11 +197,10 @@ int drv_start() {
         return FALSE;
     }
 
-    SetTopBits( vu[0].base_addr );
+    SetTopBits( global_top_bits );
 
     // initialize all vuprom structs
     for( i=0; i<n_vuproms; ++i) {
-        vu[i].base_addr &= 0x1fffffff;      //mask out top bits
         init_vuprom( &(vu[i]) );
     }
 
@@ -220,6 +212,7 @@ int drv_start() {
 
 /**
  * @brief Add a Vuprom struct to the list.
+ *    checks if TopBits of the base_address match with previously added vuproms.
  * @param base_addr The base address where the module sits (base addess of the mmap)
  * @return pointer to the new vuprom struct. =NULL if failed
  */
@@ -228,15 +221,24 @@ vuprom* AddVuprom( const u_int32_t base_addr ) {
     if( n_vuproms < MAX_VUPROMS ) {
 
         if( n_vuproms == 0 ) {
+
             global_top_bits = base_addr & 0xe0000000;
+
         } else {
-            if ((base_addr & 0xe0000000) != global_top_bits )
-                printf("WARNING: Top Bits mismatch between previously added vuprom and this one!\n");
+
+            if ((base_addr & 0xe0000000) != global_top_bits ) {
+                printf("ERROR: Top Bits mismatch between previously added vuprom and this one!\n");
+                return NULL;
+            }
         }
 
         vu[n_vuproms].base_addr = base_addr;
-        printf("New vuprom (%d) added @ %#010x\n", n_vuproms, base_addr );
+        vu[n_vuproms].map_addr  = base_addr & 0x1fffffff;      //mask out top bits
+
+        printf("New vuprom (%d) added @ %#010x, map addess %#010x\n", n_vuproms, vu[n_vuproms].base_addr, vu[n_vuproms].map_addr );
+
         n_vuproms++;
+
         return &(vu[n_vuproms-1]);
 
     } else {
@@ -262,20 +264,54 @@ vuprom* findVuprom( const u_int32_t base_addr ) {
     return NULL;
 }
 
-u_int32_t* drv_AddRecord( const vu_scaler_addr addr ) {
+/**
+ * @brief check if vu_scalser_addr is valid
+ * @param addr ptr to the struct to check
+ * @return TRUE if ok
+ */
+int checkAddrValid( const vu_scaler_addr* addr ) {
 
-    vuprom* v = findVuprom( addr.base_addr );
+    if( addr->base_addr & 0xfffff000 ) {
+        printf("Error: vuprom base address must be 4k aligned (%#010x)\n", addr->base_addr);
+        return FALSE;
+    }
+
+    if( addr->scaler > MAX_SCALER_INDEX ) {
+        printf("Error: scaler index out of range (%d)\n", addr->scaler);
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+/**
+ * @brief add a new record to the driver.
+ *   checks if the address/scaler tuple is correct, then tries to find an exsiting vuprom struct that matches the base_addr.
+ *   Or creates a new one if needed.
+ * @param addr ptr to the address/scaler definition
+ * @return a pointer to the location where the value for this record will be stored later during operation.
+ */
+u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
+
+    if( !checkAddrValid(addr) ) {
+        return NULL;
+    }
+
+    vuprom* v = findVuprom( addr->base_addr );
 
     if( !v ) {
 
-        v = AddVuprom( addr.base_addr );
+        v = AddVuprom( addr->base_addr );
 
         if( !v ) {
-            return FALSE;
+            return NULL;
         }
     }
 
-    u_int32_t* val_ptr = &(v->values[addr.scaler]);
+    u_int32_t* val_ptr = &(v->values[addr->scaler]);
+
+    if( addr->scaler > v->max_sclaer_index )
+        v->max_sclaer_index = addr->scaler;
 
     return val_ptr;
 }

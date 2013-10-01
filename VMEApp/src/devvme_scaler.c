@@ -97,7 +97,7 @@ static long init_record(struct aiRecord *pai)
         return 1;
     }
 
-    u_int32_t* ptr = drv_AddRecord(addr);
+    u_int32_t* ptr = drv_AddRecord(&addr);
 
     if( ptr ) {
         pai->dpvt = (void*) ptr;

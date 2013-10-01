@@ -11,7 +11,7 @@ int drv_deinit();
 int drv_isInit();
 int drv_start();
 
-u_int32_t* drv_AddRecord( const vu_scaler_addr addr );
+u_int32_t* drv_AddRecord(const vu_scaler_addr* addr );
 
 long drv_Get(const u_int32_t addr );
 
