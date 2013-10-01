@@ -79,7 +79,7 @@ static long init_ai(int after)
 
 static int parseAddress( char* str, vu_scaler_addr* addr) {
 
-    int ret = sscanf( str,"Addr:%x:%x", &(addr->base_addr), &(addr->scaler));
+    int ret = sscanf( str,"Addr:%x:%d", &(addr->base_addr), &(addr->scaler));
 
     if( ret == 2 )
         return TRUE;
@@ -93,7 +93,7 @@ static long init_record(struct aiRecord *pai)
     const int ret = parseAddress( pai->inp.text, &addr );
 
     if( !ret ) {
-        printf("Invalid: %#010x, scaler %x, for %s\n", addr.base_addr, addr.scaler, pai->name);
+        printf("Invalid: %#010x, scaler %d, for %s\n", addr.base_addr, addr.scaler, pai->name);
         return 1;
     }
 
@@ -102,7 +102,7 @@ static long init_record(struct aiRecord *pai)
     if( ptr ) {
         pai->dpvt = (void*) ptr;
         pai->udf = FALSE;
-        printf("Setting %#010x, scaler %x as %s\n", addr.base_addr, addr.scaler, pai->name);
+        printf("Setting %#010x, scaler %d as %s\n", addr.base_addr, addr.scaler, pai->name);
         return 0;
     } else
         return 1;
