@@ -1,697 +1,697 @@
 #  Record database for TAPS Trigger VUPROM Scalser
 #			O.Steffen <steffen@kph.uni-mainz.de>, Sep 27, 2013
 #
-#  Address format:  0xAA0BBCCC
+#  Address format:  0xAA0BB000:XXX
 #
-#  AA: Module address. example 0A
-#  BB: Subaddress. example 03
-#  CCC: Scaler value address
+#  AA: Module address. example 0A (hex)
+#  BB: Subaddress. example 03 (hex)
+#  XXX: Scaler index (decimal)
 #
 
-#record(ai, "DAQ:TAPSBusy")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003000")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "TAPSBusy")
-#}
-#
-#record(ai, "DAQ:CBInterrupt")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003001")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CBInterrupt")
-#}
-#
-#record(ai, "DAQ:CFD_TAPSOR")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003002")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD_TAPSOR")
-#}
-#
-#record(ai, "DAQ:LED1_TAPSOR")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003003")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2_TAPSOR")
-#}
-#
-#record(ai, "DAQ:LED2_TAPSOR")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003004")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2_TAPSOR")
-#}
-#
-#record(ai, "DAQ:CFD_TAPSM2Plus")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003005")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD_TAPSM2Plus")
-#}
-#
-#record(ai, "DAQ:LED1_TAPSM2Plus")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003006")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED1_TAPSM2Plus")
-#}
-#
-#record(ai, "DAQ:LED2_TAPSM2Plus")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003007")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2_TAPSM2Plus")
-#}
-#
+record(ai, "DAQ:TAPSBusy")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:0")
+        field(SCAN, "I/O Intr")
+        field(DESC, "TAPSBusy")
+}
+
+record(ai, "DAQ:CBInterrupt")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:1")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CBInterrupt")
+}
+
+record(ai, "DAQ:CFD_TAPSOR")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:2")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD_TAPSOR")
+}
+
+record(ai, "DAQ:LED1_TAPSOR")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:3")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2_TAPSOR")
+}
+
+record(ai, "DAQ:LED2_TAPSOR")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:4")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2_TAPSOR")
+}
+
+record(ai, "DAQ:CFD_TAPSM2Plus")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:5")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD_TAPSM2Plus")
+}
+
+record(ai, "DAQ:LED1_TAPSM2Plus")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:6")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED1_TAPSM2Plus")
+}
+
+record(ai, "DAQ:LED2_TAPSM2Plus")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:7")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2_TAPSM2Plus")
+}
+
 record(ai, "DAQ:PulserOutput")
 {
     field(DTYP, "VMEScaler")
-        field(INP, "Addr: 0x0A003000:008")
+        field(INP, "0x0A003000:008")
         field(SCAN, "I/O Intr")
         field(DESC, "PulserOutput")
 }
-#
-#record(ai, "DAQ:CFD_TAPSOR_Prescaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003009")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD_TAPSOR_Prescaled")
-#}
-#
-#record(ai, "DAQ:LED1_TAPSOR_Prescaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00300A")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED1_TAPSOR_Prescaled")
-#}
-#
-#record(ai, "DAQ:LED2_TAPSOR_Prescaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00300B")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2_TAPSOR_Prescaled")
-#}
-#
-#record(ai, "DAQ:CFD_TAPSM2Plus_Prescaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00300C")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD_TAPSM2Plus_Prescaled")
-#}
-#
-#record(ai, "DAQ:LED1_TAPSM2Plus_Prescaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00300D")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED1_TAPSM2Plus_Prescaled")
-#}
-#
-#record(ai, "DAQ:LED2_TAPSM2Plus_Prescaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00300E")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2_TAPSM2Plus_Prescaled")
-#}
-#
-#record(ai, "DAQ:PulserOutput_Prescaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00300F")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PulserOutput_Prescaled")
-#}
-#
-#record(ai, "DAQ:TAPS_L1_Trigger")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003010")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "TAPS_L1_Trigger")
-#}
-#
-#record(ai, "DAQ:TAPS_L1_Interrupt")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003011")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "TAPS_L1_Interrupt")
-#}
-#
-#record(ai, "DAQ:TAPSInterrupt")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003012")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "TAPSInterrupt")
-#}
-#
-#record(ai, "DAQ:TAPSActualMode")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003013")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "TAPSActualMode")
-#}
-#
-#record(ai, "DAQ:PWO_Veto_TAPSM2Plus_PreScaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003014")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_Veto_TAPSM2Plus_PreScaled")
-#}
-#
-#record(ai, "DAQ:Veto_TAPSOR")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003015")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Veto_TAPSOR")
-#}
-#
-#record(ai, "DAQ:Veto_TAPSM2Plus")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003016")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Veto_TAPSM2Plus")
-#}
-#
-#record(ai, "DAQ:Veto_TAPSOR_PreScaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003017")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Veto_TAPSOR_PreScaled")
-#}
-#
-#record(ai, "DAQ:Veto_TAPSM2Plus_PreScaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003018")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Veto_TAPSM2Plus_PreScaled")
-#}
-#
-#record(ai, "DAQ:PWO_TAPSOR")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003019")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_TAPSOR")
-#}
-#
-#record(ai, "DAQ:PWO_Veto_TAPSOR")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00301A")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_Veto_TAPSOR")
-#}
-#
-#record(ai, "DAQ:PWO_TAPSM2Plus")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00301B")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_TAPSM2Plus")
-#}
-#
-#record(ai, "DAQ:PWO_Veto_TAMPSM2Plus")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00301C")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_Veto_TAMPSM2Plus")
-#}
-#
-#record(ai, "DAQ:PWO_TAPSOR_PreScaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00301D")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_TAPSOR_PreScaled")
-#}
-#
-#record(ai, "DAQ:PWO_Veto_TAPSOR_PreScaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00301E")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_Veto_TAPSOR_PreScaled")
-#}
-#
-#record(ai, "DAQ:PWO_TAPSM2Plus_PreScaled")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00301F")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_TAPSM2Plus_PreScaled")
-#}
-#
-###### CFD Sector ORs ######
-#
-#record(ai, "DAQ:CFD_SectorOR_A")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003020")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD OR Sector A")
-#}
-#
-#record(ai, "DAQ:CFD_SectorOR_B")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003021")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD OR Sector B")
-#}
-#
-#record(ai, "DAQ:CFD_SectorOR_C")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003022")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD OR Sector C")
-#}
-#
-#record(ai, "DAQ:CFD_SectorOR_D")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003023")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD OR Sector D")
-#}
-#
-#record(ai, "DAQ:CFD_SectorOR_E")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003024")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD OR Sector E")
-#}
-#
-#record(ai, "DAQ:CFD_SectorOR_F")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003025")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "CFD OR Sector E")
-#}
-#
-####### LED1 Sector ORs ########
-#
-#record(ai, "DAQ:LED1_SectorOR_A")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003026")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector A")
-#}
-#
-#record(ai, "DAQ:LED1_SectorOR_B")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003027")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector B")
-#}
-#
-#record(ai, "DAQ:LED1_SectorOR_C")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003028")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector C")
-#}
-#
-#record(ai, "DAQ:LED1_SectorOR_D")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003029")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED1 OR Sector D")
-#}
-#
-#record(ai, "DAQ:LED1_SectorOR_E")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00302A")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED1 OR Sector E")
-#}
-#
-#record(ai, "DAQ:LED1_SectorOR_F")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00302B")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED1 OR Sector F")
-#}
-#
-####### LED2 Sector ORs ########
-#
-#record(ai, "DAQ:LED2_SectorOR_A")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00302C")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector A")
-#}
-#
-#record(ai, "DAQ:LED2_SectorOR_B")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00302D")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector B")
-#}
-#
-#record(ai, "DAQ:LED2_SectorOR_C")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00302E")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector C")
-#}
-#
-#record(ai, "DAQ:LED2_SectorOR_D")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00302F")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2 OR Sector D")
-#}
-#
-#record(ai, "DAQ:LED2_SectorOR_E")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003030")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2 OR Sector E")
-#}
-#
-#record(ai, "DAQ:LED2_SectorOR_F")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003031")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED2 OR Sector F")
-#}
-#
-####### VETO Sector ORs ########
-#
-#record(ai, "DAQ:VETO_SectorOR_A")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003032")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector A")
-#}
-#
-#record(ai, "DAQ:VETO_SectorOR_B")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003033")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector B")
-#}
-#
-#record(ai, "DAQ:VETO_SectorOR_C")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003034")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector C")
-#}
-#
-#record(ai, "DAQ:VETO_SectorOR_D")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003035")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "VETO OR Sector D")
-#}
-#
-#record(ai, "DAQ:VETO_SectorOR_E")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003036")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "VETO OR Sector E")
-#}
-#
-#record(ai, "DAQ:VETO_SectorOR_F")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003037")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "VETO OR Sector F")
-#}
-#
-####### PWO Sector ORs ########
-#
-#record(ai, "DAQ:PWO_SectorOR_A")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003038")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector A")
-#}
-#
-#record(ai, "DAQ:PWO_SectorOR_B")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003039")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector B")
-#}
-#
-#record(ai, "DAQ:PWO_SectorOR_C")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00303A")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector C")
-#}
-#
-#record(ai, "DAQ:PWO_SectorOR_D")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00303B")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO OR Sector D")
-#}
-#
-#record(ai, "DAQ:PWO_SectorOR_E")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00303C")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO OR Sector E")
-#}
-#
-#record(ai, "DAQ:PWO_SectorOR_F")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00303D")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO OR Sector F")
-#}
-#
-####### PWO_VETO Sector ORs ########
-#
-#record(ai, "DAQ:PWO_VETO_SectorOR_A")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00303E")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector A")
-#}
-#
-#record(ai, "DAQ:PWO_VETO_SectorOR_B")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00303F")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector B")
-#}
-#
-#record(ai, "DAQ:PWO_VETO_SectorOR_C")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003040")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "LED 1 OR Sector C")
-#}
-#
-#record(ai, "DAQ:PWO_VETO_SectorOR_D")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003041")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_VETO OR Sector D")
-#}
-#
-#record(ai, "DAQ:PWO_VETO_SectorOR_E")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003042")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_VETO OR Sector E")
-#}
-#
-#record(ai, "DAQ:PWO_VETO_SectorOR_F")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003043")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "PWO_VETO OR Sector F")
-#}
-#
-####### CPU Livetimes ########
-#
-#record(ai, "DAQ:Livetime_CPU_00")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003044")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 0")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_01")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003045")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 1")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_02")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003046")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 2")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_03")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003047")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 3")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_04")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003048")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 4")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_05")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003049")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 5")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_06")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00304A")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 6")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_07")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00304B")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 7")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_08")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00304C")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 8")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_09")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00304D")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 9")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_10")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00304E")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 10")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_11")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A00304F")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 11")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_12")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003050")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 12")
-#}
-#
-#record(ai, "DAQ:Livetime_CPU_13")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003051")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "Livetime of CPU 13")
-#}
-#
-###############
-#
-#record(ai, "DAQ:TAPSTotalDeadTime")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003052")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "TAPS Total Dead Time")
-#}
-#
-#record(ai, "DAQ:TAPS1MHZ")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "Addr: 0x0A003053")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "1MHz clock TAPS")
-#}
+
+record(ai, "DAQ:CFD_TAPSOR_Prescaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:9")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD_TAPSOR_Prescaled")
+}
+
+record(ai, "DAQ:LED1_TAPSOR_Prescaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:10")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED1_TAPSOR_Prescaled")
+}
+
+record(ai, "DAQ:LED2_TAPSOR_Prescaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:11")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2_TAPSOR_Prescaled")
+}
+
+record(ai, "DAQ:CFD_TAPSM2Plus_Prescaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:12")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD_TAPSM2Plus_Prescaled")
+}
+
+record(ai, "DAQ:LED1_TAPSM2Plus_Prescaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:13")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED1_TAPSM2Plus_Prescaled")
+}
+
+record(ai, "DAQ:LED2_TAPSM2Plus_Prescaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:14")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2_TAPSM2Plus_Prescaled")
+}
+
+record(ai, "DAQ:PulserOutput_Prescaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:15")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PulserOutput_Prescaled")
+}
+
+record(ai, "DAQ:TAPS_L1_Trigger")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:16")
+        field(SCAN, "I/O Intr")
+        field(DESC, "TAPS_L1_Trigger")
+}
+
+record(ai, "DAQ:TAPS_L1_Interrupt")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:17")
+        field(SCAN, "I/O Intr")
+        field(DESC, "TAPS_L1_Interrupt")
+}
+
+record(ai, "DAQ:TAPSInterrupt")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:18")
+        field(SCAN, "I/O Intr")
+        field(DESC, "TAPSInterrupt")
+}
+
+record(ai, "DAQ:TAPSActualMode")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:19")
+        field(SCAN, "I/O Intr")
+        field(DESC, "TAPSActualMode")
+}
+
+record(ai, "DAQ:PWO_Veto_TAPSM2Plus_PreScaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:20")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_Veto_TAPSM2Plus_PreScaled")
+}
+
+record(ai, "DAQ:Veto_TAPSOR")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:21")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Veto_TAPSOR")
+}
+
+record(ai, "DAQ:Veto_TAPSM2Plus")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:22")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Veto_TAPSM2Plus")
+}
+
+record(ai, "DAQ:Veto_TAPSOR_PreScaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:23")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Veto_TAPSOR_PreScaled")
+}
+
+record(ai, "DAQ:Veto_TAPSM2Plus_PreScaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:24")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Veto_TAPSM2Plus_PreScaled")
+}
+
+record(ai, "DAQ:PWO_TAPSOR")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:25")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_TAPSOR")
+}
+
+record(ai, "DAQ:PWO_Veto_TAPSOR")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:26")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_Veto_TAPSOR")
+}
+
+record(ai, "DAQ:PWO_TAPSM2Plus")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:27")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_TAPSM2Plus")
+}
+
+record(ai, "DAQ:PWO_Veto_TAMPSM2Plus")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:28")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_Veto_TAMPSM2Plus")
+}
+
+record(ai, "DAQ:PWO_TAPSOR_PreScaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:29")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_TAPSOR_PreScaled")
+}
+
+record(ai, "DAQ:PWO_Veto_TAPSOR_PreScaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:30")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_Veto_TAPSOR_PreScaled")
+}
+
+record(ai, "DAQ:PWO_TAPSM2Plus_PreScaled")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:31")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_TAPSM2Plus_PreScaled")
+}
+
+##### CFD Sector ORs ######
+
+record(ai, "DAQ:CFD_SectorOR_A")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:32")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD OR Sector A")
+}
+
+record(ai, "DAQ:CFD_SectorOR_B")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:33")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD OR Sector B")
+}
+
+record(ai, "DAQ:CFD_SectorOR_C")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:34")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD OR Sector C")
+}
+
+record(ai, "DAQ:CFD_SectorOR_D")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:35")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD OR Sector D")
+}
+
+record(ai, "DAQ:CFD_SectorOR_E")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:36")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD OR Sector E")
+}
+
+record(ai, "DAQ:CFD_SectorOR_F")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:37")
+        field(SCAN, "I/O Intr")
+        field(DESC, "CFD OR Sector E")
+}
+
+###### LED1 Sector ORs ########
+
+record(ai, "DAQ:LED1_SectorOR_A")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:38")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector A")
+}
+
+record(ai, "DAQ:LED1_SectorOR_B")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:39")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector B")
+}
+
+record(ai, "DAQ:LED1_SectorOR_C")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:40")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector C")
+}
+
+record(ai, "DAQ:LED1_SectorOR_D")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:41")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED1 OR Sector D")
+}
+
+record(ai, "DAQ:LED1_SectorOR_E")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:42")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED1 OR Sector E")
+}
+
+record(ai, "DAQ:LED1_SectorOR_F")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:43")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED1 OR Sector F")
+}
+
+###### LED2 Sector ORs ########
+
+record(ai, "DAQ:LED2_SectorOR_A")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:44")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector A")
+}
+
+record(ai, "DAQ:LED2_SectorOR_B")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:45")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector B")
+}
+
+record(ai, "DAQ:LED2_SectorOR_C")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:46")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector C")
+}
+
+record(ai, "DAQ:LED2_SectorOR_D")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:47")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2 OR Sector D")
+}
+
+record(ai, "DAQ:LED2_SectorOR_E")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:48")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2 OR Sector E")
+}
+
+record(ai, "DAQ:LED2_SectorOR_F")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:49")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED2 OR Sector F")
+}
+
+###### VETO Sector ORs ########
+
+record(ai, "DAQ:VETO_SectorOR_A")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:50")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector A")
+}
+
+record(ai, "DAQ:VETO_SectorOR_B")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:51")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector B")
+}
+
+record(ai, "DAQ:VETO_SectorOR_C")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:52")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector C")
+}
+
+record(ai, "DAQ:VETO_SectorOR_D")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:53")
+        field(SCAN, "I/O Intr")
+        field(DESC, "VETO OR Sector D")
+}
+
+record(ai, "DAQ:VETO_SectorOR_E")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:54")
+        field(SCAN, "I/O Intr")
+        field(DESC, "VETO OR Sector E")
+}
+
+record(ai, "DAQ:VETO_SectorOR_F")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:55")
+        field(SCAN, "I/O Intr")
+        field(DESC, "VETO OR Sector F")
+}
+
+###### PWO Sector ORs ########
+
+record(ai, "DAQ:PWO_SectorOR_A")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:56")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector A")
+}
+
+record(ai, "DAQ:PWO_SectorOR_B")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:57")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector B")
+}
+
+record(ai, "DAQ:PWO_SectorOR_C")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:58")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector C")
+}
+
+record(ai, "DAQ:PWO_SectorOR_D")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:59")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO OR Sector D")
+}
+
+record(ai, "DAQ:PWO_SectorOR_E")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:60")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO OR Sector E")
+}
+
+record(ai, "DAQ:PWO_SectorOR_F")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:61")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO OR Sector F")
+}
+
+###### PWO_VETO Sector ORs ########
+
+record(ai, "DAQ:PWO_VETO_SectorOR_A")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:62")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector A")
+}
+
+record(ai, "DAQ:PWO_VETO_SectorOR_B")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:63")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector B")
+}
+
+record(ai, "DAQ:PWO_VETO_SectorOR_C")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:64")
+        field(SCAN, "I/O Intr")
+        field(DESC, "LED 1 OR Sector C")
+}
+
+record(ai, "DAQ:PWO_VETO_SectorOR_D")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:65")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_VETO OR Sector D")
+}
+
+record(ai, "DAQ:PWO_VETO_SectorOR_E")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:66")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_VETO OR Sector E")
+}
+
+record(ai, "DAQ:PWO_VETO_SectorOR_F")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:67")
+        field(SCAN, "I/O Intr")
+        field(DESC, "PWO_VETO OR Sector F")
+}
+
+###### CPU Livetimes ########
+
+record(ai, "DAQ:Livetime_CPU_00")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:68")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 0")
+}
+
+record(ai, "DAQ:Livetime_CPU_01")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:69")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 1")
+}
+
+record(ai, "DAQ:Livetime_CPU_02")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:70")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 2")
+}
+
+record(ai, "DAQ:Livetime_CPU_03")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:71")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 3")
+}
+
+record(ai, "DAQ:Livetime_CPU_04")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:72")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 4")
+}
+
+record(ai, "DAQ:Livetime_CPU_05")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:73")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 5")
+}
+
+record(ai, "DAQ:Livetime_CPU_06")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:74")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 6")
+}
+
+record(ai, "DAQ:Livetime_CPU_07")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:75")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 7")
+}
+
+record(ai, "DAQ:Livetime_CPU_08")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:76")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 8")
+}
+
+record(ai, "DAQ:Livetime_CPU_09")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:77")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 9")
+}
+
+record(ai, "DAQ:Livetime_CPU_10")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000"78")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 10")
+}
+
+record(ai, "DAQ:Livetime_CPU_11")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:79")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 11")
+}
+
+record(ai, "DAQ:Livetime_CPU_12")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:80")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 12")
+}
+
+record(ai, "DAQ:Livetime_CPU_13")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:81")
+        field(SCAN, "I/O Intr")
+        field(DESC, "Livetime of CPU 13")
+}
+
+##############
+
+record(ai, "DAQ:TAPSTotalDeadTime")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:82")
+        field(SCAN, "I/O Intr")
+        field(DESC, "TAPS Total Dead Time")
+}
+
+record(ai, "DAQ:TAPS1MHZ")
+{
+    field(DTYP, "VMEScaler")
+        field(INP, "0x0A003000:83")
+        field(SCAN, "I/O Intr")
+        field(DESC, "1MHz clock TAPS")
+}
