@@ -79,7 +79,7 @@ static long init_ai(int after)
 
 static int parseAddress( char* str, vu_scaler_addr* addr) {
 
-    int ret = sscanf( str,"Addr:%x:%d", &(addr->base_addr), &(addr->scaler));
+    int ret = sscanf( str,"%x:%d", &(addr->base_addr), &(addr->scaler));
 
     if( ret == 2 )
         return TRUE;
