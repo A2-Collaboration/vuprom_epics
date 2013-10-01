@@ -96,15 +96,18 @@ void stop_measurement( vuprom* v ) {
 void save_values( vuprom* v ) {
     memcpy( &(v->values), (void*)(v->vme_mem), (v->max_sclaer_index+1) * sizeof(u_int32_t) );
 
+    // do normalization if activated
     if( v->refernece_scaler != -1 ) {
+
         const double factor = 1E+6 / v->values[v->refernece_scaler];
-        printf("Rescaling vuprom @ %#010x with factor %lf\n", v->base_addr, factor);
+        //printf("Rescaling vuprom @ %#010x with factor %lf\n", v->base_addr, factor);
+
         int i;
-        for( i=0; i<v->max_sclaer_index; ++i)
+        for( i=0; i <= v->max_sclaer_index; ++i)
             v->values[i] = (u_int32_t) (v->values[i] * factor);
+
     }
 }
-
 
 static vuprom vu[MAX_VUPROMS];
 
