@@ -24,6 +24,8 @@
 #define MAX_VUPROMS 8
 static int n_vuproms =0;
 
+static u_int32_t global_top_bits =0;
+
 // our measurement thread
 static pthread_t pth;
 
@@ -54,7 +56,7 @@ int init_vuprom( vuprom* v ) {
         perror("Error opening device.\n");
         return 0;
     }
-    printf("Init vuprom @ %#010x\n", v->base_addr);
+    printf("Init vuprom @ effective address %#010x\n", v->base_addr);
     return 1;
 }
 
@@ -224,6 +226,13 @@ int drv_start() {
 vuprom* AddVuprom( const u_int32_t base_addr ) {
 
     if( n_vuproms < MAX_VUPROMS ) {
+
+        if( n_vuproms == 0 ) {
+            global_top_bits = base_addr & & 0xe0000000;
+        } else {
+            if ((base_addr & 0xe0000000) != global_top_bits )
+                printf("WARNING: Top Bits mismatch between previously added vuprom and this one!\n");
+        }
 
         vu[n_vuproms].base_addr = base_addr;
         printf("New vuprom (%d) added @ %#010x\n", n_vuproms, base_addr );
