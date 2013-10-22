@@ -725,7 +725,7 @@ record(ai, "DAQ:PWO_VETO_SectorOR_F")
 
 ###### CPU Livetimes ########
 
-record(ai, "DAQ:Livetime_vme-taps-trigger ")
+record(ai, "DAQ:Livetime_vme-taps-trigger")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:68")
