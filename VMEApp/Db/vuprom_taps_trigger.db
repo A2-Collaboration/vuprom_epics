@@ -725,7 +725,7 @@ record(ai, "DAQ:PWO_VETO_SectorOR_F")
 
 ###### CPU Livetimes ########
 
-record(ai, "DAQ:Livetime_CPU_00")
+record(ai, "DAQ:Livetime_vme-taps-trigger ")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:68")
@@ -744,7 +744,7 @@ record(ai, "DAQ:Livetime_CPU_00")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_01")
+record(ai, "DAQ:Livetime_vme-taps-baf-a")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:69")
@@ -763,7 +763,7 @@ record(ai, "DAQ:Livetime_CPU_01")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_02")
+record(ai, "DAQ:Livetime_vme-taps-baf-b")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:70")
@@ -782,7 +782,7 @@ record(ai, "DAQ:Livetime_CPU_02")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_03")
+record(ai, "DAQ:Livetime_vme-taps-baf-c")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:71")
@@ -801,7 +801,7 @@ record(ai, "DAQ:Livetime_CPU_03")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_04")
+record(ai, "DAQ:Livetime_vme-taps-baf-d")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:72")
@@ -820,7 +820,7 @@ record(ai, "DAQ:Livetime_CPU_04")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_05")
+record(ai, "DAQ:Livetime_vme-taps-baf-e")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:73")
@@ -839,7 +839,7 @@ record(ai, "DAQ:Livetime_CPU_05")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_06")
+record(ai, "DAQ:Livetime_vme-taps-baf-f")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:74")
@@ -858,7 +858,7 @@ record(ai, "DAQ:Livetime_CPU_06")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_07")
+record(ai, "DAQ:Livetime_vme-taps-veto-ab")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:75")
@@ -877,7 +877,7 @@ record(ai, "DAQ:Livetime_CPU_07")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_08")
+record(ai, "DAQ:Livetime_vme-taps-veto-cd")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:76")
@@ -896,7 +896,7 @@ record(ai, "DAQ:Livetime_CPU_08")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_09")
+record(ai, "DAQ:Livetime_vme-taps-veto-ef")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:77")
@@ -915,7 +915,7 @@ record(ai, "DAQ:Livetime_CPU_09")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_10")
+record(ai, "DAQ:Livetime_vme-taps-pwo")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:78")
