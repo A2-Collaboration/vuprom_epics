@@ -9,7 +9,7 @@ record(ai, "DAQ:CBESum_Low")
 	field(SCAN, "I/O Intr")
 	field(DESC, "CB Energy Sum Low")
 	field(LOPR, 0)
-	field(HOPR, 100000)
+	field(HOPR, 0)
 }
 
 # IN1 1
@@ -20,7 +20,7 @@ record(ai, "DAQ:CBESum_High")
 	field(SCAN, "I/O Intr")
 	field(DESC, "CB Energy Sum High")
 	field(LOPR, 0)
-	field(HOPR, 100000)
+	field(HOPR, 0)
 }
 
 # IN1 2
@@ -31,7 +31,7 @@ record(ai, "DAQ:CBESum")
 	field(SCAN, "I/O Intr")
 	field(DESC, "CB Energy Sum (Integrated)")
 	field(LOPR, 0)
-	field(HOPR, 100000)
+	field(HOPR, 0)
 }
 
 
@@ -43,7 +43,7 @@ record(ai, "DAQ:Paddle")
 	field(SCAN, "I/O Intr")
 	field(DESC, "50cm Paddle")
 	field(LOPR, 0)
-	field(HOPR, 100000)	
+	field(HOPR, 0)	
 }
 
 # IN1 4
@@ -69,7 +69,7 @@ record(ai, "DAQ:ChangeHel")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Change Hel ??")
 	field(LOPR, 0)
-	field(HOPR, 100000)
+	field(HOPR, 0)
 }
 
 # IN1 6
@@ -80,7 +80,7 @@ record(ai, "DAQ:GenPos")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Generated Pos. ??")
 	field(LOPR, 0)
-	field(HOPR, 100000)
+	field(HOPR, 0)
 }
 
 # IN1 7
@@ -91,7 +91,7 @@ record(ai, "DAQ:MAMIReturn")
 	field(SCAN, "I/O Intr")
 	field(DESC, "MAMI Return")
 	field(LOPR, 0)
-	field(HOPR, 100000)
+	field(HOPR, 0)
 }
 
 ## IN1 8
@@ -138,7 +138,7 @@ record(ai, "DAQ:CBHighESum")
 	field(SCAN, "I/O Intr")
 	field(DESC, "CB high E Sum")
 	field(LOPR, 0)
-	field(HOPR, 100000)
+	field(HOPR, 0)
 }
 
 ## IN1 13
@@ -252,7 +252,7 @@ record(ai, "DAQ:PhiAngleTriggerOutput")
 	field(SCAN, "I/O Intr")
 	field(DESC, "PhiAngleTriggerOutput")
 	field(LOPR, 0)
-	field(HOPR,1000000)
+	field(HOPR, 0)
 }
 
 # IN2 1 
@@ -263,7 +263,7 @@ record(ai, "DAQ:PhiAngleChargeRequiredTriggerOutput")
 	field(SCAN, "I/O Intr")
 	field(DESC, "PhiAngleChargeRequiredTriggerOutput")
 	field(LOPR, 0)
-	field(HOPR,1000000)
+	field(HOPR, 0)
 }
 
 ## IN2 2 
