@@ -1,0 +1,114 @@
+#  Record database for vme-beampolmon
+#
+#			O.Steffen <steffen@kph.uni-mainz.de>, Oct 23, 2013
+#
+#  Address format:  0xAA0BB000:XXX
+#
+#  AA: Module address. example 0A (hex)
+#  BB: Subaddress. example 03 (hex)
+#  XXX: Scaler index (decimal)
+#
+
+### vuprom 0x01
+
+record(ai, "DAQ:Tagger16OR_A")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x01014000:0")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16 OR 1")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:Tagger16OR_B")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x01014000:2")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16 OR 2")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:Tagger16OR_C")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x01014000:3")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16 OR 3")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:Tagger16OR_D")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x01014000:4")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16 OR 4")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:Tagger16OR_E")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x01014000:5")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16 OR 5")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:EPT16OR_A")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x01014000:6")
+	field(SCAN, "I/O Intr")
+	field(DESC, "EPT 16 OR 1")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:EPT16OR_B")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x01014000:7")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16 OR 1")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+### vuprom x02
+
+record(ai, "DAQ:beampolmon-x02-x14-0")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x02014000:0")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Beampolmon vuprom x02, base x14, scaler 0")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:beampolmon-x03-x14-0")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:0")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Beampolmon vuprom x03, base x14, scaler 0")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
+
+record(ai, "DAQ:beampolmon-x04-x14-0")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:0")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Beampolmon vuprom x04, base x14, scaler 0")
+	field(LOPR, 0)
+	field(HOPR, 0)
+}
