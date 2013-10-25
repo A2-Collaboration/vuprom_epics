@@ -1019,3 +1019,35 @@ record(ai, "DAQ:TAPS1MHZ")
 	field(SCAN, "I/O Intr")
 	field(DESC, "1MHz clock TAPS")
 }
+
+record(ai, "DAQ:TAPS_Debug_ActualState_0")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x0A003000:84")
+	field(SCAN, "I/O Intr")
+	field(DESC, "TAPS Debug Actual State 0")
+}
+
+record(ai, "DAQ:TAPS_Debug_ActualState_1")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x0A003000:85")
+	field(SCAN, "I/O Intr")
+	field(DESC, "TAPS Debug Actual State 1")
+}
+
+record(ai, "DAQ:TAPS_Debug_ActualState_2")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x0A003000:86")
+	field(SCAN, "I/O Intr")
+	field(DESC, "TAPS Debug Actual State 2")
+}
+
+record(ai, "DAQ:TAPS_Debug_ActualState_3")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x0A003000:87")
+	field(SCAN, "I/O Intr")
+	field(DESC, "TAPS Debug Actual State 3")
+}
