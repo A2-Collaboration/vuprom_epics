@@ -579,6 +579,189 @@ record(ai, "DAQ:Livetime_vme-exptrigger")
 	field(LSV, "MINOR")
 }
 
+##### Debug Signals #####
+
+record(ai, "DAQ:ExpTrig_Debug_0")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:110")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Debug Signal 0 (ExpTrigger)")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:ExpTrig_Debug_1")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:111")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Debug Signal 1 (ExpTrigger)")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:ExpTrig_Debug_2")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:112")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Debug Signal 2 (ExpTrigger)")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:ExpTrig_Debug_3")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:113")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Debug Signal 0 (ExpTrigger)")
+    field(EGU, "Hz")
+}
+
+##### Level 1 Outputs #####
+
+record(ai, "DAQ:Trig:Level1_Out_0")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:114")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 0")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level1_Out_1")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:115")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 1")
+    field(EGU, "Hz")
+}
+record(ai, "DAQ:Trig:Level1_Out_2")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:116")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 2")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level1_Out_3")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:117")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 3")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level1_Out_4")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:118")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 4")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level1_Out_5")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:119")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 5")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level1_Out_6")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:120")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 6")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level1_Out_7")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:121")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 7")
+    field(EGU, "Hz")
+}
+
+##### Level 2 Outputs #####
+
+record(ai, "DAQ:Trig:Level2_Out_0")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:122")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 1 Output 0")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level2_Out_1")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:123")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 2 Output 1")
+    field(EGU, "Hz")
+}
+record(ai, "DAQ:Trig:Level2_Out_3")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:124")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 2 Output 2")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level2_Out_3")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:125")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 2 Output 3")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level2_Out_4")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:126")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 2 Output 4")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level2_Out_5")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:127")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 2 Output 5")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level2_Out_6")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:128")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 2 Output 6")
+    field(EGU, "Hz")
+}
+
+record(ai, "DAQ:Trig:Level2_Out_7")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:129")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Trigger Level 2 Output 7")
+    field(EGU, "Hz")
+}
 
 ##### Clocks #####
 
@@ -587,7 +770,7 @@ record(ai, "DAQ:ExpTriggerDIC")
 	field(DTYP, "VMEScaler")
 	field(INP, "0xEA003000:108")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Dead Time Inhibited 1MHz Clock = Livetime (exp Treigger)")
+	field(DESC, "Dead Time Inhib Clock (exp Treigger)")
 	field(HOPR, 1100000)
 	field(LOPR, 0)
 }
@@ -597,7 +780,7 @@ record(ai, "DAQ:ExpTriggerClock")
 	field(DTYP, "VMEScaler")
 	field(INP, "0xEA003000:109 R")
 	field(SCAN, "I/O Intr")
-	field(DESC, "1MHz Clock = Time Reference (exp Treigger)")
+	field(DESC, "1MHz Clock Time Reference (exp Treigger)")
 	field(HOPR, 1100000)
 	field(LOPR,  900000)
 }
