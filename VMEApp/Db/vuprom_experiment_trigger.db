@@ -1,7 +1,6 @@
 
 ###### IN1 ######
 
-# IN1 0
 record(ai, "DAQ:CBESum_Low")
 {
 	field(DTYP, "VMEScaler")
@@ -12,7 +11,6 @@ record(ai, "DAQ:CBESum_Low")
 	field(HOPR, 0)
 }
 
-# IN1 1
 record(ai, "DAQ:CBESum_High")
 {
 	field(DTYP, "VMEScaler")
@@ -23,7 +21,6 @@ record(ai, "DAQ:CBESum_High")
 	field(HOPR, 0)
 }
 
-# IN1 2
 record(ai, "DAQ:CBESum")
 {
 	field(DTYP, "VMEScaler")
@@ -35,282 +32,306 @@ record(ai, "DAQ:CBESum")
 }
 
 
-# IN1 3
-record(ai, "DAQ:Paddle")
+## IN1 3
+#record(ai, "DAQ:Paddle")
+#{
+#	field(DTYP, "VMEScaler")
+#	field(INP, "0xEA003000:3")
+#	field(SCAN, "I/O Intr")
+#	field(DESC, "50cm Paddle")
+#	field(LOPR, 0)
+#	field(HOPR, 0)	
+#}
+#
+## IN1 4
+#record(ai, "DAQ:PbGlass")
+#{
+#	field(DTYP, "VMEScaler")
+#	field(INP, "0xEA003000:4")
+#	field(SCAN, "I/O Intr")
+#	field(DESC, "PB Glass Rate")
+#	field(LOPR, 0)
+#	field(HOPR, 8000)
+#	field(LOW,  -1)
+#	field(LOLO, -1)
+#	field(HIGH, 5100)
+#	field(HIHI, 5500)
+#}
+#
+## IN1 5
+#record(ai, "DAQ:ChangeHel")
+#{
+#	field(DTYP, "VMEScaler")
+#	field(INP, "0xEA003000:5")
+#	field(SCAN, "I/O Intr")
+#	field(DESC, "Change Hel ??")
+#	field(LOPR, 0)
+#	field(HOPR, 0)
+#}
+#
+## IN1 6
+#record(ai, "DAQ:GenPos")
+#{
+#	field(DTYP, "VMEScaler")
+#	field(INP, "0xEA003000:6")
+#	field(SCAN, "I/O Intr")
+#	field(DESC, "Generated Pos. ??")
+#	field(LOPR, 0)
+#	field(HOPR, 0)
+#}
+#
+#record(ai, "DAQ:MAMIReturn")
+#{
+#	field(DTYP, "VMEScaler")
+#	field(INP, "0xEA003000:7")
+#	field(SCAN, "I/O Intr")
+#	field(DESC, "MAMI Return")
+#	field(LOPR, 0)
+#	field(HOPR, 0)
+#}
+#
+#record(ai, "DAQ:CBHighESum")
+#{
+#	field(DTYP, "VMEScaler")
+#	field(INP, "0xEA003000:12")
+#	field(SCAN, "I/O Intr")
+#	field(DESC, "CB high E Sum")
+#	field(LOPR, 0)
+#	field(HOPR, 0)
+#}
+
+record(ai, "DAQ:CoplanarTrig")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:3")
-	field(SCAN, "I/O Intr")
-	field(DESC, "50cm Paddle")
-	field(LOPR, 0)
-	field(HOPR, 0)	
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:24")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Coplanar Trigger Rate")
 }
 
-# IN1 4
-record(ai, "DAQ:PbGlass")
+record(ai, "DAQ:CoplanarTrigCharged")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:4")
-	field(SCAN, "I/O Intr")
-	field(DESC, "PB Glass Rate")
-	field(LOPR, 0)
-	field(HOPR, 8000)
-	field(LOW,  -1)
-	field(LOLO, -1)
-	field(HIGH, 5100)
-	field(HIHI, 5500)
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:25")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Coplanar Trigger Rate Charged")
 }
 
-# IN1 5
-record(ai, "DAQ:ChangeHel")
+record(ai, "DAQ:CB_AIIOR")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:5")
-	field(SCAN, "I/O Intr")
-	field(DESC, "Change Hel ??")
-	field(LOPR, 0)
-	field(HOPR, 0)
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:26")
+    field(SCAN, "I/O Intr")
+    field(DESC, "CB AII OR from Coplanar Trigger")
 }
 
-# IN1 6
-record(ai, "DAQ:GenPos")
+record(ai, "DAQ:PID_AIIOR")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:6")
-	field(SCAN, "I/O Intr")
-	field(DESC, "Generated Pos. ??")
-	field(LOPR, 0)
-	field(HOPR, 0)
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:27")
+    field(SCAN, "I/O Intr")
+    field(DESC, "PID AII OR from Coplanar Trigger")
 }
 
-# IN1 7
-record(ai, "DAQ:MAMIReturn")
+record(ai, "DAQ:BaF_AIIOR")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:7")
-	field(SCAN, "I/O Intr")
-	field(DESC, "MAMI Return")
-	field(LOPR, 0)
-	field(HOPR, 0)
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:28")
+    field(SCAN, "I/O Intr")
+    field(DESC, "BaF AII OR from Coplanar Trigger")
 }
 
-## IN1 8
-#record(ai, "DAQ:free_")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:8")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-
-## IN1 9
-#record(ai, "DAQ:free_")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:9")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-
-## IN1 10
-#record(ai, "DAQ:free_")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:10")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-
-## IN1 11
-#record(ai, "DAQ:free_")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:11")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-
-# IN1 12
-record(ai, "DAQ:CBHighESum")
+record(ai, "DAQ:TAPSVeto_AIIOR")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:12")
-	field(SCAN, "I/O Intr")
-	field(DESC, "CB high E Sum")
-	field(LOPR, 0)
-	field(HOPR, 0)
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:29")
+    field(SCAN, "I/O Intr")
+    field(DESC, "TAPS Veto AII OR from Coplanar Trigger")
 }
 
-## IN1 13
-#record(ai, "DAQ:free_")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:13")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-
-## IN1 14
-#record(ai, "DAQ:free_")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:14")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-
-## IN1 15
-#record(ai, "DAQ:free_")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:15")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-
-## IN1 16
-#record(ai, "DAQ:vme-tagg-tdc-a_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:16")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-tagg-tdc-a ACK Signal")
-#}
-#
-## IN1 17
-#record(ai, "DAQ:vme-tagg-tdc-b_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:17")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-tagg-tdc-b ACK Signal")
-#}
-#
-## IN1 18
-#record(ai, "DAQ:vme-beampolmon_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:18")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-beampolmon ACK Signal")
-#}
-#
-## IN1 19
-#record(ai, "DAQ:vme-cb-adc-1a_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:19")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-cb-adc-1a ACK Signal")
-#}
-#
-## IN1 20 
-#record(ai, "DAQ:vme-cb-adc-1b_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:20")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-cb-adc-1b ACK Signal")
-#}
-#
-## IN1 21 
-#record(ai, "DAQ:vme-cb-adc-2a_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:21")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-cb-adc-2a ACK Signal")
-#}
-#
-## IN1 22 
-#record(ai, "DAQ:vme-cb-adc-2b_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:22")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-cb-adc-2b ACK Signal")
-#}
-#
-## IN1 23 
-#record(ai, "DAQ:vme-cb-tdc-a_ACK")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:23")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "vme-cb-tdc-a ACK Signal")
-#}
-
-
-
-##### IN2 #####
-
-# IN2 0 
-record(ai, "DAQ:PhiAngleTriggerOutput")
+record(ai, "DAQ:MultTrigDebug_Strobe")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:24")
-	field(SCAN, "I/O Intr")
-	field(DESC, "PhiAngleTriggerOutput")
-	field(LOPR, 0)
-	field(HOPR, 0)
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:30")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug Strobe")
 }
 
-# IN2 1 
-record(ai, "DAQ:PhiAngleChargeRequiredTriggerOutput")
+record(ai, "DAQ:MultTrigDebug_FSM2Recovery")
 {
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:25")
-	field(SCAN, "I/O Intr")
-	field(DESC, "PhiAngleChargeRequiredTriggerOutput")
-	field(LOPR, 0)
-	field(HOPR, 0)
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:31")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Recovery")
 }
 
-## IN2 2 
-#record(ai, "DAQ:free")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:26")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-#
-## IN2 3 
-#record(ai, "DAQ:free")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:27")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-#
-## IN2 4 
-#record(ai, "DAQ:free")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:28")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
-#
-## IN2 5 
-#record(ai, "DAQ:free")
-#{
-#    field(DTYP, "VMEScaler")
-#        field(INP, "0xEA003000:29")
-#        field(SCAN, "I/O Intr")
-#        field(DESC, "free")
-#}
+record(ai, "DAQ:MultTrigDebug_FSM2ResetANDLoad")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:32")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Reset AND Load")
+}
+
+record(ai, "DAQ:MultTrigDebug_FSM2SecondStep")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:33")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Second Step")
+}
+
+record(ai, "DAQ:MultTrigDebug_FSM2Counting1")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:34")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Counting 1")
+}
+
+record(ai, "DAQ:MultTrigDebug_FSM2Counting2")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:35")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Counting 2")
+}
+
+record(ai, "DAQ:MultTrigDebug_FSM2Ready")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:36")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Ready")
+}
+
+record(ai, "DAQ:MultTrigDebug_FSM2TimeOut")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:37")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Time Out")
+}
+
+record(ai, "DAQ:MultTrigDebug_FSM2SaveResults")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:38")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug FSM2 Save Results")
+}
+
+record(ai, "DAQ:MultTrigDebug_Rule5ActiveCell")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:39")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug Rule 5 Active Cell")
+}
+
+record(ai, "DAQ:MultTrigDebug_Strobe_Delayed")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:40")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug Strobe Delayed")
+}
+
+record(ai, "DAQ:MultTrigDebug_Busy")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:41")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Debug Busy")
+}
+
+record(ai, "DAQ:MultTrig_Result_0")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:45")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 0")
+}
+
+record(ai, "DAQ:MultTrig_Result_1")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:46")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 1")
+}
+
+record(ai, "DAQ:MultTrig_Result_2")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:47")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 2")
+}
+
+record(ai, "DAQ:MultTrig_Result_3")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:48")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 3")
+}
+
+record(ai, "DAQ:MultTrig_Result_4")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:49")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 4")
+}
+
+record(ai, "DAQ:MultTrig_Result_5")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:50")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 5")
+}
+
+record(ai, "DAQ:MultTrig_Result_6")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:51")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 5")
+}
+
+record(ai, "DAQ:MultTrig_Result_7")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:52")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result 7")
+}
+
+record(ai, "DAQ:MultTrig_Result_M4+")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:53")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result M4+")
+}
+
+record(ai, "DAQ:MultTrig_Result_M8+")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:54")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Multiplicity Trigger Result M8+")
+}
 
 
-
-##### PGIO1 #####
-
-
-
-##### PGIO2 #####
-
-
+record(ai, "DAQ:CB_AIIOR_MultTrig")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:61")
+    field(SCAN, "I/O Intr")
+    field(DESC, "CB AII OR from Multiplicity Trigger")
+}
 
 ###### CPU Livetimes ########
 
@@ -709,7 +730,7 @@ record(ai, "DAQ:Trig:Level2_Out_1")
     field(DESC, "Trigger Level 2 Output 1")
     field(EGU, "Hz")
 }
-record(ai, "DAQ:Trig:Level2_Out_3")
+record(ai, "DAQ:Trig:Level2_Out_2")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:124")
