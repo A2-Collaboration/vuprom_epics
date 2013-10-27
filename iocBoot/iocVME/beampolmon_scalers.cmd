@@ -17,5 +17,6 @@ dbLoadRecords("db/vuprom_beampolmon.db","user=steffenHost")
 cd ${TOP}/iocBoot/${IOC}
 iocInit
 
-## Start any sequence programs
-#seq sncxxx,"user=steffenHost"
+# Dump record list
+dbl > "/tmp/ioc/vuprom_beampolmon"
+
