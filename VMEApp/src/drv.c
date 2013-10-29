@@ -68,7 +68,7 @@ int vme_read_once( u_int32_t addr, u_int32_t out ) {
     addr &= 0x1fffffff;        // obere Bits ausmaskieren
     u_int32_t rest = addr % 0x1000;
     addr = (addr / 0x1000) * 0x1000;
-    u_int32_t* mem = NULL;
+    volatile u_int32_t* mem = NULL;
 
     if ((mem = vmeext(addr, 0x1000)) == NULL) {
         return FALSE;
@@ -76,7 +76,7 @@ int vme_read_once( u_int32_t addr, u_int32_t out ) {
     //poi += (rest / 4);
 
     out = mem[rest/4];
-    munmap(mem,4);
+    munmap((void*)mem,0x1000);
     printf("FW READ\n");
     return TRUE;
 }
