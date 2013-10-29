@@ -27,6 +27,6 @@ void	*vmestd(off_t padd, size_t size);
 void	*vmeext(off_t padd, size_t size);
 void	*vmesio(off_t padd, size_t size);
 
-void    *OpenVMEbus();
+int OpenVMEbus();
 
 #endif

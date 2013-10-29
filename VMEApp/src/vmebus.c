@@ -7,10 +7,11 @@
 
 static int	vmebusFd = -1;
 
-void *
+int
 OpenVMEbus() {
 	if ((vmebusFd = open("/dev/mem", O_RDWR)) == -1)
-		return (NULL);
+        return -1;
+    return 0;
 }
 
 void *
