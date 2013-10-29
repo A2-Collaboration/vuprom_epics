@@ -89,7 +89,7 @@ record(ai, "DAQ:EPT_16_OR_1")
 record(ai, "DAQ:Beampolmon_x03_ref")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "0x03014000:31 R 5000000")
+	field(INP, "0x03014000:31 R 50000000")
 	field(SCAN, "I/O Intr")
 	field(DESC, "50 MHz reference clock")
 	field(EGU,"Hz")
