@@ -58,6 +58,7 @@ typedef struct {
     u_int32_t  values[N];   // copied values
     int  max_sclaer_index;
     int  refernece_scaler;
+    u_int32_t normval;
 } vuprom;
 
 int init_vuprom( vuprom* v ) {
@@ -99,7 +100,7 @@ void save_values( vuprom* v ) {
     // do normalization if activated
     if( v->refernece_scaler != -1 ) {
 
-        const double factor = 1E+6 / v->values[v->refernece_scaler];
+        const double factor = (double) v->normval / (double) v->values[v->refernece_scaler];
         //printf("Rescaling vuprom @ %#010x with factor %lf\n", v->base_addr, factor);
 
         int i;
@@ -344,7 +345,8 @@ u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
     if( addr->flag == 1 ) {
         if( v->refernece_scaler == -1 ) {
             v->refernece_scaler = addr->scaler;
-            printf("Setting scaler %d as reference for vuprom @ %#010x\n", addr->scaler, v->base_addr);
+            v->normval = addr->normval;
+            printf("Setting scaler %d as reference for vuprom @ %#010x, NormValue=%d\n", addr->scaler, v->base_addr, v->normval);
         } else {
             printf("WARNING: Not setting scaler %d as reference for vuprom @ %#010x. Reference is already scaler %d!\n",addr->scaler,v->base_addr,v->refernece_scaler);
         }

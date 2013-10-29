@@ -80,14 +80,16 @@ static long init_ai(int after)
 static int parseAddress( char* str, vu_scaler_addr* addr) {
 
     char c = ' ';
+    u_int32_t normval=0;
 
-    int ret = sscanf( str,"%x:%d %c", &(addr->base_addr), &(addr->scaler), &c);
+    int ret = sscanf( str,"%x:%d %c %d", &(addr->base_addr), &(addr->scaler), &c, &normval);
 
     if( ret == 2 ) {
         addr->flag = 0;
         return TRUE;
-    } else if( (ret == 3) && (c == 'R') ) {
+    } else if( (ret == 4) && (c == 'R') ) {
         addr->flag = 1;
+        addr->normval = normval;
         return TRUE;
     }
     return FALSE;
