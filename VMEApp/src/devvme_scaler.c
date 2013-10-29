@@ -82,7 +82,7 @@ static int parseAddress( char* str, vu_scaler_addr* addr) {
     u_int32_t normval=0;
     u_int32_t firmware=0;
 
-    int ret = sscanf( str,"%x:%d R Norm=%d Firmware=%x", &(addr->base_addr), &(addr->scaler), &normval, &firmware);
+    int ret = sscanf( str,"%x:%d R Norm=%d Firmware=%x\n", &(addr->base_addr), &(addr->scaler), &normval, &firmware);
 
     if( ret == 2 ) {
         addr->flag = 0;

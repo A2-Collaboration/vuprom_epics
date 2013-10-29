@@ -63,16 +63,22 @@ typedef struct {
     u_int32_t firmware;
 } vuprom;
 
-int vme_read_once( const u_int32_t addr, u_int32_t out ) {
+int vme_read_once( u_int32_t addr, u_int32_t out ) {
 
-    u_int32_t* mem  = (u_int32_t*) vmeext( addr, 4 );
+    addr &= 0x1fffffff;        // obere Bits ausmaskieren
+    u_int32_t rest = addr % 0x1000;
+    addr = (addr / 0x1000) * 0x1000;
+    u_int32_t* mem = NULL;
 
-    if( mem ) {
-        out = *mem;
-        munmap(mem,4);
-        return TRUE;
+    if ((mem = vmeext(addr, 0x1000)) == NULL) {
+        return FALSE;
     }
-    return FALSE;
+    //poi += (rest / 4);
+
+    out = mem[rest/4];
+    munmap(mem,4);
+    printf("FW READ\n");
+    return TRUE;
 }
 
 int init_vuprom( vuprom* v ) {
