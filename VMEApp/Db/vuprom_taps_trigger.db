@@ -1015,7 +1015,7 @@ record(ai, "DAQ:TAPSTotalDeadTime")
 record(ai, "DAQ:TAPS1MHZ")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "0x0A003000:83 R Norm=1000000 Firmware=0x12112003")
+	field(INP, "0x0A003000:83 R Norm=1000000 Firmware=0x13102509")
 	field(SCAN, "I/O Intr")
 	field(DESC, "1MHz clock TAPS")
 }

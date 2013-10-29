@@ -63,8 +63,7 @@ typedef struct {
     u_int32_t firmware;
 } vuprom;
 
-int vme_read_once( u_int32_t addr, u_int32_t out ) {
-
+int vme_read_once( u_int32_t addr, u_int32_t* out ) {
     addr &= 0x1fffffff;        // obere Bits ausmaskieren
     u_int32_t rest = addr % 0x1000;
     addr = (addr / 0x1000) * 0x1000;
@@ -73,11 +72,9 @@ int vme_read_once( u_int32_t addr, u_int32_t out ) {
     if ((mem = vmeext(addr, 0x1000)) == NULL) {
         return FALSE;
     }
-    //poi += (rest / 4);
 
-    out = mem[rest/4];
+    *out = mem[rest/4];
     munmap((void*)mem,0x1000);
-    printf("FW READ\n");
     return TRUE;
 }
 
@@ -91,7 +88,7 @@ int init_vuprom( vuprom* v ) {
     const u_int32_t magic_number = v->vme_mem[MAGIC_SCALER];
 
     u_int32_t firmware = 0;
-    if (!vme_read_once( (v->map_addr & 0xFF000000) + FIRMWARE_SCALER, firmware )) {
+    if (!vme_read_once( (v->map_addr & 0xFF000000) + FIRMWARE_SCALER, &firmware )) {
         printf("ERROR: Could not read firmware!\n");
     }
 
@@ -101,7 +98,7 @@ int init_vuprom( vuprom* v ) {
     }
 
     if( firmware != v->firmware ) {
-        printf("WARNING: vuprom firmware missmatch! (base_addr: %#010x, scaler %d, value %x, expected %x)\n", v->base_addr, FIRMWARE_SCALER, firmware, v->firmware );
+        printf("WARNING: vuprom firmware missmatch! (base_addr: %#010x, value %x, expected %x)\n", v->base_addr, firmware, v->firmware );
         return 0;
     }
 
@@ -377,7 +374,7 @@ u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
             v->refernece_scaler = addr->scaler;
             v->normval = addr->normval;
             v->firmware = addr->firmware;
-            printf("Setting scaler %d as reference for vuprom @ %#010x\n\tNormValue=%d\n\tFirmware=%x", addr->scaler, v->base_addr, v->normval,v->firmware);
+            printf("Setting scaler %d as reference for vuprom @ %#010x\n\tNormValue=%d\n\tFirmware=%x\n", addr->scaler, v->base_addr, v->normval,v->firmware);
         } else {
             printf("WARNING: Not setting scaler %d as reference for vuprom @ %#010x. Reference is already scaler %d!\n",addr->scaler,v->base_addr,v->refernece_scaler);
         }
