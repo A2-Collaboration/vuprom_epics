@@ -1,0 +1,96 @@
+record(ai, "DAQ:Tagger_16_OR_E")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:0")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16-OR Rate of Section E")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:Tagger_16_OR_F")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:1")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16-OR Rate of Section F")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:Tagger_16_OR_S")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:2")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16-OR Rate of Section S")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:Tagger_16_OR_T")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:3")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16-OR Rate of Section T")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:Tagger_16_OR_M")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:4")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16-OR Rate of Section M")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:Tagger_16_OR_N")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:5")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger 16-OR Rate of Section N")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:EPT_16_OR_0")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:6")
+	field(SCAN, "I/O Intr")
+	field(DESC, "End Point Tagger 16-OR Rate of Section 0")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:EPT_16_OR_1")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:7")
+	field(SCAN, "I/O Intr")
+	field(DESC, "End Point Tagger 16-OR Rate of Section 1")
+	field(LOPR, 0)
+	field(HOPR, 0)
+	field(EGU,"Hz")
+}
+
+record(ai, "DAQ:Beampolmon_x03_ref")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x03014000:31 R 5000000")
+	field(SCAN, "I/O Intr")
+	field(DESC, "50 MHz reference clock")
+	field(EGU,"Hz")
+}

@@ -12,7 +12,10 @@ dbLoadDatabase "dbd/VME.dbd"
 VME_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
-dbLoadRecords("db/vuprom_beampolmon.db","user=steffenHost")
+dbLoadRecords("db/vuprom_beampolmon_x01.db")
+dbLoadRecords("db/vuprom_beampolmon_x02.db")
+dbLoadRecords("db/vuprom_beampolmon_x03.db")
+dbLoadRecords("db/vuprom_beampolmon_x04.db")
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit
