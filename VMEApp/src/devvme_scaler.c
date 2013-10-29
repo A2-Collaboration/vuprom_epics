@@ -79,17 +79,18 @@ static long init_ai(int after)
 
 static int parseAddress( char* str, vu_scaler_addr* addr) {
 
-    char c = ' ';
     u_int32_t normval=0;
+    u_int32_t firmware=0;
 
-    int ret = sscanf( str,"%x:%d %c %d", &(addr->base_addr), &(addr->scaler), &c, &normval);
+    int ret = sscanf( str,"%x:%d R Norm=%d Firmware=%x", &(addr->base_addr), &(addr->scaler), &normval, &firmware);
 
     if( ret == 2 ) {
         addr->flag = 0;
         return TRUE;
-    } else if( (ret == 4) && (c == 'R') ) {
+    } else if( (ret == 4) ) {
         addr->flag = 1;
         addr->normval = normval;
+        addr->firmware = firmware;
         return TRUE;
     }
     return FALSE;

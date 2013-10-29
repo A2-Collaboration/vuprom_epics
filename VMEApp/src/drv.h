@@ -5,7 +5,8 @@ typedef struct {
     u_int32_t   base_addr;
     u_int32_t   scaler;
     int         flag;
-    u_int32_t    normval;
+    u_int32_t   normval;
+    u_int32_t   firmware;
 } vu_scaler_addr;
 
 int drv_init();
