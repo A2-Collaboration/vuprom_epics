@@ -7,24 +7,20 @@
 #  BB: Subaddress. example 03 (hex)
 #  XXX: Scaler index (decimal)
 #
-record(ai, "DAQ:TAPSBusy")
+record(ai, "TAPS:TRIG:Busy")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:0")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPSBusy")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS Busy Signal")
 }
 
-record(ai, "DAQ:CBInterrupt")
+record(ai, "TAPS:TRIG:ExternalTrigger")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:1")
 	field(SCAN, "I/O Intr")
-	field(DESC, "CBInterrupt")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Trigger Signals from Experiment or external trigger")
 }
 
 record(ai, "DAQ:CFD_TAPSOR")
@@ -93,12 +89,12 @@ record(ai, "DAQ:LED2_TAPSM2Plus")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PulserOutput")
+record(ai, "TAPS:TRIG:PulserOutput")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:008")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PulserOutput")
+	field(DESC, "3kHz Pulser")
 	field(LOPR, 0)
 	field(HOPR, 4000)
 	field(EGU, "Hz")
@@ -170,58 +166,48 @@ record(ai, "DAQ:LED2_TAPSM2Plus_Prescaled")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PulserOutput_Prescaled")
+record(ai, "TAPS:TRIG:PulserOutput_Prescaled")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:15")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PulserOutput_Prescaled")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "3kHz pulser prescaled")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:TAPS_L1_Trigger")
+record(ai, "TAPS:TRIG:L1_Trigger")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:16")
 	field(SCAN, "I/O Intr")
 	field(DESC, "TAPS_L1_Trigger")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:TAPS_L1_Interrupt")
+record(ai, "TAPS:TRIG:L1_Interrupt")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:17")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPS_L1_Interrupt")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS L1 Interrupts")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:TAPSInterrupt")
+record(ai, "TAPS:TRIG:InternalTrigger")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:18")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPSInterrupt")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "was: TAPSInterrupt")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:TAPSActualMode")
+record(ai, "TAPS:TRIG:Mode")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:19")
 	field(SCAN, "I/O Intr")
 	field(DESC, "TAPSActualMode")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU, "Hz")
 }
 
@@ -236,102 +222,84 @@ record(ai, "DAQ:PWO_Veto_TAPSM2Plus_PreScaled")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:Veto_TAPSOR")
+record(ai, "TAPS:VETOBAF:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:21")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Veto_TAPSOR")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS VETO OR")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:Veto_TAPSM2Plus")
+record(ai, "TAPS:VETOBAF:TRIG:M2Plus")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:22")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Veto_TAPSM2Plus")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS VETO M2+")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:Veto_TAPSOR_PreScaled")
+record(ai, "TAPS:VETOBAF:TRIG:OR_Prescaled")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:23")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Veto_TAPSOR_PreScaled")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS VETO OR PreScaled")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:Veto_TAPSM2Plus_PreScaled")
+record(ai, "TAPS:VETOBAF:TRIG:M2Plus_Prescaled")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:24")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Veto_TAPSM2Plus_PreScaled")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PWO_TAPSOR")
+record(ai, "TAPS:PWO:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:25")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PWO_TAPSOR")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS PWO OR")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PWO_Veto_TAPSOR")
+record(ai, "TAPS:VETOPWO:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:26")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PWO_Veto_TAPSOR")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS PWO Veto OR")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PWO_TAPSM2Plus")
+record(ai, "TAPS:PWO:TRIG:M2Plus")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:27")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PWO_TAPSM2Plus")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS PWO M2+")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PWO_Veto_TAMPSM2Plus")
+record(ai, "TAPS:VETOPWO:TRIG:M2Plus")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:28")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PWO_Veto_TAMPSM2Plus")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS PWO VETO M2+")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PWO_TAPSOR_PreScaled")
+record(ai, "TAPS:PWO:TRIG:OR_Prescaled")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:29")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PWO_TAPSOR_PreScaled")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS PWO OR PreScaled")
 	field(EGU, "Hz")
 }
 
@@ -346,14 +314,12 @@ record(ai, "DAQ:PWO_Veto_TAPSOR_PreScaled")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PWO_TAPSM2Plus_PreScaled")
+record(ai, "TAPS:PWO:TRIG:M2Plus_Prescaled")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:31")
 	field(SCAN, "I/O Intr")
-	field(DESC, "PWO_TAPSM2Plus_PreScaled")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "TAPS PWO M2+ PreScaled")
 	field(EGU, "Hz")
 }
 
@@ -557,57 +523,57 @@ record(ai, "DAQ:LED2_SectorOR_F")
 
 ###### VETO Sector ORs ########
 
-record(ai, "DAQ:VETO_SectorOR_A")
+record(ai, "TAPS:VETOBAF:SectorA:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:50")
 	field(SCAN, "I/O Intr")
-	field(DESC, "LED 1 OR Sector A")
+	field(DESC, "VETO OR for TAPS BaF2 Sector A")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:VETO_SectorOR_B")
+record(ai, "TAPS:VETOBAF:SectorB:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:51")
 	field(SCAN, "I/O Intr")
-	field(DESC, "LED 1 OR Sector B")
+	field(DESC, "VETO OR for TAPS BaF2 Sector B")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:VETO_SectorOR_C")
+record(ai, "TAPS:VETOBAF:SectorC:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:52")
 	field(SCAN, "I/O Intr")
-	field(DESC, "LED 1 OR Sector C")
+	field(DESC, "VETO OR for TAPS BaF2 Sector C")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:VETO_SectorOR_D")
+record(ai, "TAPS:VETOBAF:SectorD:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:53")
 	field(SCAN, "I/O Intr")
-	field(DESC, "VETO OR Sector D")
+	field(DESC, "VETO OR for TAPS BaF2 Sector D")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:VETO_SectorOR_E")
+record(ai, "TAPS:VETOBAF:SectorE:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:54")
 	field(SCAN, "I/O Intr")
-	field(DESC, "VETO OR Sector E")
+	field(DESC, "VETO OR for TAPS BaF2 Sector E")
 	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:VETO_SectorOR_F")
+record(ai, "TAPS:VETOBAF:SectorF:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:55")
 	field(SCAN, "I/O Intr")
-	field(DESC, "VETO OR Sector F")
+	field(DESC, "VETO OR for TAPS BaF2 Sector F")
 	field(EGU, "Hz")
 }
 
@@ -725,12 +691,12 @@ record(ai, "DAQ:PWO_VETO_SectorOR_F")
 
 ###### CPU Livetimes ########
 
-record(ai, "DAQ:Livetime_vme-taps-trigger")
+record(ai, "TAPS:TRIG:LivetimeCoupled")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:68")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 0")
+	field(DESC, "Livetime of vme-taps-trigger in coupled mode")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -858,12 +824,12 @@ record(ai, "DAQ:Livetime_vme-taps-baf-f")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_vme-taps-veto-ab")
+record(ai, "TAPS:VETOBAF:SectorAB:TRIG:Livetime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:75")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 7")
+	field(DESC, "Livetime of vme-taps-veto-ab")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -877,12 +843,12 @@ record(ai, "DAQ:Livetime_vme-taps-veto-ab")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_vme-taps-veto-cd")
+record(ai, "TAPS:VETOBAF:SectorCD:TRIG:Livetime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:76")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 8")
+	field(DESC, "Livetime of vme-taps-veto-cd")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -896,12 +862,12 @@ record(ai, "DAQ:Livetime_vme-taps-veto-cd")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_vme-taps-veto-ef")
+record(ai, "TAPS:VETOBAF:SectorEF:TRIG:Livetime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:77")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 9")
+	field(DESC, "Livetime of vme-taps-veto-ef")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -934,7 +900,7 @@ record(ai, "DAQ:Livetime_vme-taps-pwo")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_11")
+record(ai, "TAPS:TRIG:LivetimeCPU11")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:79")
@@ -953,7 +919,7 @@ record(ai, "DAQ:Livetime_CPU_11")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_12")
+record(ai, "TAPS:TRIG:LivetimeCPU12")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:80")
@@ -972,12 +938,12 @@ record(ai, "DAQ:Livetime_CPU_12")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_CPU_13")
+record(ai, "TRIG:TAPS:LivetimeStandAlone")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:81")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 13")
+	field(DESC, "Livetime of vme-taps-trigger in standalone mode")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -993,7 +959,7 @@ record(ai, "DAQ:Livetime_CPU_13")
 
 ##############
 
-record(ai, "DAQ:TAPSTotalDeadTime")
+record(ai, "TAPS:TRIG:TotalDeadTime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:82")
@@ -1012,12 +978,12 @@ record(ai, "DAQ:TAPSTotalDeadTime")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:TAPS1MHZ")
+record(ai, "TAPS:TRIG:ReferenceScaler")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:83 R Norm=1000000 Firmware=0x13102509")
 	field(SCAN, "I/O Intr")
-	field(DESC, "1MHz clock TAPS")
+	field(DESC, "1MHz reference scaler")
 }
 
 record(ai, "DAQ:TAPS_Debug_ActualState_0")
