@@ -799,9 +799,7 @@ record(ai, "DAQ:ExpTriggerDIC")
 record(ai, "DAQ:ExpTriggerClock")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:109 R 1000000")
+	field(INP, "0xEA003000:109 R Norm=1000000 Firmware=0x13102462")
 	field(SCAN, "I/O Intr")
 	field(DESC, "1MHz Clock Time Reference (exp Treigger)")
-	field(HOPR, 1100000)
-	field(LOPR,  900000)
 }
