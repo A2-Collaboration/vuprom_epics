@@ -18,8 +18,6 @@ u_int32_t* drv_AddRecord(const vu_scaler_addr* addr );
 
 long drv_Get(const u_int32_t addr );
 
-float drv_GetLastInterval();
-
 IOSCANPVT* drv_getioinfo();
 void drv_disable_iointr();
 void drv_enable_iointr();

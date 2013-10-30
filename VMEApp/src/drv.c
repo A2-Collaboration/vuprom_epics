@@ -45,13 +45,6 @@ static int _iointr = 0;
 // sleep time [us]
 static unsigned int sleep_time = 1000000;
 
-typedef struct timespec timespec;
-
-
-float last_sleep = 0.0f;
-
-
-
 typedef struct {
     u_int32_t  base_addr;   // Address of vuprom
     u_int32_t  map_addr;    // mmap address (without top bits)
@@ -156,19 +149,6 @@ unsigned long SetTopBits(unsigned long Myaddr) {
     return 0;
 }
 
-
-/**
- * @brief Calculate the differnce in seconds of two timespec values
- * @param start The first (earlier) time point
- * @param stop The later time point
- * @return difference in seconds
- */
-float time_difference( const timespec* start, const timespec* stop ) {
-    float time = stop->tv_sec - start->tv_sec + (stop->tv_nsec - start->tv_nsec) * 1E-9;
-    return time;
-}
-
-
 /**
  * @brief Thread function that periodically reads the scaler values
  * @param arg ignore. does not take arguments
@@ -177,39 +157,27 @@ float time_difference( const timespec* start, const timespec* stop ) {
 void *thread_measure( void* arg)
 {
 
-    timespec start_measure;
-    timespec stop_measure;
     int i;
 
     while( 1 )
     {
-        clock_gettime(CLOCK_MONOTONIC, &start_measure);
 
         // Clear Counters
         for( i=0; i<n_vuproms; ++i) {
-            start_measurement( &(vu[i]));
+            start_measurement( &(vu[i]) );
         }
 
         usleep( sleep_time );
 
         // Save Counters
         for( i=0; i<n_vuproms; ++i) {
-            stop_measurement( &(vu[i]));
+            stop_measurement( &(vu[i]) );
         }
-
-        clock_gettime(CLOCK_MONOTONIC, &stop_measure);
 
         // copy values
         for( i=0; i<n_vuproms; ++i) {
-            save_values( &(vu[i]));
+            save_values( &(vu[i]) );
         }
-
-        last_sleep = time_difference( &start_measure, &stop_measure );
-
-        //printf("threadFunc: sleep was: %f s\n", last_sleep );
-        //
-        // since we measured the elapsed time we could scale all values to be "per second"...
-        // or export the time via epics and d othe calc there?
 
         if( _iointr )
             scanIoRequest( ioinfo );
@@ -428,10 +396,6 @@ long drv_Get( const u_int32_t addr ) {
         return 0;
     }
 
-}
-
-float drv_GetLastInterval() {
-    return last_sleep;
 }
 
 IOSCANPVT* drv_getioinfo() {
