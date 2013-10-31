@@ -1,12 +1,34 @@
 #  Record database for TAPS Trigger VUPROM Scalser
-#			O.Steffen <steffen@kph.uni-mainz.de>, Sep 27, 2013
+#			O.Steffen <steffen@kph.uni-mainz.de>, Oct, 2013
 #
-#  Address format:  0xAA0BB000:XXX
+# INP field format help:
 #
-#  AA: Module address. example 0A (hex)
-#  BB: Subaddress. example 03 (hex)
-#  XXX: Scaler index (decimal)
+# field(INP, "0xAA0BB000:Scaler [R Norm=<norm> Firmware=<firmware>]")
 #
+# AA: vuprom base address (hex)
+# BB: subaddress for scaler readout on the vuprom (hex)
+# Scaler: Number of the scaler inside the memory range (decimal). This is
+#         not the memory address (so not aligned to 4 bytes) but the real number
+#         of the 32bit scaler (address gets calculated).
+#
+# Use R Norm=<norm> Firmware=<firmware> to define one reference scaler per vuprom.
+#   R indicates that this is the reference scaler
+#   Norm=      Reference frequency, used to normalize all other scalers
+#   Firmware=  Installed firmware version number
+# Always make sure these values are correct.
+#
+
+
+record(ai, "TAPS:TRIG:ReferenceScaler")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x0A003000:83 R Norm=1000000 Firmware=0x13102509")
+	field(SCAN, "I/O Intr")
+	field(DESC, "1MHz reference scaler of the taps-trigger vuprom")
+}
+
+
+
 record(ai, "TAPS:TRIG:Busy")
 {
 	field(DTYP, "VMEScaler")
@@ -728,12 +750,12 @@ record(ai, "TAPS:BAF:SectorD:TRIG:Livetime")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_vme-taps-baf-e")
+record(ai, "TAPS:BAF:SectorE:TRIG:Livetime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:73")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 5")
+	field(DESC, "Livetime of vme-taps-baf-e CPU")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -747,12 +769,12 @@ record(ai, "DAQ:Livetime_vme-taps-baf-e")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_vme-taps-baf-f")
+record(ai, "TAPS:BAF:SectorF:TRIG:Livetime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:74")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 6")
+	field(DESC, "Livetime of vme-taps-baf-f CPU")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -771,7 +793,7 @@ record(ai, "TAPS:VETOBAF:SectorAB:TRIG:Livetime")
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:75")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of vme-taps-veto-ab")
+	field(DESC, "Livetime of vme-taps-veto-ab CPU")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -790,7 +812,7 @@ record(ai, "TAPS:VETOBAF:SectorCD:TRIG:Livetime")
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:76")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of vme-taps-veto-cd")
+	field(DESC, "Livetime of vme-taps-veto-cd CPU")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -809,7 +831,7 @@ record(ai, "TAPS:VETOBAF:SectorEF:TRIG:Livetime")
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:77")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of vme-taps-veto-ef")
+	field(DESC, "Livetime of vme-taps-veto-ef CPU")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -823,12 +845,12 @@ record(ai, "TAPS:VETOBAF:SectorEF:TRIG:Livetime")
 	field(LSV, "MINOR")
 }
 
-record(ai, "DAQ:Livetime_vme-taps-pwo")
+record(ai, "TAPS:PWO:TRIG:Livetime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:78")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Livetime of CPU 10")
+	field(DESC, "Livetime of vme-taps-pwo CPU")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
@@ -920,42 +942,34 @@ record(ai, "TAPS:TRIG:TotalDeadTime")
 	field(LSV, "MINOR")
 }
 
-record(ai, "TAPS:TRIG:ReferenceScaler")
-{
-	field(DTYP, "VMEScaler")
-	field(INP, "0x0A003000:83 R Norm=1000000 Firmware=0x13102509")
-	field(SCAN, "I/O Intr")
-	field(DESC, "1MHz reference scaler")
-}
-
-record(ai, "DAQ:TAPS_Debug_ActualState_0")
+record(ai, "TAPS:TRIG:Debug0")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:84")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPS Debug Actual State 0")
+	field(DESC, "TAPS Debug Signal 0")
 }
 
-record(ai, "DAQ:TAPS_Debug_ActualState_1")
+record(ai, "TAPS:TRIG:Debug1")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:85")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPS Debug Actual State 1")
+	field(DESC, "TAPS Debug Signal 1")
 }
 
-record(ai, "DAQ:TAPS_Debug_ActualState_2")
+record(ai, "TAPS:TRIG:Debug2")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:86")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPS Debug Actual State 2")
+	field(DESC, "TAPS Debug Signal 2")
 }
 
-record(ai, "DAQ:TAPS_Debug_ActualState_3")
+record(ai, "TAPS:TRIG:Debug3")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:87")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPS Debug Actual State 3")
+	field(DESC, "TAPS Debug Signal 3")
 }
