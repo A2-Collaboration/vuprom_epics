@@ -1,68 +1,56 @@
 ### vuprom 0x01
 
-record(ai, "DAQ:Tagger_16_OR_I")
+record(ai, "TAGG:TAGG:SectorI:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x01014000:0")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger 16-OR Rate of Section I")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_J")
+record(ai, "TAGG:TAGG:SectorJ:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x01014000:1")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger 16-OR Rate of Section J")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_O")
+record(ai, "TAGG:TAGG:SectorO:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x01014000:2")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger 16-OR Rate of Section O")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_P")
+record(ai, "TAGG:TAGG:SectorP:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x01014000:3")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger 16-OR Rate of Section P")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_C")
+record(ai, "TAGG:TAGG:SectorC:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x01014000:4")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger 16-OR Rate of Section C")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_D")
+record(ai, "TAGG:TAGG:SectorD:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x01014000:5")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger 16-OR Rate of Section D")
-	field(LOPR, 0)
-	field(HOPR, 0)
 	field(EGU,"Hz")
 }
 
@@ -74,4 +62,3 @@ record(ai, "DAQ:Beampolmon_x01_ref")
 	field(DESC, "50 MHz reference clock")
 	field(EGU,"Hz")
 }
-
