@@ -1,311 +1,288 @@
+#  Record database for Experiment Trigger VUPROM Scalser
+#			O.Steffen <steffen@kph.uni-mainz.de>, Oct, 2013
+#
+# INP field format help:
+#
+# field(INP, "0xAA0BB000:Scaler [R Norm=<norm> Firmware=<firmware>]")
+#
+# AA: vuprom base address (hex)
+# BB: subaddress for scaler readout on the vuprom (hex)
+# Scaler: Number of the scaler inside the memory range (decimal). This is
+#         not the memory address (so not aligned to 4 bytes) but the real number
+#         of the 32bit scaler (address gets calculated).
+#
+# Use R Norm=<norm> Firmware=<firmware> to define one reference scaler per vuprom.
+#   R indicates that this is the reference scaler
+#   Norm=      Reference frequency, used to normalize all other scalers
+#   Firmware=  Installed firmware version number
+# Always make sure these values are correct.
+#
 
-###### IN1 ######
+record(ai, "TRIG:ReferenceScaler")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0xEA003000:109 R Norm=1000000 Firmware=0x13102462")
+	field(SCAN, "I/O Intr")
+	field(DESC, "1MHz Reference Clock for Exp Treigger vuprom")
+}
 
-record(ai, "DAQ:CBESum_Low")
+
+record(ai, "CB:CB:TRIG:ESum_Low")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0xEA003000:0")
 	field(SCAN, "I/O Intr")
 	field(DESC, "CB Energy Sum Low")
-	field(LOPR, 0)
-	field(HOPR, 0)
 }
 
-record(ai, "DAQ:CBESum_High")
+record(ai, "CB:CB:TRIG:ESum_High")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0xEA003000:1")
 	field(SCAN, "I/O Intr")
 	field(DESC, "CB Energy Sum High")
-	field(LOPR, 0)
-	field(HOPR, 0)
 }
 
-record(ai, "DAQ:CBESum")
+record(ai, "CB:CB:TRIG:ESum_Integrated")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0xEA003000:2")
 	field(SCAN, "I/O Intr")
 	field(DESC, "CB Energy Sum (Integrated)")
-	field(LOPR, 0)
-	field(HOPR, 0)
 }
 
-
-## IN1 3
-#record(ai, "DAQ:Paddle")
-#{
-#	field(DTYP, "VMEScaler")
-#	field(INP, "0xEA003000:3")
-#	field(SCAN, "I/O Intr")
-#	field(DESC, "50cm Paddle")
-#	field(LOPR, 0)
-#	field(HOPR, 0)	
-#}
-#
-## IN1 4
-#record(ai, "DAQ:PbGlass")
-#{
-#	field(DTYP, "VMEScaler")
-#	field(INP, "0xEA003000:4")
-#	field(SCAN, "I/O Intr")
-#	field(DESC, "PB Glass Rate")
-#	field(LOPR, 0)
-#	field(HOPR, 8000)
-#	field(LOW,  -1)
-#	field(LOLO, -1)
-#	field(HIGH, 5100)
-#	field(HIHI, 5500)
-#}
-#
-## IN1 5
-#record(ai, "DAQ:ChangeHel")
-#{
-#	field(DTYP, "VMEScaler")
-#	field(INP, "0xEA003000:5")
-#	field(SCAN, "I/O Intr")
-#	field(DESC, "Change Hel ??")
-#	field(LOPR, 0)
-#	field(HOPR, 0)
-#}
-#
-## IN1 6
-#record(ai, "DAQ:GenPos")
-#{
-#	field(DTYP, "VMEScaler")
-#	field(INP, "0xEA003000:6")
-#	field(SCAN, "I/O Intr")
-#	field(DESC, "Generated Pos. ??")
-#	field(LOPR, 0)
-#	field(HOPR, 0)
-#}
-#
-#record(ai, "DAQ:MAMIReturn")
-#{
-#	field(DTYP, "VMEScaler")
-#	field(INP, "0xEA003000:7")
-#	field(SCAN, "I/O Intr")
-#	field(DESC, "MAMI Return")
-#	field(LOPR, 0)
-#	field(HOPR, 0)
-#}
-#
-#record(ai, "DAQ:CBHighESum")
-#{
-#	field(DTYP, "VMEScaler")
-#	field(INP, "0xEA003000:12")
-#	field(SCAN, "I/O Intr")
-#	field(DESC, "CB high E Sum")
-#	field(LOPR, 0)
-#	field(HOPR, 0)
-#}
-
-record(ai, "DAQ:CoplanarTrig")
+record(ai, "TRIG:COPL:Trigger")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:24")
     field(SCAN, "I/O Intr")
     field(DESC, "Coplanar Trigger Rate")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:CoplanarTrigCharged")
+record(ai, "TRIG:COPL:TriggerCharged")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:25")
     field(SCAN, "I/O Intr")
     field(DESC, "Coplanar Trigger Rate Charged")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:CB_AIIOR")
+record(ai, "TRIG:COPL:OR_CB")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:26")
     field(SCAN, "I/O Intr")
-    field(DESC, "CB AII OR from Coplanar Trigger")
+    field(DESC, "CB All OR from Coplanar Trigger")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:PID_AIIOR")
+record(ai, "TRIG:COPL:OR_PID")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:27")
     field(SCAN, "I/O Intr")
-    field(DESC, "PID AII OR from Coplanar Trigger")
+    field(DESC, "PID All OR from Coplanar Trigger")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:BaF_AIIOR")
+record(ai, "TRIG:COPL:OR_TAPSBAF")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:28")
     field(SCAN, "I/O Intr")
-    field(DESC, "BaF AII OR from Coplanar Trigger")
+    field(DESC, "BaF All OR from Coplanar Trigger")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:TAPSVeto_AIIOR")
+record(ai, "TRIG:COPL:OR_TAPSVETO")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:29")
     field(SCAN, "I/O Intr")
-    field(DESC, "TAPS Veto AII OR from Coplanar Trigger")
+    field(DESC, "TAPS Veto All OR from Coplanar Trigger")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_Strobe")
+record(ai, "TRIG:MULT:DEBUG:Strobe")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:30")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug Strobe")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2Recovery")
+record(ai, "TRIG:MULT:DEBUG:FSM2_Recovery")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:31")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Recovery")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2ResetANDLoad")
+record(ai, "TRIG:MULT:DEBUG:FSM2_ResetAndLoad")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:32")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Reset AND Load")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2SecondStep")
+record(ai, "TRIG:MULT:DEBUG:FSM2_SecondStep")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:33")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Second Step")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2Counting1")
+record(ai, "TRIG:MULT:DEBUG:FSM2_Counting1")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:34")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Counting 1")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2Counting2")
+record(ai, "TRIG:MULT:DEBUG:FSM2_Counting2")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:35")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Counting 2")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2Ready")
+record(ai, "TRIG:MULT:DEBUG:FSM2_Ready")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:36")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Ready")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2TimeOut")
+record(ai, "TRIG:MULT:DEBUG:FSM2_TimeOut")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:37")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Time Out")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_FSM2SaveResults")
+record(ai, "TRIG:MULT:DEBUG:FSM2_SaveResults")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:38")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug FSM2 Save Results")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_Rule5ActiveCell")
+record(ai, "TRIG:MULT:DEBUG:Rule5ActiveCell")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:39")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug Rule 5 Active Cell")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_Strobe_Delayed")
+record(ai, "TRIG:MULT:DEBUG:Strobe_Delayed")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:40")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug Strobe Delayed")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrigDebug_Busy")
+record(ai, "TRIG:MULT:Busy")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:41")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Debug Busy")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_0")
+record(ai, "TRIG:MULT:M0")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:45")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 0")
+	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_1")
+record(ai, "TRIG:MULT:M1")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:46")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 1")
+	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_2")
+record(ai, "TRIG:MULT:M2")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:47")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 2")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_3")
+record(ai, "TRIG:MULT:M3")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:48")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 3")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_4")
+record(ai, "TRIG:MULT:M4")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:49")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 4")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_5")
+record(ai, "TRIG:MULT:M5")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:50")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 5")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_6")
+record(ai, "TRIG:MULT:M6")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:51")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 5")
+	field(EGU, "Hz")
 }
 
-record(ai, "DAQ:MultTrig_Result_7")
+record(ai, "TRIG:MULT:M7")
 {
     field(DTYP, "VMEScaler")
     field(INP, "0xEA003000:52")
     field(SCAN, "I/O Intr")
     field(DESC, "Multiplicity Trigger Result 7")
+	field(EGU, "Hz")
 }
 
 record(ai, "DAQ:MultTrig_Result_M4+")
@@ -796,10 +773,3 @@ record(ai, "DAQ:ExpTriggerDIC")
 	field(LOPR, 0)
 }
 
-record(ai, "DAQ:ExpTriggerClock")
-{
-	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:109 R Norm=1000000 Firmware=0x13102462")
-	field(SCAN, "I/O Intr")
-	field(DESC, "1MHz Clock Time Reference (exp Treigger)")
-}
