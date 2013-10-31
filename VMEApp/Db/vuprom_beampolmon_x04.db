@@ -1,74 +1,62 @@
-record(ai, "DAQ:Tagger_16_OR_A")
+record(ai, "TAGG:TAGG:SectorA:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:0")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section A")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector A")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_B")
+record(ai, "TAGG:TAGG:SectorB:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:1")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section B")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector B")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_U")
+record(ai, "TAGG:TAGG:SectorU:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:2")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section U")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector U")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_V")
+record(ai, "TAGG:TAGG:SectorV:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:3")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section V")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector V")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:EPT_16_OR_2")
+record(ai, "TAGG:EPT:Sector2:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:6")
 	field(SCAN, "I/O Intr")
-	field(DESC, "End Point Tagger 16-OR Rate of Section 2")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "End Point Tagger 16-OR Rate of Sector 2")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:EPT_16_OR_3")
+record(ai, "TAGG:EPT:Sector3:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:7")
 	field(SCAN, "I/O Intr")
-	field(DESC, "End Point Tagger 16-OR Rate of Section 3")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "End Point Tagger 16-OR Rate of Sector 3")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Beampolmon_x04_ref")
+record(ai, "BEAM:TRIG:ReferenceScaler_x04")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:31 R Norm=50000000 Firmware=0x1310241f")
 	field(SCAN, "I/O Intr")
-	field(DESC, "50 MHz reference clock")
+	field(DESC, "50MHz RefClock VUPROM x04, also TAGG:*")
 	field(EGU,"Hz")
 }

@@ -1,96 +1,80 @@
-record(ai, "DAQ:Tagger_16_OR_E")
+record(ai, "TAGG:TAGG:SectorE:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:0")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section E")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector E")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_F")
+record(ai, "TAGG:TAGG:SectorF:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:1")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section F")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector F")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_S")
+record(ai, "TAGG:TAGG:SectorS:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:2")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section S")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector S")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_T")
+record(ai, "TAGG:TAGG:SectorT:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:3")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section T")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector T")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_M")
+record(ai, "TAGG:TAGG:SectorM:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:4")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section M")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector M")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Tagger_16_OR_N")
+record(ai, "TAGG:TAGG:SectorN:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:5")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Tagger 16-OR Rate of Section N")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "Tagger 16-OR Rate of Sector N")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:EPT_16_OR_0")
+record(ai, "TAGG:EPT:Sector0:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:6")
 	field(SCAN, "I/O Intr")
-	field(DESC, "End Point Tagger 16-OR Rate of Section 0")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "End Point Tagger 16-OR Rate of Sector 0")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:EPT_16_OR_1")
+record(ai, "TAGG:EPT:Sector1:TRIG:OR")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:7")
 	field(SCAN, "I/O Intr")
-	field(DESC, "End Point Tagger 16-OR Rate of Section 1")
-	field(LOPR, 0)
-	field(HOPR, 0)
+	field(DESC, "End Point Tagger 16-OR Rate of Sector 1")
 	field(EGU,"Hz")
 }
 
-record(ai, "DAQ:Beampolmon_x03_ref")
+record(ai, "BEAM:TRIG:ReferenceScaler_x03")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x03014000:31 R Norm=50000000 Firmware=0x1310241f")
 	field(SCAN, "I/O Intr")
-	field(DESC, "50 MHz reference clock")
+	field(DESC, "50MHz RefClock VUPROM x03, also TAGG:*")
 	field(EGU,"Hz")
 }
