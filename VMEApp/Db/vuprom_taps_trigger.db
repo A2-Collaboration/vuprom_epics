@@ -655,7 +655,7 @@ record(ai, "TAPS:VETOPWO:SectorF:TRIG:OR")
 
 ###### CPU Livetimes ########
 
-record(ai, "TAPS:TRIG:LivetimeCoupled")
+record(ai, "TAPS:TRIG:TriggerLivetimeCoupled")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:68")
@@ -902,7 +902,7 @@ record(ai, "TAPS:TRIG:LivetimeCPU12")
 	field(LSV, "MINOR")
 }
 
-record(ai, "TRIG:TAPS:LivetimeStandAlone")
+record(ai, "TRIG:TAPS:TriggerLivetimeStandalone")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:81")
@@ -923,12 +923,12 @@ record(ai, "TRIG:TAPS:LivetimeStandAlone")
 
 ##############
 
-record(ai, "TAPS:TRIG:TotalDeadTime")
+record(ai, "TAPS:TRIG:TotalLivetime")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:82")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPS Total Dead Time")
+	field(DESC, "TAPS Total Livetime")
 	field(EGU, "%")
 	field(HOPR, 100)
 	field(LOPR, 0)
