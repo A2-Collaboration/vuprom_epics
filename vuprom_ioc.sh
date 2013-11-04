@@ -9,7 +9,7 @@ case $HOSTNAME in
         CMDFILE="beampolmon_scalers.cmd"
         ;;
     vme-taps-trigger)
-        CMDFILE="taps-trigger_scalers.cmd"
+        CMDFILE="taps_scalers.cmd"
         ;;
     *)
         # silently exit
