@@ -769,7 +769,7 @@ record(ai, "TRIG:TotalLivetime")
 	field(INP, "0xEA003000:108")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Deadtime Inhibited Clock (vme-exptrigger)")
-  field(EGU, "%")
+        field(EGU, "%")
 	field(HOPR, 110)
 	field(LOPR, 0)
 	field(PREC, 1)
@@ -782,3 +782,11 @@ record(ai, "TRIG:TotalLivetime")
 	field(LSV, "MINOR")
 }
 
+record(ai, "TRIG:Trigger")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:130")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Experiment Trigger")
+    field(EGU, "Hz")
+}
