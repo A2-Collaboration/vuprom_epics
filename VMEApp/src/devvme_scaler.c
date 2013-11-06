@@ -71,10 +71,13 @@ static long init_ai(int after)
         printf("%s\n", what);
         drv_init();
     } else if ( after == 1 ) {
-        drv_start();
+        const int ret = drv_start();
+        if( ret != TRUE ) {
+            return 1;
+        }
     }
 
-    return(0);
+    return 0;
 }
 
 static int parseAddress( char* str, vu_scaler_addr* addr) {

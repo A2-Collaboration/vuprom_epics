@@ -87,16 +87,16 @@ int init_vuprom( vuprom* v ) {
 
     if( magic_number != MAGIC_NUMBER ) {
         printf("Error: vuprom magic number not found. (base_addr: %#010x, scaler %d, value %x, expected %x)\n", v->base_addr, MAGIC_SCALER, magic_number, MAGIC_NUMBER );
-        return 0;
+        return FALSE;
     }
 
     if( firmware != v->firmware ) {
         printf("WARNING: vuprom firmware missmatch! (base_addr: %#010x, value %x, expected %x)\n", v->base_addr, firmware, v->firmware );
-        return 0;
+        return FALSE;
     }
 
     printf("Init vuprom @ %#010x, map addess: %#010x, max scaler index: %d\n", v->base_addr, v->map_addr, v->max_sclaer_index);
-    return 1;
+    return TRUE;
 }
 
 void deinit_vuprom( vuprom* v ) {
@@ -224,7 +224,10 @@ int drv_start() {
 
     // initialize all vuprom structs
     for( i=0; i<n_vuproms; ++i) {
-        init_vuprom( &(vu[i]) );
+        const int ret = init_vuprom( &(vu[i]) );
+        if( ret != TRUE ) {
+            return FALSE;
+        }
     }
 
     // start measuring thread
