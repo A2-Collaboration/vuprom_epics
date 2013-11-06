@@ -73,7 +73,8 @@ static long init_ai(int after)
     } else if ( after == 1 ) {
         const int ret = drv_start();
         if( ret != TRUE ) {
-            return 1;
+            printf("ERROR: Failed to initialize VUPROM VME driver.");
+            exit(1);
         }
     }
 
