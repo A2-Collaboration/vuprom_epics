@@ -116,12 +116,11 @@ void stop_measurement( vuprom* v ) {
 
 void save_values( vuprom* v ) {
     memcpy( &(v->values), (void*)(v->vme_mem), (v->max_sclaer_index+1) * sizeof(u_int32_t) );
-
+        //printf("Rescaling vuprom @ %#010x with factor %lf\n", v->base_addr, factor);
     // do normalization if activated
     if( v->refernece_scaler != -1 ) {
 
         const double factor = (double) v->normval / (double) v->values[v->refernece_scaler];
-        //printf("Rescaling vuprom @ %#010x with factor %lf\n", v->base_addr, factor);
 
         int i;
         for( i=0; i <= v->max_sclaer_index; ++i)
@@ -345,7 +344,6 @@ u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
             v->refernece_scaler = addr->scaler;
             v->normval = addr->normval;
             v->firmware = addr->firmware;
-            printf("Setting scaler %d as reference for vuprom @ %#010x\n\tNormValue=%d\n\tFirmware=%x\n", addr->scaler, v->base_addr, v->normval,v->firmware);
         } else {
             printf("WARNING: Not setting scaler %d as reference for vuprom @ %#010x. Reference is already scaler %d!\n",addr->scaler,v->base_addr,v->refernece_scaler);
         }

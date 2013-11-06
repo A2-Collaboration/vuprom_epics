@@ -147,13 +147,11 @@ static long get_ioint_info(int cmd,struct dbCommon *precord, IOSCANPVT *ppvt) {
             ++n;
             *ppvt = *ioinfo;
             drv_enable_iointr();
-            printf("I/O Intr enabled for %s\n", precord->name);
         } else
-            puts("Error settinf I/O Intr\n");
+            puts("Error setting I/O Intr\n");
         break;
     case 1:
         drv_disable_iointr();
-        printf("I/O Intr disabled\n");
         break;
     default:
         printf("Error: unknown command %d\n", cmd);
