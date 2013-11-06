@@ -16,6 +16,7 @@ dbLoadRecords("db/vuprom_beampolmon_x01.db")
 dbLoadRecords("db/vuprom_beampolmon_x02.db")
 dbLoadRecords("db/vuprom_beampolmon_x03.db")
 dbLoadRecords("db/vuprom_beampolmon_x04.db")
+dbLoadRecords("db/calc_beampolmon.db")
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit

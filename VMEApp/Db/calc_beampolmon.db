@@ -1,0 +1,9 @@
+record(calc, "TAGG:TAGG:ReferenceOR")
+{
+    field(INPA, "TAGG:TAGG:SectorO:TRIG:OR")
+    field(CALC, "A")
+    field(EGU, "Hz")
+    field(DESC, "Reference Tagger OR (Ladder)"
+    field(SCAN, "Passive")
+}
+
