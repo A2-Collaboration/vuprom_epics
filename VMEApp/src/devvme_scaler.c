@@ -114,7 +114,6 @@ static long init_record(struct aiRecord *pai)
     if( ptr ) {
         pai->dpvt = (void*) ptr;
         pai->udf = FALSE;
-        printf("Setting %#010x, scaler %d as %s\n", addr.base_addr, addr.scaler, pai->name);
         return 0;
     } else
         return 1;
