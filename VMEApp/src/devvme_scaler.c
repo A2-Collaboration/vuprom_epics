@@ -30,14 +30,8 @@ static char what[] =
 
 #include "drv.h"
 
-// @todo deinit driver?
 
-/* Create the dset for devvme_second */
-static long init_record();
-static long init_ai();
-static long read_ai();
-static long get_ioint_info();
-
+// export our functions to EPICS:
 struct {
     long		number;
     DEVSUPFUN	report;
@@ -58,12 +52,7 @@ struct {
 epicsExportAddress(dset,devvme_scaler);
 
 
-/************************************************************************/
-/* vme_scaler Record								*/
-/*  INP = "hostname-or-ipaddress:data-number"				*/
-/************************************************************************/
 
-/* init_ai for debug */
 
 static long init_ai(int after)
 {
