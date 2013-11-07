@@ -21,7 +21,7 @@
 record(ai, "TRIG:ReferenceScaler")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:109 R Norm=1000000 Firmware=0x13110465")
+	field(INP, "0xEA003000:109 R Norm=1000000 Firmware=0x13110566")
 	field(SCAN, "I/O Intr")
 	field(DESC, "1MHz Ref Clock for ExpTrigger vuprom")
 }
@@ -788,5 +788,32 @@ record(ai, "TRIG:Trigger")
     field(INP, "0xEA003000:130")
     field(SCAN, "I/O Intr")
     field(DESC, "Experiment Trigger")
+    field(EGU, "Hz")
+}
+
+record(ai, "TRIG:ImmediateReset")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:131")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Exp Trig L1 Immediate Reset")
+    field(EGU, "Hz")
+}
+
+record(ai, "TRIG:L1_Trigger")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:132")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Exp Trig L1 Trigger")
+    field(EGU, "Hz")
+}
+
+record(ai, "TRIG:FastClear")
+{
+    field(DTYP, "VMEScaler")
+    field(INP, "0xEA003000:133")
+    field(SCAN, "I/O Intr")
+    field(DESC, "Exp Trig L2 FastClear")
     field(EGU, "Hz")
 }
