@@ -60,3 +60,40 @@ record(ai, "BEAM:TRIG:ReferenceScaler_x04")
 	field(DESC, "50MHz RefClock VUPROM x04, also TAGG:*")
 	field(EGU,"Hz")
 }
+
+record(ai, "TAGG:Paddle")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:17")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger Paddle Rate")
+	field(EGU,"Hz")
+}
+
+record(ai, "BEAM:IonChamber")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:18")
+	field(SCAN, "I/O Intr")
+	field(DESC, "P2 Ion Chamber")
+	field(EGU,"Hz")
+}
+
+record(ai, "BEAM:PBGlass")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:16")
+	field(SCAN, "I/O Intr")
+	field(DESC, "PB Glass Rate")
+	field(EGU,"Hz")
+}
+
+record(ai, "BEAM:FaradayCup")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:19")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Faraday Cup")
+	field(EGU,"Hz")
+}
+
