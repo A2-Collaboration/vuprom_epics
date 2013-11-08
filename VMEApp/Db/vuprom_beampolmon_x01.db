@@ -25,6 +25,7 @@ record(ai, "TAGG:TAGG:SectorO:TRIG:OR")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger 16-OR Rate of Sector O")
 	field(EGU,"Hz")
+	field(FLNK, "TAGG:TAGG:ReferenceOR")
 }
 
 record(ai, "TAGG:TAGG:SectorP:TRIG:OR")

@@ -77,6 +77,7 @@ record(ai, "BEAM:IonChamber")
 	field(SCAN, "I/O Intr")
 	field(DESC, "P2 Ion Chamber")
 	field(EGU,"Hz")
+	field(FLNK, "TAGG:TAGG:LadderR2Ratio")
 }
 
 record(ai, "BEAM:PBGlass")

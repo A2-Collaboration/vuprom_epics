@@ -5,5 +5,16 @@ record(calc, "TAGG:TAGG:ReferenceOR")
     field(EGU, "Hz")
     field(DESC, "Reference Tagger OR (Ladder)")
     field(SCAN, "Passive")
+	field(FLNK, "TAGG:TAGG:LadderR2Ratio")
+}
+
+record(calc, "TAGG:TAGG:LadderP2Ratio")
+{
+    field(INPA, "TAGG:TAGG:ReferenceOR")
+    field(INPB, "BEAM:IonChamber")
+    field(CALC, "A/B")
+    field(EGU, "Hz")
+    field(DESC, "Reference Tagger OR / IonChamber")
+    field(SCAN, "Passive")
 }
 
