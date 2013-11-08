@@ -95,6 +95,6 @@ record(ai, "BEAM:FaradayCup")
 	field(INP, "0x04014000:19")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Faraday Cup")
-	field(EGU,"Hz")
+	field(EGU,"pA")
 }
 
