@@ -205,8 +205,7 @@ record(ai, "TAPS:TRIG:Mode")
 	field(DTYP, "VMEScaler")
 	field(INP, "0x0A003000:19")
 	field(SCAN, "I/O Intr")
-	field(DESC, "TAPSActualMode")
-	field(EGU, "Hz")
+	field(DESC, "TAPSActualMode 1=coupled, 0=stdalone")
 }
 
 record(ai, "TAPS:VETOPWO:TRIG:M2Plus_Prescaled")
