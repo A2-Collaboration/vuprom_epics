@@ -190,11 +190,13 @@ record(ai, "BEAM:Vu04_Sc13")
 	field(SCAN, "I/O Intr")
 }
 
-record(ai, "BEAM:Vu04_Sc14")
+record(ai, "BEAM:PairSpectrometer")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:14")
 	field(SCAN, "I/O Intr")
+	field(DESC, "Pair Spectrometer Rate")
+	field(EGU, "Hz")
 }
 
 record(ai, "BEAM:Vu04_Sc15")
