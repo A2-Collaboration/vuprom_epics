@@ -98,3 +98,108 @@ record(ai, "BEAM:FaradayCup")
 	field(EGU,"pA")
 }
 
+
+record(ai, "BEAM:Vu04_Sc1")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:1")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc2")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:2")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc3")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:3")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc4")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:4")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc5")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:5")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc6")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:6")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc7")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:7")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc8")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:8")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc9")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:9")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc10")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:10")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc11")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:11")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc12")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:12")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc13")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:13")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc14")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:14")
+	field(SCAN, "I/O Intr")
+}
+
+record(ai, "BEAM:Vu04_Sc15")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:15")
+	field(SCAN, "I/O Intr")
+}
