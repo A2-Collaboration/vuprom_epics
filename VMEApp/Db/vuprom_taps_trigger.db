@@ -22,7 +22,7 @@
 record(ai, "TAPS:TRIG:ReferenceScaler")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "0x0A003000:83 R Norm=1000000 Firmware=0x1311100a")
+	field(INP, "0x0A003000:83 R Norm=1000000 Firmware=0x1311120b")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Ref scaler taps-trigger vuprom")
 }
