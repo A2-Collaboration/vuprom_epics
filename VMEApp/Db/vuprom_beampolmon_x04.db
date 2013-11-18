@@ -77,7 +77,7 @@ record(ai, "BEAM:IonChamber")
 	field(SCAN, "I/O Intr")
 	field(DESC, "P2 Ion Chamber")
 	field(EGU,"Hz")
-	field(FLNK, "TAGG:TAGG:LadderR2Ratio")
+	field(FLNK, "TAGG:TAGG:LadderP2Ratio")
 }
 
 record(ai, "BEAM:PBGlass")
@@ -98,14 +98,24 @@ record(ai, "BEAM:FaradayCup")
 	field(EGU,"pA")
 }
 
-record(ai, "BEAM:PairSpectrometer")
+record(ai, "BEAM:PAIRSPEC:Gate")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:8")
 	field(SCAN, "I/O Intr")
-	field(DESC, "Pair Spectrometer Rate")
+	field(DESC, "Pair Spectrometer 4-Coinc Gate")
 	field(EGU, "Hz")
 }
+
+record(ai, "TAGG:TAGG:ReferenceOR")
+{
+	field(DTYP, "VMEScaler")
+	field(INP, "0x04014000:9")
+	field(SCAN, "I/O Intr")
+	field(DESC, "Tagger Reference OR (hardwired)")
+	field(EGU, "Hz")
+}
+
 
 #record(ai, "BEAM:Vu04_Sc15")
 #{

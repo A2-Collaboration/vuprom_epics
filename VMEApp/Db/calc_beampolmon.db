@@ -1,13 +1,3 @@
-record(calc, "TAGG:TAGG:ReferenceOR")
-{
-    field(INPA, "TAGG:TAGG:SectorO:TRIG:OR")
-    field(CALC, "A")
-    field(EGU, "Hz")
-    field(DESC, "Reference Tagger OR (Ladder)")
-    field(SCAN, "Passive")
-	field(FLNK, "TAGG:TAGG:LadderR2Ratio")
-}
-
 record(calc, "TAGG:TAGG:LadderP2Ratio")
 {
     field(INPA, "TAGG:TAGG:ReferenceOR")
