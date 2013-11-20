@@ -63,7 +63,7 @@ record(ai, "BEAM:TRIG:ReferenceScaler_x02")
 	field(EGU,"Hz")
 }
 
-record(ai, "BEAM:PAIRSPEC:In1")
+record(ai, "BEAM:PAIRSPEC:TRIG:In1")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x02014000:10")
@@ -72,7 +72,7 @@ record(ai, "BEAM:PAIRSPEC:In1")
 	field(EGU,"Hz")
 }
 
-record(ai, "BEAM:PAIRSPEC:In2")
+record(ai, "BEAM:PAIRSPEC:TRIG:In2")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x02014000:11")
@@ -81,7 +81,7 @@ record(ai, "BEAM:PAIRSPEC:In2")
 	field(EGU,"Hz")
 }
 
-record(ai, "BEAM:PAIRSPEC:In3")
+record(ai, "BEAM:PAIRSPEC:TRIG:In3")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x02014000:12")
@@ -90,7 +90,7 @@ record(ai, "BEAM:PAIRSPEC:In3")
 	field(EGU,"Hz")
 }
 
-record(ai, "BEAM:PAIRSPEC:In4")
+record(ai, "BEAM:PAIRSPEC:TRIG:In4")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x02014000:13")
