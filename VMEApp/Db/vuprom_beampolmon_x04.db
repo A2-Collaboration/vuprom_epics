@@ -98,7 +98,7 @@ record(ai, "BEAM:FaradayCup")
 	field(EGU,"pA")
 }
 
-record(ai, "BEAM:PAIRSPEC:Gate")
+record(ai, "BEAM:PAIRSPEC:TRIG:Gate")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "0x04014000:8")
