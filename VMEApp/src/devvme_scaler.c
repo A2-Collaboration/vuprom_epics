@@ -22,6 +22,7 @@ static char what[] =
 #include "recSup.h"
 #include "devSup.h"
 #include "aiRecord.h"
+#include "longinRecord.h"
 #include "link.h"
 #include "epicsExport.h"
 #include "dbScan.h"
@@ -40,21 +41,37 @@ struct {
     DEVSUPFUN	get_ioint_info;
     DEVSUPFUN	read_ai;
     DEVSUPFUN	special_linconv;
-} devvme_scaler = {
+} vuprom_scaler = {
 	6,
 	NULL,
-	init_ai,
-	init_record,
+    init,
+    init_scaler,
     get_ioint_info,
-	read_ai,
+    read_scaler,
 	NULL
 };
-epicsExportAddress(dset,devvme_scaler);
+epicsExportAddress(dset,vuprom_scaler);
+
+// export our functions to EPICS:
+struct {
+    long		number;
+    DEVSUPFUN	report;
+    DEVSUPFUN	init;
+    DEVSUPFUN	init_record;
+    DEVSUPFUN	get_ioint_info;
+    DEVSUPFUN	read_longin;
+} vuprom_register = {
+    6,
+    NULL,
+    init,
+    init_register,
+    NULL,
+    read_register
+};
+epicsExportAddress(dset,vuprom_register);
 
 
-
-
-static long init_ai(int after)
+static long init(int after)
 {
     if( after == 0 ) {
         printf("%s\n", what);
@@ -75,7 +92,7 @@ static int parseAddress( char* str, vu_scaler_addr* addr) {
     u_int32_t normval=0;
     u_int32_t firmware=0;
 
-    int ret = sscanf( str,"%x:%d R Norm=%d Firmware=%x", &(addr->base_addr), &(addr->scaler), &normval, &firmware);
+    int ret = sscanf( str,"scaler %x:%d R Norm=%d Firmware=%x", &(addr->base_addr), &(addr->scaler), &normval, &firmware);
 
     if( ret == 2 ) {
         addr->flag = 0;
@@ -89,7 +106,21 @@ static int parseAddress( char* str, vu_scaler_addr* addr) {
     return FALSE;
 }
 
-static long init_record(struct aiRecord *pai)
+static int parseAddress2( char* str, vu_scaler_addr* addr) {
+
+    int ret = sscanf( str,"register %x:%d", &(addr->base_addr), &(addr->scaler));
+
+    if( ret == 2 ) {
+        addr->flag = 2;
+        addr->normval = 0;
+        addr->firmware = 0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+static long init_scaler(struct aiRecord *pai)
 {
     vu_scaler_addr addr;
     const int ret = parseAddress( pai->inp.text, &addr );
@@ -99,7 +130,7 @@ static long init_record(struct aiRecord *pai)
         return 1;
     }
 
-    u_int32_t* ptr = drv_AddRecord(&addr);
+    u_int32_t* ptr = drv_AddScaler(&addr);
 
     if( ptr ) {
         pai->dpvt = (void*) ptr;
@@ -109,12 +140,42 @@ static long init_record(struct aiRecord *pai)
         return 1;
 }
 
+static long init_register(struct longinRecord *pai)
+{
+    vu_scaler_addr addr;
+    const int ret = parseAddress2( pai->inp.text, &addr );
 
-static long read_ai(struct aiRecord *pai)
+    if( !ret ) {
+        printf("Invalid: %#010x, register %d, for %s\n", addr.base_addr, addr.scaler, pai->name);
+        return 1;
+    }
+
+    u_int32_t* ptr = drv_AddRegister(&addr);
+
+    if( ptr ) {
+        pai->dpvt = (void*) ptr;
+        pai->udf = FALSE;
+        return 0;
+    } else
+        return 1;
+}
+
+static long read_scaler(struct aiRecord *pai)
 {
     if( pai->dpvt ) {
         pai->rval = *((u_int32_t*) pai->dpvt);
         pai->udf = FALSE;
+        return 0;
+    } else
+        return 1;
+}
+
+static long read_register(struct longinRecord *pai)
+{
+    if( pai->dpvt ) {
+        pai->val = *((u_int32_t*) pai->dpvt);
+        pai->udf = FALSE;
+        printf("Read register\n");
         return 0;
     } else
         return 1;

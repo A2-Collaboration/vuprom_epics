@@ -12,22 +12,36 @@
  * @param pai ptr to the struct containing the record info
  * @return 0=FAIL, 1=SUCCESS
  */
-static long init_record( struct aiRecord *pai );
+static long init_scaler( struct aiRecord *pai );
 
 /**
  * @brief init_ai
  * @return
  */
-static long init_ai();
+static long init();
 
 /**
  * @brief read_ai
  * @return
  */
-static long read_ai();
+static long read_scaler();
 
 /**
  * @brief get_ioint_info
  * @return
  */
 static long get_ioint_info();
+
+/**
+ * @brief Initialize a record
+ * @param pai ptr to the struct containing the record info
+ * @return 0=FAIL, 1=SUCCESS
+ */
+static long init_register( struct longinRecord *pai );
+
+
+/**
+ * @brief read_longin
+ * @return
+ */
+static long read_register();

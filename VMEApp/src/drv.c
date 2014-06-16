@@ -50,6 +50,7 @@ typedef struct {
     u_int32_t  map_addr;    // mmap address (without top bits)
     volatile u_int32_t* vme_mem;     // mmaped memory ptr
     u_int32_t  values[N];   // copied values
+    u_int32_t  normalize[N];  // normalize scaler n?
     int  max_sclaer_index;
     int  refernece_scaler;
     u_int32_t normval;
@@ -124,7 +125,8 @@ void save_values( vuprom* v ) {
 
         int i;
         for( i=0; i <= v->max_sclaer_index; ++i)
-            v->values[i] = (u_int32_t) (v->values[i] * factor);
+            if( v->normalize[i] )
+                v->values[i] = (u_int32_t) (v->values[i] * factor);
 
     }
 }
@@ -311,13 +313,13 @@ int checkAddrValid( const vu_scaler_addr* addr ) {
 }
 
 /**
- * @brief add a new record to the driver.
+ * @brief add a new scaler to the driver.
  *   checks if the address/scaler tuple is correct, then tries to find an exsiting vuprom struct that matches the base_addr.
  *   Or creates a new one if needed.
  * @param addr ptr to the address/scaler definition
  * @return a pointer to the location where the value for this record will be stored later during operation.
  */
-u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
+u_int32_t* drv_AddScaler( const vu_scaler_addr* addr ) {
 
     if( !checkAddrValid(addr) ) {
         return NULL;
@@ -334,10 +336,13 @@ u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
         }
     }
 
+    // set up a pointer to the cached and normalized value
     u_int32_t* val_ptr = &(v->values[addr->scaler]);
 
     if( addr->scaler > v->max_sclaer_index )
         v->max_sclaer_index = addr->scaler;
+
+    v->normalize[addr->scaler] = 1;
 
     if( addr->flag == 1 ) {
         if( v->refernece_scaler == -1 ) {
@@ -348,6 +353,47 @@ u_int32_t* drv_AddRecord( const vu_scaler_addr* addr ) {
             printf("WARNING: Not setting scaler %d as reference for vuprom @ %#010x. Reference is already scaler %d!\n",addr->scaler,v->base_addr,v->refernece_scaler);
         }
     }
+
+    return val_ptr;
+}
+
+
+/**
+ * @brief add a new record to the driver.
+ *   checks if the address/scaler tuple is correct, then tries to find an exsiting vuprom struct that matches the base_addr.
+ *   Or creates a new one if needed.
+ * @param addr ptr to the address/scaler definition
+ * @return a pointer to the location where the value for this record will be stored later during operation.
+ */
+u_int32_t* drv_AddRegister( const vu_scaler_addr* addr ) {
+
+    if( !checkAddrValid(addr) ) {
+        return NULL;
+    }
+
+    vuprom* v = findVuprom( addr->base_addr );
+
+    if( !v ) {
+
+        v = AddVuprom( addr->base_addr );
+
+        if( !v ) {
+            return NULL;
+        }
+    }
+
+    // set up a pointer into vme mapped memory.
+    u_int32_t* val_ptr = (u_int32_t*) &(v->vme_mem[addr->scaler]);
+
+    if( addr->scaler > v->max_sclaer_index )
+        v->max_sclaer_index = addr->scaler;
+
+    if( addr->flag != 2 ) {
+            printf("ERROR: This is a register, but not? Base: %#010x, %d!\n",v->base_addr,addr->scaler);
+
+    }
+
+    v->normalize[addr->scaler] = 0;
 
     return val_ptr;
 }
@@ -393,7 +439,7 @@ long drv_Get( const u_int32_t addr ) {
     if( v ) {
         return v->values[scaler];
     } else {
-        printf("ERROR reading scaler @ %x: no vuprom module initialized @ %#010x!\n", addr, base_addr );
+        printf("ERROR reading scaler/register @ %x: no vuprom module initialized @ %#010x!\n", addr, base_addr );
         return 0;
     }
 
