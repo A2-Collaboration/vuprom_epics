@@ -18,28 +18,16 @@
 # Always make sure these values are correct.
 #
 
-
-record(ai, "TAPS:TRIG:ReferenceScaler")
-{
-	field(DTYP, "VMEScaler")
-	field(INP, "scaler 0x0A003000:83 R Norm=1000000 Firmware=0x13102509")
-	field(SCAN, "I/O Intr")
-	field(DESC, "1MHz reference scaler of the taps-trigger vuprom")
-}
-
-record(ai, "TAPS:BAF:TRIG:CFD:OR")
-{
-	field(DTYP, "VMEScaler")
-	field(INP, "scaler 0x0A003000:2")
-	field(SCAN, "I/O Intr")
-	field(DESC, "TAPS CFD OR")
-	field(EGU, "Hz")
-}
-
 record(longin, "TAPS:TRIG:Mode")
 {
 	field(DTYP, "VMEScaler")
 	field(INP, "register 0x0A003000:19")
 	field(SCAN, "1 Second")
 	field(DESC, "TAPSActualMode")
+}
+
+record(longin, "TAPS:Test")
+	field(DTYP, "VMEScaler")
+	field(INP, "register 0x0A003000:960")
+	field(SCAN, "1 Second")
 }

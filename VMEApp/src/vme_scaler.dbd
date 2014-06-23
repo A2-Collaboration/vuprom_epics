@@ -1,4 +1,3 @@
 # include "base.dbd"
 # local menu, record, device, driver, breakpoint definitions
-device(ai,CONSTANT,vuprom_scaler,"VMEScaler")
 device(longin,CONSTANT,vuprom_register,"VMEScaler")

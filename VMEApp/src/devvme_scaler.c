@@ -21,7 +21,6 @@ static char what[] =
 #include "recGbl.h"
 #include "recSup.h"
 #include "devSup.h"
-#include "aiRecord.h"
 #include "longinRecord.h"
 #include "link.h"
 #include "epicsExport.h"
@@ -30,27 +29,6 @@ static char what[] =
 #include <sys/types.h>
 
 #include "drv.h"
-
-
-// export our functions to EPICS:
-struct {
-    long		number;
-    DEVSUPFUN	report;
-    DEVSUPFUN	init;
-    DEVSUPFUN	init_record;
-    DEVSUPFUN	get_ioint_info;
-    DEVSUPFUN	read_ai;
-    DEVSUPFUN	special_linconv;
-} vuprom_scaler = {
-	6,
-	NULL,
-    init,
-    init_scaler,
-    get_ioint_info,
-    read_scaler,
-	NULL
-};
-epicsExportAddress(dset,vuprom_scaler);
 
 // export our functions to EPICS:
 struct {
@@ -87,57 +65,16 @@ static long init(int after)
     return 0;
 }
 
-static int parseAddress( char* str, vu_scaler_addr* addr) {
-
-    u_int32_t normval=0;
-    u_int32_t firmware=0;
-
-    int ret = sscanf( str,"scaler %x:%d R Norm=%d Firmware=%x", &(addr->base_addr), &(addr->scaler), &normval, &firmware);
-
-    if( ret == 2 ) {
-        addr->flag = 0;
-        return TRUE;
-    } else if( (ret == 4) ) {
-        addr->flag = 1;
-        addr->normval = normval;
-        addr->firmware = firmware;
-        return TRUE;
-    }
-    return FALSE;
-}
-
 static int parseAddress2( char* str, vu_scaler_addr* addr) {
 
     int ret = sscanf( str,"register %x:%d", &(addr->base_addr), &(addr->scaler));
 
     if( ret == 2 ) {
         addr->flag = 2;
-        addr->normval = 0;
         addr->firmware = 0;
         return TRUE;
     }
     return FALSE;
-}
-
-
-static long init_scaler(struct aiRecord *pai)
-{
-    vu_scaler_addr addr;
-    const int ret = parseAddress( pai->inp.text, &addr );
-
-    if( !ret ) {
-        printf("Invalid: %#010x, scaler %d, for %s\n", addr.base_addr, addr.scaler, pai->name);
-        return 1;
-    }
-
-    u_int32_t* ptr = drv_AddScaler(&addr);
-
-    if( ptr ) {
-        pai->dpvt = (void*) ptr;
-        pai->udf = FALSE;
-        return 0;
-    } else
-        return 1;
 }
 
 static long init_register(struct longinRecord *pai)
@@ -160,16 +97,6 @@ static long init_register(struct longinRecord *pai)
         return 1;
 }
 
-static long read_scaler(struct aiRecord *pai)
-{
-    if( pai->dpvt ) {
-        pai->rval = *((u_int32_t*) pai->dpvt);
-        pai->udf = FALSE;
-        return 0;
-    } else
-        return 1;
-}
-
 static long read_register(struct longinRecord *pai)
 {
     if( pai->dpvt ) {
@@ -179,33 +106,4 @@ static long read_register(struct longinRecord *pai)
         return 0;
     } else
         return 1;
-}
-
-static int n=0;
-
-static long get_ioint_info(int cmd,struct dbCommon *precord, IOSCANPVT *ppvt) {
-
-    IOSCANPVT* ioinfo = NULL;
-
-    switch (cmd) {
-    case 0:
-
-        ioinfo = drv_getioinfo();
-
-        if( ioinfo ) {
-            if (n==0 ) scanIoInit(ioinfo);  //only once! not for every record!
-            ++n;
-            *ppvt = *ioinfo;
-            drv_enable_iointr();
-        } else
-            puts("Error setting I/O Intr\n");
-        break;
-    case 1:
-        drv_disable_iointr();
-        break;
-    default:
-        printf("Error: unknown command %d\n", cmd);
-    }
-
-    return 0;
 }
