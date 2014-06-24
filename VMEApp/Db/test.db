@@ -26,3 +26,11 @@ record(longin, "Test")
 	field(SCAN, "1 second")
 }
 
+record(longout, "Test_out")
+{
+	field(DTYP, "VMEScaler")
+	field(OUT, "register 0xEA002000:188")
+	field(DESC, "0xEA0022F0 exptrigger")
+	field(SCAN, "1 second")
+}
+

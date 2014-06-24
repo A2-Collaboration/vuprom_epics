@@ -23,12 +23,6 @@
 // Maximum scaler number to allow.
 #define MAX_SCALER_INDEX    1024
 
-// At vuprom address 0xf00 (= scaler 960) is a magic number. This is always equal to 0x87654321.
-// This way we can check if vme access works and it there is a vuprom at this base address.
-#define MAGIC_SCALER 960
-#define MAGIC_NUMBER 0x87654321
-#define FIRMWARE_SCALER 0x2f00
-
 static int n_vuproms =0;
 
 static u_int32_t global_top_bits =0;
@@ -63,14 +57,6 @@ int init_vuprom( vuprom* v ) {
     if ((v->vme_mem = (u_int32_t*) vmeext( v->map_addr, RANGE )) == NULL) {
         perror("Error opening device.\n");
         return 0;
-    }
-
-    const u_int32_t magic_number = v->vme_mem[MAGIC_SCALER];
-
-
-    if( magic_number != MAGIC_NUMBER ) {
-        printf("Error: vuprom magic number not found. (base_addr: %#010x, scaler %d, value %x, expected %x)\n", v->base_addr, MAGIC_SCALER, magic_number, MAGIC_NUMBER );
-        //return FALSE;
     }
 
     printf("Init vuprom @ %#010x, map addess: %#010x\n", v->base_addr, v->map_addr);
@@ -205,8 +191,8 @@ int checkAddrValid( const vu_scaler_addr* addr ) {
         return FALSE;
     }
 
-    if( addr->scaler > MAX_SCALER_INDEX ) {
-        printf("Error: register index out of range (%d)\n", addr->scaler);
+    if( addr->reg > MAX_SCALER_INDEX ) {
+        printf("Error: register index out of range (%d)\n", addr->reg);
         return FALSE;
     }
 
@@ -239,7 +225,7 @@ u_int32_t* drv_AddRegister( const vu_scaler_addr* addr ) {
     }
 
     // set up a pointer into vme mapped memory.
-    u_int32_t* val_ptr =  &(v->vme_mem[addr->scaler]);
+    u_int32_t* val_ptr =  &(v->vme_mem[addr->reg]);
 
     return val_ptr;
 }
@@ -272,12 +258,12 @@ int drv_isInit() {
 long drv_Get( const u_int32_t addr ) {
 
     const u_int32_t base_addr = 0xFFFFF000 & addr;
-    const u_int32_t scaler = 0xFFF & addr;
+    const u_int32_t reg = 0xFFF & addr;
 
     vuprom* v = findVuprom( base_addr );
 
     if( v ) {
-        return v->vme_mem[scaler];
+        return v->vme_mem[reg];
     } else {
         printf("ERROR reading register @ %x: no vuprom module initialized @ %#010x!\n", addr, base_addr );
         return 0;

@@ -3,7 +3,7 @@
 
 typedef struct {
     u_int32_t   base_addr;  // Base address of VUPROM
-    u_int32_t   scaler;     // scaler/register number (of 4byte words after base_addr)
+    u_int32_t   reg;     // scaler/register number (of 4byte words after base_addr)
 } vu_scaler_addr;
 
 int drv_init();

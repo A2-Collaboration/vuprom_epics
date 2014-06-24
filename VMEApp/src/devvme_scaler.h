@@ -20,9 +20,21 @@ static long init();
  */
 static long init_register( struct longinRecord *pai );
 
+/**
+ * @brief Initialize a record
+ * @param pai ptr to the struct containing the record info
+ * @return 0=FAIL, 1=SUCCESS
+ */
+static long init_write_register( struct longoutRecord *plo );
 
 /**
  * @brief read_longin
  * @return
  */
-static long read_register();
+static long read_register( struct longinRecord *pai );
+
+/**
+ * @brief read_longin
+ * @return
+ */
+static long write_register( struct longoutRecord *plo );
