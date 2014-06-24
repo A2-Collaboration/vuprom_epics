@@ -18,16 +18,10 @@
 # Always make sure these values are correct.
 #
 
-record(longin, "TAPS:TRIG:Mode")
+record(longin, "Test")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "register 0x0A003000:19")
-	field(SCAN, "1 Second")
-	field(DESC, "TAPSActualMode")
+	field(INP, "register 0xEA002000:752")
+	field(DESC, "0xEA0022F0 exptrigger")
 }
 
-record(longin, "TAPS:Test")
-	field(DTYP, "VMEScaler")
-	field(INP, "register 0x0A003000:960")
-	field(SCAN, "1 Second")
-}
