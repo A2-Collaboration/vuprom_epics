@@ -21,7 +21,7 @@
 #define MAX_VUPROMS 8
 
 // Maximum scaler number to allow.
-#define MAX_SCALER_INDEX    256
+#define MAX_SCALER_INDEX    1024
 
 // At vuprom address 0xf00 (= scaler 960) is a magic number. This is always equal to 0x87654321.
 // This way we can check if vme access works and it there is a vuprom at this base address.
@@ -70,7 +70,7 @@ int init_vuprom( vuprom* v ) {
 
     if( magic_number != MAGIC_NUMBER ) {
         printf("Error: vuprom magic number not found. (base_addr: %#010x, scaler %d, value %x, expected %x)\n", v->base_addr, MAGIC_SCALER, magic_number, MAGIC_NUMBER );
-        return FALSE;
+        //return FALSE;
     }
 
     printf("Init vuprom @ %#010x, map addess: %#010x\n", v->base_addr, v->map_addr);
@@ -124,26 +124,10 @@ int drv_init () {
 
 int drv_start() {
 
-    int i;
 
     if( _init == 0 ) {
         perror("Driver not initialized!\n");
         return FALSE;
-    }
-
-    if( n_vuproms == 0 ) {
-        perror("No vuproms added!\n");
-        return FALSE;
-    }
-
-    SetTopBits( global_top_bits );
-
-    // initialize all vuprom structs
-    for( i=0; i<n_vuproms; ++i) {
-        const int ret = init_vuprom( &(vu[i]) );
-        if( ret != TRUE ) {
-            return FALSE;
-        }
     }
 
     return TRUE;
@@ -162,6 +146,7 @@ vuprom* AddVuprom( const u_int32_t base_addr ) {
         if( n_vuproms == 0 ) {
 
             global_top_bits = base_addr & 0xe0000000;
+            SetTopBits( global_top_bits );
 
         } else {
 
@@ -173,6 +158,11 @@ vuprom* AddVuprom( const u_int32_t base_addr ) {
 
         vu[n_vuproms].base_addr = base_addr;
         vu[n_vuproms].map_addr  = base_addr & 0x1fffffff;      //mask out top bits
+
+        const int ret = init_vuprom( &(vu[n_vuproms]) );
+        if( ret != TRUE ) {
+            return FALSE;
+        }
 
         printf("New vuprom (%d) added @ %#010x, map addess %#010x\n", n_vuproms, vu[n_vuproms].base_addr, vu[n_vuproms].map_addr );
 
@@ -249,7 +239,8 @@ u_int32_t* drv_AddRegister( const vu_scaler_addr* addr ) {
     }
 
     // set up a pointer into vme mapped memory.
-    u_int32_t* val_ptr = (u_int32_t*) &(v->vme_mem[addr->scaler]);
+
+    u_int32_t* val_ptr =  &(v->vme_mem[addr->scaler]);
 
     return val_ptr;
 }

@@ -22,7 +22,7 @@ esac
 . /opt/epics/thisEPICS.sh
 
 # launch the screen
-cd /opt/epics/apps/vme/iocBoot/iocVME
-CMDFILE=$CMDFILE screen -dm -S VUPROM -c ../../screenrc
+cd /opt/epics/apps/regioc/iocBoot/iocVME
+CMDFILE=$CMDFILE screen -dm -S VUPROM2 -c ../../screenrc
 
-echo "Screen session with name VUPROM started."
+echo "Screen session with name VUPROM2 started."

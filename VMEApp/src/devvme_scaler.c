@@ -92,6 +92,7 @@ static long init_register(struct longinRecord *pai)
     if( ptr ) {
         pai->dpvt = (void*) ptr;
         pai->udf = FALSE;
+        printf("Added: %#010x, register %d, for %s\n", addr.base_addr, addr.scaler, pai->name);
         return 0;
     } else
         return 1;
@@ -102,7 +103,7 @@ static long read_register(struct longinRecord *pai)
     if( pai->dpvt ) {
         pai->val = *((u_int32_t*) pai->dpvt);
         pai->udf = FALSE;
-        printf("Read register\n");
+        printf("READ %s    %#08x\n",pai->name, pai->val);
         return 0;
     } else
         return 1;
