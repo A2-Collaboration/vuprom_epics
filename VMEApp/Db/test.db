@@ -21,7 +21,8 @@
 record(longin, "Test")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "register 0xEA002000:752")
+	field(INP, "register 0xEA002000:188")
 	field(DESC, "0xEA0022F0 exptrigger")
+	field(SCAN, "1 second")
 }
 

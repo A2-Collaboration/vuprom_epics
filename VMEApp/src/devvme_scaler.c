@@ -65,13 +65,13 @@ static long init(int after)
     return 0;
 }
 
-static int parseAddress2( char* str, vu_scaler_addr* addr) {
+static int parseAddress( char* str, vu_scaler_addr* addr) {
 
     int ret = sscanf( str,"register %x:%d", &(addr->base_addr), &(addr->scaler));
 
     if( ret == 2 ) {
         addr->flag = 2;
-        addr->firmware = 0;
+
         return TRUE;
     }
     return FALSE;
@@ -80,7 +80,7 @@ static int parseAddress2( char* str, vu_scaler_addr* addr) {
 static long init_register(struct longinRecord *pai)
 {
     vu_scaler_addr addr;
-    const int ret = parseAddress2( pai->inp.text, &addr );
+    const int ret = parseAddress( pai->inp.text, &addr );
 
     if( !ret ) {
         printf("Invalid: %#010x, register %d, for %s\n", addr.base_addr, addr.scaler, pai->name);
@@ -92,18 +92,18 @@ static long init_register(struct longinRecord *pai)
     if( ptr ) {
         pai->dpvt = (void*) ptr;
         pai->udf = FALSE;
-        printf("Added: %#010x, register %d, for %s\n", addr.base_addr, addr.scaler, pai->name);
+        printf("Added: %#010x, register %d, Address %#010x for %s\n", addr.base_addr, addr.scaler, (unsigned int) (addr.base_addr+(addr.scaler*sizeof(int))), pai->name);
         return 0;
-    } else
+    } else {
         return 1;
+    }
 }
 
 static long read_register(struct longinRecord *pai)
 {
     if( pai->dpvt ) {
-        pai->val = *((u_int32_t*) pai->dpvt);
+        pai->val = *( (volatile u_int32_t*) pai->dpvt );
         pai->udf = FALSE;
-        printf("READ %s    %#08x\n",pai->name, pai->val);
         return 0;
     } else
         return 1;

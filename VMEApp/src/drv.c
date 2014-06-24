@@ -239,7 +239,6 @@ u_int32_t* drv_AddRegister( const vu_scaler_addr* addr ) {
     }
 
     // set up a pointer into vme mapped memory.
-
     u_int32_t* val_ptr =  &(v->vme_mem[addr->scaler]);
 
     return val_ptr;
@@ -280,7 +279,7 @@ long drv_Get( const u_int32_t addr ) {
     if( v ) {
         return v->vme_mem[scaler];
     } else {
-        printf("ERROR reading scaler/register @ %x: no vuprom module initialized @ %#010x!\n", addr, base_addr );
+        printf("ERROR reading register @ %x: no vuprom module initialized @ %#010x!\n", addr, base_addr );
         return 0;
     }
 

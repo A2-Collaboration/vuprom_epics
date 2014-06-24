@@ -4,8 +4,6 @@
 typedef struct {
     u_int32_t   base_addr;  // Base address of VUPROM
     u_int32_t   scaler;     // scaler/register number (of 4byte words after base_addr)
-    int         flag;       // type of this address: 0=scaler, 1=reference scaler, 2=register
-    u_int32_t   firmware;   // in case of reference scaler: the firmare vresion code of the VUPROM
 } vu_scaler_addr;
 
 int drv_init();
