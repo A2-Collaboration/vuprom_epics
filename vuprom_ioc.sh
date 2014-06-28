@@ -2,12 +2,6 @@
 
 HOSTNAME=$(hostname -s)
 case $HOSTNAME in
-    vme-exptrigger)
-        CMDFILE="exptrigger_scalers.cmd"
-        ;;    
-    vme-beampolmon)
-        CMDFILE="beampolmon_scalers.cmd"
-        ;;
     vme-taps-trigger)
         CMDFILE="taps_scalers.cmd"
         ;;

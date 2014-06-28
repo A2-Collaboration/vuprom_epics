@@ -12,7 +12,7 @@ dbLoadDatabase "dbd/VME.dbd"
 VME_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
-dbLoadRecords("db/test.db","user=steffenHost")
+dbLoadRecords("db/vuprom_taps_trigger.db","user=steffenHost")
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit
