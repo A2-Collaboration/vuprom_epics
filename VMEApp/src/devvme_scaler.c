@@ -70,7 +70,6 @@ static int parseAddress( char* str, vu_scaler_addr* addr) {
     int ret = sscanf( str,"register %x:%d", &(addr->base_addr), &(addr->scaler));
 
     if( ret == 2 ) {
-        addr->flag = 2;
 
         return TRUE;
     }
