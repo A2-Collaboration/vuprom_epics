@@ -1,6 +1,6 @@
 record(calc, "TAGG:TAGG:LadderP2Ratio")
 {
-    field(INPA, "TAGG:TAGG:ReferenceOR")
+    field(INPA, "TAGG:EPT:Sector3:TRIG:OR")
     field(INPB, "BEAM:IonChamber")
     field(CALC, "A/B")
     field(EGU, "Hz")
