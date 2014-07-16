@@ -1,0 +1,12 @@
+record(calc, "TRIG:MeanReadoutTime")
+{
+    field(INPA, "TRIG:TotalLivetime")
+    field(INPB, "TRIG:Trigger")
+    field(CALC, "B>0 ? 1000000*(1-A/100)/B : 0")
+    field(HOPR, 300)
+    field(LOPR, 0)
+    field(EGU, "us")
+    field(DESC, "mean readout time")
+    field(SCAN, "1 second")
+}
+
