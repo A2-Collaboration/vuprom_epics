@@ -50,6 +50,7 @@ record(ai, "TAGG:EPT:Sector3:TRIG:OR")
 	field(SCAN, "I/O Intr")
 	field(DESC, "End Point Tagger 16-OR Rate of Sector 3")
 	field(EGU,"Hz")
+	field(FLNK, "TAGG:EPT:LadderP2Ratio")
 }
 
 record(ai, "BEAM:TRIG:ReferenceScaler_x04")
@@ -77,7 +78,6 @@ record(ai, "BEAM:IonChamber")
 	field(SCAN, "I/O Intr")
 	field(DESC, "P2 Ion Chamber")
 	field(EGU,"Hz")
-	field(FLNK, "TAGG:TAGG:LadderP2Ratio")
 }
 
 record(ai, "BEAM:PBGlass")
@@ -114,6 +114,7 @@ record(ai, "TAGG:TAGG:ReferenceOR")
 	field(SCAN, "I/O Intr")
 	field(DESC, "Tagger Reference OR (hardwired)")
 	field(EGU, "Hz")
+	field(FLNK, "TAGG:TAGG:LadderP2Ratio")
 }
 
 

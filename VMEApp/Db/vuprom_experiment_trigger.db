@@ -789,6 +789,7 @@ record(ai, "TRIG:Trigger")
     field(SCAN, "I/O Intr")
     field(DESC, "Experiment Trigger")
     field(EGU, "Hz")
+    field(FLNK, "TRIG:MeanReadoutTime")
 }
 
 record(ai, "TRIG:ImmediateReset")

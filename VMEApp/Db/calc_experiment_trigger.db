@@ -6,7 +6,7 @@ record(calc, "TRIG:MeanReadoutTime")
     field(HOPR, 300)
     field(LOPR, 0)
     field(EGU, "us")
-    field(DESC, "mean readout time")
-    field(SCAN, "1 second")
+    field(DESC, "Mean Readout Time of DAQ")
+    field(SCAN, "Passive")
 }
 

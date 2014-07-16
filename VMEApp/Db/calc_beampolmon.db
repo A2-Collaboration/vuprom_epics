@@ -1,10 +1,20 @@
 record(calc, "TAGG:TAGG:LadderP2Ratio")
 {
-    field(INPA, "TAGG:EPT:Sector3:TRIG:OR")
+    field(INPA, "TAGG:TAGG:ReferenceOR")
     field(INPB, "BEAM:IonChamber")
     field(CALC, "A/B")
     field(EGU, "Hz")
     field(DESC, "Reference Tagger OR / IonChamber")
+    field(SCAN, "Passive")
+}
+
+record(calc, "TAGG:EPT:LadderP2Ratio")
+{
+    field(INPA, "TAGG:EPT:Sector3:TRIG:OR")
+    field(INPB, "BEAM:IonChamber")
+    field(CALC, "A/B")
+    field(EGU, "Hz")
+    field(DESC, "EPT Sector3 OR / IonChamber")
     field(SCAN, "Passive")
 }
 
