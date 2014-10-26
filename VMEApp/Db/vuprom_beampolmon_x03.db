@@ -73,7 +73,7 @@ record(ai, "TAGG:EPT:Sector1:TRIG:OR")
 record(ai, "BEAM:TRIG:ReferenceScaler_x03")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "0x03014000:15 R Norm=1000000 Firmware=0x02000024")
+	field(INP, "0x03014000:15 R Norm=1000000 Firmware=0x02000025")
 	field(SCAN, "I/O Intr")
 	field(DESC, "1MHz RefClock VUPROM x03, also TAGG:*")
 	field(EGU,"Hz")
