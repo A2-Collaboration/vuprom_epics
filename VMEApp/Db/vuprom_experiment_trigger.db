@@ -21,7 +21,7 @@
 record(ai, "TRIG:ReferenceScaler")
 {
 	field(DTYP, "VMEScaler")
-	field(INP, "0xEA003000:109 R Norm=1000000 Firmware=0x0100007e")
+	field(INP, "0xEA003000:109 R Norm=1000000 Firmware=0x0100007f")
 	field(SCAN, "I/O Intr")
 	field(DESC, "1MHz Ref Clock for ExpTrigger vuprom")
 }
